@@ -24,6 +24,7 @@ For each material filing:
 - risk factor changes
 - legal/regulatory updates
 - management tone and guidance changes
+- CEO or executive changes, founder status if disclosed, compensation incentives, ownership alignment, and governance signals
 - share count, dilution, buybacks, dividends
 
 ## Change detection
@@ -34,6 +35,7 @@ When prior filing text is available, compare:
 - MD&A changes
 - segment performance changes
 - liquidity and debt language
+- management's stated diagnosis of company problems and priorities
 - going concern or impairment language
 - customer concentration changes
 - geographic, supply chain, or regulatory exposure
@@ -46,4 +48,5 @@ Update `sec-filings.md` with:
 2. Filing timeline.
 3. Material new information.
 4. Deterioration/improvement signals.
-5. Open questions for the next run.
+5. CEO, governance, incentive, and management clarity signals when available.
+6. Open questions for the next run.

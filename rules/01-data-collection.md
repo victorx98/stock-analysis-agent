@@ -6,9 +6,11 @@ For each ticker run:
 
 1. SEC submissions and recent filing metadata.
 2. Company profile and investor relations links if configured.
-3. Trusted news and macro/regulatory sources.
-4. Daily market prices and trend metrics.
-5. Prior run summary and prior watch items.
+3. Current price, market capitalization if available, and share-count context needed for valuation.
+4. Company leadership sources, including proxy statements, CEO biographies, shareholder letters, and earnings call transcripts when available.
+5. Trusted news and macro/regulatory sources.
+6. Daily market prices and trend metrics.
+7. Prior run summary and prior watch items.
 
 ## Raw data preservation
 
@@ -17,6 +19,7 @@ For each ticker run:
 - Store raw market data under `stocks/<TICKER>/data/raw/market/`.
 - Store normalized or derived data under `stocks/<TICKER>/data/processed/`.
 - Store run-specific output under `stocks/<TICKER>/runs/<RUN_DATE>/`.
+- Store valuation and CEO source notes in the run artifacts when raw data cannot be collected automatically.
 
 ## Missing data
 
@@ -27,6 +30,8 @@ If a tool cannot collect a source, record:
 - error or limitation
 - whether the missing data affects the final signal
 - fallback source, if any
+
+Missing current price, share count, financial statements, peer context, or CEO evidence must be treated as material if it prevents a valuation or leadership conclusion.
 
 ## API keys and rate limits
 

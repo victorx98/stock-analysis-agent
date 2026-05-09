@@ -29,6 +29,10 @@ Every `decision-brief.md` must use this structure:
 
 ## News and catalyst takeaways
 
+## Valuation takeaways
+
+## CEO and leadership takeaways
+
 ## Market trend takeaways
 
 ## Bull case
@@ -71,6 +75,8 @@ How This Can Lose Money
 Key Numbers In Plain English
 What Changed In The Latest Run
 Key Evidence
+Valuation: Is This Cheap Enough?
+CEO / Leadership Read
 Key Risks
 Watch Next Run
 Finance Terms Used
@@ -114,6 +120,22 @@ Every `signal.json` must include:
   "bottomLine": "Plain-English money-making conclusion.",
   "moneyMakingPath": [],
   "moneyLosingPath": [],
+  "valuationAssessment": {
+    "classification": "valuation_uncertain",
+    "businessType": "",
+    "modelsUsed": [],
+    "marginOfSafety": "",
+    "summary": "",
+    "cheapTrapChecks": []
+  },
+  "leadershipAssessment": {
+    "classification": "leadership_unknown",
+    "ceoName": "",
+    "founderStatus": "",
+    "summary": "",
+    "strengths": [],
+    "risks": []
+  },
   "nextEvidenceNeeded": [],
   "supportingEvidence": [],
   "contraryEvidence": [],

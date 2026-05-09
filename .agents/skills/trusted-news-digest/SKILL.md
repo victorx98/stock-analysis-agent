@@ -12,7 +12,8 @@ description: Create a trusted-source news and catalyst digest for stock research
 3. Group news by catalyst category.
 4. Apply the materiality test before including an item in the final brief.
 5. Separate confirmed facts from speculation.
-6. Write both bullish and bearish interpretations for material items.
+6. Note whether each material item changes valuation inputs, the likely valuation multiple, or CEO/leadership confidence.
+7. Write both bullish and bearish interpretations for material items.
 
 ## Output checklist
 
@@ -22,4 +23,6 @@ description: Create a trusted-source news and catalyst digest for stock research
 - Time horizon.
 - Bullish interpretation.
 - Bearish interpretation.
+- Valuation impact when the item changes growth, margins, risk, or investor expectations.
+- CEO/leadership implication when the item reflects execution, strategy, governance, or capital allocation.
 - Follow-up questions.

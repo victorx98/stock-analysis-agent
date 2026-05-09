@@ -9,6 +9,7 @@ Use these tiers when classifying evidence.
 - SEC filings and exhibits.
 - Company earnings releases and investor presentations.
 - Official call transcripts when available from company IR.
+- DEF 14A proxy statements, 8-K CEO change filings, and official company leadership biographies.
 - Regulator releases.
 - Official macroeconomic statistics.
 
@@ -31,6 +32,7 @@ For material claims, ask:
 3. Does the source directly support the claim?
 4. Is there conflicting evidence?
 5. Is the claim material to revenue, margin, cash flow, valuation, risk, or investor sentiment?
+6. For CEO claims, does the source show observable background, incentives, decisions, or execution instead of unsupported personality judgment?
 
 ## Citation practice inside artifacts
 

@@ -18,6 +18,8 @@ stocks/AAPL/
     └── 2026-05-09/
 ```
 
+Each run folder should include valuation and leadership artifacts in addition to the SEC, news, market, risk, signal, and decision brief files. `valuation-analysis.md` records the model family used for the company's industry/business type and whether the current price is cheap enough. `leadership-analysis.md` records CEO background, founder status, strategic clarity, execution evidence, and leadership risks.
+
 Use `_TEMPLATE/` only as the source for new ticker folders. Do not write real analysis into `_TEMPLATE/`.
 
 Run `npm run build:index` from the repository root after adding or updating ticker summaries. The command creates ignored `index-data.js` directory data for the root `index.html` page.

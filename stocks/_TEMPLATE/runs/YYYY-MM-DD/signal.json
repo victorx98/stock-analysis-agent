@@ -5,9 +5,30 @@
   "timeHorizon": "6-12 months",
   "confidence": "low",
   "summary": "",
+  "bottomLine": "",
+  "moneyMakingPath": [],
+  "moneyLosingPath": [],
+  "valuationAssessment": {
+    "classification": "valuation_uncertain",
+    "businessType": "",
+    "modelsUsed": [],
+    "marginOfSafety": "",
+    "summary": "",
+    "cheapTrapChecks": []
+  },
+  "leadershipAssessment": {
+    "classification": "leadership_unknown",
+    "ceoName": "",
+    "founderStatus": "",
+    "summary": "",
+    "strengths": [],
+    "risks": []
+  },
+  "nextEvidenceNeeded": [],
   "supportingEvidence": [],
   "contraryEvidence": [],
   "invalidationTriggers": [],
   "watchNextRun": [],
-  "missingInformation": []
+  "missingInformation": [],
+  "plainEnglishDefinitions": {}
 }

@@ -22,7 +22,51 @@
     "primarySourceCount": 1,
     "independentSourceCount": 3,
     "mustIncludeContraryEvidence": true,
-    "mustIncludeInvalidationTriggers": true
+    "mustIncludeInvalidationTriggers": true,
+    "mustIncludeValuationAssessment": true,
+    "mustIncludeLeadershipAssessment": true
+  },
+  "valuationPolicy": {
+    "priority": "Prefer stocks with a conservative, source-backed case for material undervaluation, especially severe undervaluation with identifiable catalysts and manageable downside.",
+    "classifications": [
+      "severely_undervalued",
+      "moderately_undervalued",
+      "fairly_valued",
+      "overvalued",
+      "valuation_uncertain"
+    ],
+    "severeUndervaluationGuide": "Normally requires roughly 35% or more upside to conservative base-case value, survivable balance sheet risk, and a credible path for the market to close the gap.",
+    "modelFamiliesByBusinessType": {
+      "stable_profitable": ["free_cash_flow_dcf", "owner_earnings", "pe", "ev_ebit", "ev_ebitda"],
+      "software_subscription": ["ev_revenue", "ev_gross_profit", "rule_of_40", "scenario_dcf"],
+      "bank_lender": ["price_to_tangible_book", "price_to_book", "roe_rote", "credit_quality"],
+      "insurer": ["price_to_book", "roe", "combined_ratio", "reserve_quality"],
+      "reit": ["price_to_ffo", "price_to_affo", "nav", "cap_rates", "dividend_coverage"],
+      "commodity_producer": ["nav", "ev_reserves", "ev_production", "cost_curve"],
+      "cyclical_industrial": ["mid_cycle_earnings", "normalized_ev_ebitda", "replacement_value"],
+      "consumer_retail": ["pe", "ev_ebitda", "same_store_sales", "unit_economics"],
+      "marketplace_platform": ["ev_gross_profit", "take_rate", "gmv_quality", "cohort_economics"],
+      "biotech_prerevenue": ["cash_runway", "dilution_risk", "probability_weighted_rnpv"],
+      "holding_company": ["sum_of_the_parts", "nav_discount", "capital_allocation_record"],
+      "distressed_turnaround": ["liquidation_value", "debt_maturity_wall", "cash_burn", "refinancing_risk"]
+    }
+  },
+  "leadershipPolicy": {
+    "classifications": [
+      "leadership_edge",
+      "adequate_leadership",
+      "leadership_risk",
+      "leadership_unknown"
+    ],
+    "requiredFields": [
+      "ceoName",
+      "founderStatus",
+      "preCeoBackground",
+      "executionPattern",
+      "strategicClarity",
+      "uniqueAdvantages",
+      "redFlags"
+    ]
   },
   "technicalTrendDefaults": {
     "shortSmaDays": 20,

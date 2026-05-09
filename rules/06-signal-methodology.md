@@ -16,12 +16,13 @@ Use only these labels:
 Consider these dimensions:
 
 1. Fundamental direction: revenue, margins, cash flow, balance sheet.
-2. Valuation context: multiple expansion/contraction risk, relative valuation if available.
-3. SEC filing changes: risk factors, liquidity, management discussion, dilution.
-4. Catalysts: events likely to change expectations.
-5. Market trend: price/momentum confirmation or contradiction.
-6. Risk/reward: upside drivers vs downside scenarios.
-7. Prior thesis: whether new evidence confirms or weakens the previous view.
+2. Valuation conclusion: model fit, value range, margin of safety, cheap-trap checks, and whether the stock is severely undervalued, moderately undervalued, fairly valued, overvalued, or uncertain.
+3. CEO/leadership quality: founder status, incentives, career fit, execution record, strategic clarity, unique advantages, and leadership red flags.
+4. SEC filing changes: risk factors, liquidity, management discussion, dilution.
+5. Catalysts: events likely to change expectations or close a valuation gap.
+6. Market trend: price/momentum confirmation or contradiction.
+7. Risk/reward: upside drivers vs downside scenarios.
+8. Prior thesis: whether new evidence confirms or weakens the previous view.
 
 ## Profit-seeking posture
 
@@ -29,9 +30,9 @@ The purpose of the signal is to support money-making research decisions, not to 
 
 Use a directional signal when evidence supports a clear risk/reward skew:
 
-- Use `strong_buy_watch` when the upside case is strongly supported by primary evidence, valuation or expectations appear favorable, catalysts are identifiable, and downside triggers are clear.
-- Use `buy_watch` when the upside case is more attractive than the downside, but meaningful uncertainty remains.
-- Use `sell_watch` when risk/reward appears unfavorable, key evidence is deteriorating, valuation looks hard to justify, or important catalysts are turning negative.
+- Use `strong_buy_watch` when the upside case is strongly supported by primary evidence, valuation appears severely or clearly materially undervalued under conservative assumptions, catalysts are identifiable, CEO/leadership is not a major red flag, and downside triggers are clear.
+- Use `buy_watch` when valuation is attractive or expectations are too pessimistic, the upside case is more attractive than the downside, and meaningful uncertainty remains.
+- Use `sell_watch` when risk/reward appears unfavorable, key evidence is deteriorating, valuation looks hard to justify, CEO/leadership risk undermines execution confidence, or important catalysts are turning negative.
 - Use `strong_sell_watch` when multiple evidence streams point to severe deterioration, avoidable capital loss risk, or a thesis break.
 - Use `hold_neutral` only when evidence is truly balanced, the expected money-making edge is unclear, or waiting for a specific evidence update is the most rational stance.
 - Use `insufficient_evidence` when source quality is too weak to make a research call.
@@ -46,6 +47,8 @@ Every signal must include:
 - `How this can make money`: the concrete path for the stock to work.
 - `How this can lose money`: the concrete path for capital loss.
 - `What must happen next`: the evidence that would confirm or refute the call.
+- `Is it cheap enough`: plain-English valuation conclusion and margin-of-safety logic.
+- `CEO read`: whether leadership is an edge, adequate, a risk, or unknown.
 - `What the hardest term means`: short explanations for any important finance terms used.
 
 ## Minimum evidence rules
@@ -54,6 +57,7 @@ Do not issue directional signals unless:
 
 - at least one primary source was reviewed, or the lack of primary data is explicitly justified;
 - at least three independent evidence items support the conclusion;
+- valuation and CEO/leadership were assessed, or missing inputs were explicitly documented as material limitations;
 - contrary evidence is included;
 - invalidation triggers are stated;
 - the time horizon is clear.

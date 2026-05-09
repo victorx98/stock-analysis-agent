@@ -1,436 +1,396 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TICKER Latest Research Summary</title>
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f6f7f9;
-        --panel: #ffffff;
-        --ink: #17202a;
-        --muted: #5f6b7a;
-        --line: #d9dee7;
-        --accent: #1565c0;
-        --bull: #107c41;
-        --bear: #b42318;
-        --neutral: #7a4f01;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TICKER Research Summary</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg:       #f8f7f4;
+      --panel:    #ffffff;
+      --ink:      #111827;
+      --muted:    #6b7280;
+      --border:   #e5e1d8;
+      --accent:   #1e40af;
+      --bull:     #15803d;
+      --bear:     #b91c1c;
+      --neutral:  #b45309;
+      --bull-bg:  #f0fdf4;
+      --bear-bg:  #fef2f2;
+      --neu-bg:   #fffbeb;
+      --mono:     ui-monospace, "SF Mono", Menlo, monospace;
+      --serif:    Georgia, "Times New Roman", serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.65 system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 52px 0 72px; }
 
-      * {
-        box-sizing: border-box;
-      }
+    /* ── Page header ── */
+    header { margin-bottom: 36px; }
+    .company-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    h1 {
+      font: 700 clamp(2rem, 5vw, 3.5rem)/1.05 var(--serif);
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .ticker { font-family: var(--mono); }
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    /* Signal badge — replace class with sig-bull / sig-neutral / sig-bear / sig-gray */
+    .signal-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .signal-hero::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    .sig-bull    { background: var(--bull-bg); color: var(--bull);    border: 1px solid #bbf7d0; }
+    .sig-neutral { background: var(--neu-bg);  color: var(--neutral); border: 1px solid #fde68a; }
+    .sig-bear    { background: var(--bear-bg); color: var(--bear);    border: 1px solid #fecaca; }
+    .sig-gray    { background: #f3f4f6; color: var(--muted); border: 1px solid #e5e7eb; }
 
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
+    .meta { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
+    nav a { font-size: 0.875rem; color: var(--accent); }
 
-      main {
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 32px 0 56px;
-      }
+    /* ── Grid ── */
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .col-12 { grid-column: span 12; }
+    .col-6  { grid-column: span 6; }
+    .col-4  { grid-column: span 4; }
 
-      header {
-        display: grid;
-        gap: 10px;
-        margin-bottom: 24px;
-      }
+    /* ── Panel ── */
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    /* Variant panels — add second class as needed */
+    .panel-callout { border-left: 4px solid var(--accent); background: #f0f5ff; }
+    .panel-bull    { border-left: 4px solid var(--bull);   background: var(--bull-bg); }
+    .panel-bear    { border-left: 4px solid var(--bear);   background: var(--bear-bg); }
+    .panel-muted   { background: #faf9f7; }
 
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
+    h2 { font: 600 1.05rem/1.3 var(--serif); margin-bottom: 12px; }
+    p  { line-height: 1.65; }
+    a  { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-      h1 {
-        margin-bottom: 0;
-        font-size: clamp(2rem, 5vw, 3.75rem);
-        line-height: 1;
-        letter-spacing: 0;
-      }
+    /* ── Tables ── */
+    table { width: 100%; border-collapse: collapse; overflow-wrap: anywhere; }
+    thead th {
+      background: #faf9f7;
+      border-bottom: 2px solid var(--border);
+      padding: 9px 10px;
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+    }
+    td, tbody th {
+      border-bottom: 1px solid var(--border);
+      padding: 10px 10px;
+      vertical-align: top;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    /* Use tbody th for key-value label columns */
+    tbody th {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      width: 36%;
+    }
+    tr:last-child td, tr:last-child th { border-bottom: 0; }
+    tbody tr:nth-child(even) { background: #faf9f7; }
 
-      h2 {
-        margin-bottom: 12px;
-        font-size: 1.25rem;
-      }
+    /* Semantic cell colors */
+    .bull-cell { color: var(--bull); font-weight: 600; }
+    .bear-cell { color: var(--bear); font-weight: 600; }
+    .neu-cell  { color: var(--neutral); font-weight: 600; }
 
-      .meta,
-      .muted {
-        color: var(--muted);
-      }
+    /* Monospace for numbers, prices, dates */
+    .num { font-family: var(--mono); font-size: 0.875rem; }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 16px;
-      }
+    /* ── Lists ── */
+    ul { padding-left: 18px; }
+    li { margin-bottom: 5px; font-size: 0.9rem; line-height: 1.55; }
 
-      .panel {
-        grid-column: span 12;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 20px;
-      }
+    /* ── Inline badge ── */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-bull { background: var(--bull-bg); color: var(--bull); }
+    .badge-neu  { background: var(--neu-bg);  color: var(--neutral); }
+    .badge-bear { background: var(--bear-bg); color: var(--bear); }
+    .badge-gray { background: #f3f4f6; color: var(--muted); }
 
-      .half {
-        grid-column: span 6;
-      }
+    /* ── Thesis diagram placeholder ── */
+    .diagram { width: 100%; border-radius: 8px; margin-bottom: 14px; display: block; }
 
-      .third {
-        grid-column: span 4;
-      }
+    /* ── Disclaimer ── */
+    .disclaimer { font-size: 0.825rem; color: var(--muted); line-height: 1.6; }
 
-      .signal {
-        display: inline-flex;
-        width: fit-content;
-        align-items: center;
-        gap: 8px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 6px 12px;
-        background: #fff7e6;
-        color: var(--neutral);
-        font-weight: 700;
-      }
+    @media (max-width: 760px) {
+      main { padding-top: 30px; }
+      .col-6, .col-4 { grid-column: span 12; }
+      .header-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main data-ticker="TICKER" data-company="Company Name" data-last-updated="never">
 
-      .callout {
-        border-left: 4px solid var(--accent);
-        background: #f0f6fd;
-      }
+    <header>
+      <p class="company-label">Company Name</p>
+      <h1><span class="ticker">TICKER</span> Research Summary</h1>
+      <div class="header-row">
+        <!-- Replace sig-gray with sig-bull / sig-neutral / sig-bear once signal is known -->
+        <span class="signal-hero sig-gray">insufficient_evidence</span>
+        <span class="meta">Updated <time datetime="">never</time></span>
+      </div>
+      <nav aria-label="Navigation">
+        <a href="../../index.html">← Root index</a>
+        <a href="index.html">← Stock index</a>
+      </nav>
+    </header>
 
-      .good {
-        border-left-color: var(--bull);
-        background: #eef8f1;
-      }
+    <section class="grid" aria-label="Summary">
 
-      .bad {
-        border-left-color: var(--bear);
-        background: #fbecea;
-      }
+      <!-- Current View -->
+      <article class="panel col-6">
+        <h2>Current View</h2>
+        <p>No completed analysis yet. Explain what the company does and whether the stock looks attractive in plain language.</p>
+      </article>
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        overflow-wrap: anywhere;
-      }
+      <!-- Current Signal -->
+      <article class="panel col-6">
+        <h2>Current Signal</h2>
+        <table>
+          <tbody>
+            <tr><th>Signal</th><td><span class="badge badge-gray">insufficient_evidence</span></td></tr>
+            <tr><th>Time horizon</th><td>TBD</td></tr>
+            <tr><th>Confidence</th><td>low</td></tr>
+          </tbody>
+        </table>
+      </article>
 
-      th,
-      td {
-        border-bottom: 1px solid var(--line);
-        padding: 10px 8px;
-        text-align: left;
-        vertical-align: top;
-      }
+      <!-- Plain-English Bottom Line (remove panel-callout until populated) -->
+      <article class="panel col-12 panel-callout">
+        <h2>Plain-English Bottom Line</h2>
+        <p>No money-making call yet. After a completed run, state whether this looks like a stock to aggressively watch, avoid, or wait on, and explain why in one or two simple sentences.</p>
+      </article>
 
-      th {
-        color: var(--muted);
-        font-size: 0.85rem;
-        text-transform: uppercase;
-      }
+      <!-- Thesis Snapshot — replace SVG after first run -->
+      <article class="panel col-12">
+        <h2>Thesis Snapshot</h2>
+        <svg class="diagram" viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Research workflow">
+          <rect x="20" y="50" width="160" height="70" rx="8" fill="#e8f1fb" stroke="#1e40af" stroke-width="1.5"/>
+          <text x="100" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#111827">Evidence</text>
+          <text x="100" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6b7280">SEC, news, CEO</text>
+          <path d="M185 85 H285" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="290" y="50" width="160" height="70" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>
+          <text x="370" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#111827">Value</text>
+          <text x="370" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6b7280">Cheap or risky?</text>
+          <path d="M455 85 H555" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="560" y="50" width="160" height="70" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+          <text x="640" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#111827">Signal</text>
+          <text x="640" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6b7280">Watch status</text>
+          <path d="M725 85 H805" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="810" y="50" width="80" height="70" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+          <text x="850" y="82" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#111827">Risk</text>
+          <text x="850" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6b7280">Triggers</text>
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10z" fill="#6b7280"/>
+            </marker>
+          </defs>
+        </svg>
+        <p style="font-size:0.875rem;color:var(--muted)">TBD after first run.</p>
+      </article>
 
-      ul {
-        margin: 0;
-        padding-left: 20px;
-      }
+      <!-- How This Can Make Money -->
+      <article class="panel col-6 panel-bull">
+        <h2>How This Can Make Money</h2>
+        <ul>
+          <li>Identify the specific business improvement, catalyst, or market trend that could move the stock higher.</li>
+          <li>Explain what proof would make this upside case stronger.</li>
+        </ul>
+      </article>
 
-      .diagram {
-        width: 100%;
-        min-height: 180px;
-      }
+      <!-- How This Can Lose Money -->
+      <article class="panel col-6 panel-bear">
+        <h2>How This Can Lose Money</h2>
+        <ul>
+          <li>Identify the concrete failure path that could hurt the stock.</li>
+          <li>Explain what warning signs would make the risk more serious.</li>
+        </ul>
+      </article>
 
-      .bull {
-        color: var(--bull);
-      }
+      <!-- Key Numbers -->
+      <article class="panel col-12">
+        <h2>Key Numbers In Plain English</h2>
+        <table>
+          <thead>
+            <tr><th>Number</th><th>What It Means</th><th>Good or Bad?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Revenue</td><td>How much money customers paid before expenses.</td><td>TBD</td></tr>
+            <tr><td>Free cash flow</td><td>Cash left after running and investing in the business.</td><td>TBD</td></tr>
+            <tr><td>Debt and cash</td><td>Whether the company has financial flexibility or balance sheet pressure.</td><td>TBD</td></tr>
+            <tr><td>Valuation range</td><td>Estimated business value range compared with today's stock price.</td><td>TBD</td></tr>
+            <tr><td>Margin of safety</td><td>How much room between the current price and a conservative value estimate.</td><td>TBD</td></tr>
+          </tbody>
+        </table>
+      </article>
 
-      .bear {
-        color: var(--bear);
-      }
+      <!-- What Changed -->
+      <article class="panel col-6">
+        <h2>What Changed In This Run</h2>
+        <p>No run completed yet.</p>
+      </article>
 
-      @media (max-width: 760px) {
-        main {
-          width: min(100% - 20px, 1120px);
-          padding-top: 20px;
-        }
+      <!-- Historical Trend -->
+      <article class="panel col-6">
+        <h2>Historical Trend &amp; Prior Call Review</h2>
+        <table>
+          <thead>
+            <tr><th>Run</th><th>Signal</th><th>Price / Trend</th><th>Valuation</th><th>Prior Call Review</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No prior run</td>
+              <td>insufficient_evidence</td>
+              <td>TBD</td>
+              <td>valuation_uncertain</td>
+              <td>baseline_no_prior_call</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.825rem;color:var(--muted);margin-top:10px">After each run, summarize whether prior judgments were accurate, inaccurate, early, late, or still untested.</p>
+      </article>
 
-        .half,
-        .third {
-          grid-column: span 12;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main data-ticker="TICKER" data-company="Company Name" data-last-updated="never">
-      <header>
-        <p class="meta">Company Name</p>
-        <h1>TICKER Research Summary</h1>
-        <p class="meta">Last updated: <time datetime="">never</time></p>
-        <span class="signal">insufficient_evidence</span>
-      </header>
+      <!-- Key Evidence -->
+      <article class="panel col-6">
+        <h2>Key Evidence</h2>
+        <table>
+          <thead>
+            <tr><th>Claim</th><th>Evidence</th><th>Tier</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>No evidence collected yet.</td><td>TBD</td><td>TBD</td></tr>
+          </tbody>
+        </table>
+      </article>
 
-      <section class="grid" aria-label="Summary">
-        <article class="panel half">
-          <h2>Current View</h2>
-          <p>No completed analysis yet. This section should explain what the company does and whether the stock looks attractive in everyday language.</p>
-        </article>
+      <!-- Valuation -->
+      <article class="panel col-6">
+        <h2>Valuation: Is This Cheap Enough?</h2>
+        <table>
+          <tbody>
+            <tr><th>Business type</th><td>TBD</td></tr>
+            <tr><th>Models used</th><td>TBD</td></tr>
+            <tr><th>Classification</th><td>valuation_uncertain</td></tr>
+            <tr><th>Cheap-trap check</th><td>TBD</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.825rem;color:var(--muted);margin-top:10px">After a run, explain whether the stock is severely undervalued, moderately undervalued, fairly valued, expensive, or too uncertain to judge.</p>
+      </article>
 
-        <article class="panel half">
-          <h2>Current Signal</h2>
-          <table>
-            <tbody>
-              <tr>
-                <th>Signal</th>
-                <td>insufficient_evidence</td>
-              </tr>
-              <tr>
-                <th>Time horizon</th>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <th>Confidence</th>
-                <td>low</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
+      <!-- CEO -->
+      <article class="panel col-6">
+        <h2>CEO / Leadership Read</h2>
+        <table>
+          <tbody>
+            <tr><th>CEO</th><td>TBD</td></tr>
+            <tr><th>Founder?</th><td>TBD</td></tr>
+            <tr><th>Classification</th><td>leadership_unknown</td></tr>
+            <tr><th>Main edge or risk</th><td>TBD</td></tr>
+          </tbody>
+        </table>
+      </article>
 
-        <article class="panel callout">
-          <h2>Plain-English Bottom Line</h2>
-          <p>No money-making call yet. After a completed run, state whether this looks like a stock to aggressively watch, avoid, or wait on, and explain why in one or two simple sentences.</p>
-        </article>
+      <!-- Key Risks -->
+      <article class="panel col-4">
+        <h2>Key Risks</h2>
+        <ul>
+          <li>No risks assessed yet.</li>
+        </ul>
+      </article>
 
-        <article class="panel">
-          <h2>Thesis Snapshot</h2>
-          <svg class="diagram" viewBox="0 0 900 180" role="img" aria-label="Research workflow diagram">
-            <rect x="20" y="50" width="150" height="70" rx="8" fill="#e8f1fb" stroke="#1565c0" />
-            <text x="95" y="82" text-anchor="middle" font-size="16" fill="#17202a">Evidence</text>
-            <text x="95" y="104" text-anchor="middle" font-size="13" fill="#5f6b7a">SEC, news, CEO</text>
-            <path d="M175 85 H285" stroke="#5f6b7a" stroke-width="2" marker-end="url(#arrow)" />
-            <rect x="290" y="50" width="150" height="70" rx="8" fill="#eef8f1" stroke="#107c41" />
-            <text x="365" y="82" text-anchor="middle" font-size="16" fill="#17202a">Value</text>
-            <text x="365" y="104" text-anchor="middle" font-size="13" fill="#5f6b7a">Cheap or risky?</text>
-            <path d="M445 85 H555" stroke="#5f6b7a" stroke-width="2" marker-end="url(#arrow)" />
-            <rect x="560" y="50" width="150" height="70" rx="8" fill="#fff7e6" stroke="#7a4f01" />
-            <text x="635" y="82" text-anchor="middle" font-size="16" fill="#17202a">Signal</text>
-            <text x="635" y="104" text-anchor="middle" font-size="13" fill="#5f6b7a">Watch status</text>
-            <path d="M715 85 H805" stroke="#5f6b7a" stroke-width="2" marker-end="url(#arrow)" />
-            <rect x="810" y="50" width="70" height="70" rx="8" fill="#fbecea" stroke="#b42318" />
-            <text x="845" y="82" text-anchor="middle" font-size="16" fill="#17202a">Risk</text>
-            <text x="845" y="104" text-anchor="middle" font-size="13" fill="#5f6b7a">Triggers</text>
-            <defs>
-              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6b7a" />
-              </marker>
-            </defs>
-          </svg>
-          <p>TBD after first run.</p>
-        </article>
+      <!-- Watch Next Run -->
+      <article class="panel col-4">
+        <h2>Watch Next Run</h2>
+        <ul>
+          <li>Collect SEC filings.</li>
+          <li>Collect trusted news.</li>
+          <li>Collect market trend data.</li>
+        </ul>
+      </article>
 
-        <article class="panel half good">
-          <h2>How This Can Make Money</h2>
-          <ul>
-            <li>Identify the specific business improvement, catalyst, valuation setup, or market trend that could move the stock higher.</li>
-            <li>Explain what proof would make this upside case stronger.</li>
-          </ul>
-        </article>
+      <!-- Finance Terms -->
+      <article class="panel col-4">
+        <h2>Finance Terms</h2>
+        <table>
+          <tbody>
+            <tr><th>Free cash flow</th><td>Cash the company can use after paying operating costs and business investments.</td></tr>
+            <tr><th>Dilution</th><td>When new shares reduce each existing share's ownership percentage.</td></tr>
+          </tbody>
+        </table>
+      </article>
 
-        <article class="panel half bad">
-          <h2>How This Can Lose Money</h2>
-          <ul>
-            <li>Identify the concrete failure path that could hurt the stock.</li>
-            <li>Explain what warning signs would make the risk more serious.</li>
-          </ul>
-        </article>
+      <!-- Prior Run Links -->
+      <article class="panel col-12">
+        <h2>Prior Run Links</h2>
+        <p>No prior runs.</p>
+      </article>
 
-        <article class="panel">
-          <h2>Key Numbers In Plain English</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Number</th>
-                <th>What It Means</th>
-                <th>Good Or Bad?</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Revenue</td>
-                <td>How much money customers paid the company before expenses.</td>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <td>Free cash flow</td>
-                <td>Cash left after running and investing in the business.</td>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <td>Debt and cash</td>
-                <td>Whether the company has financial flexibility or balance sheet pressure.</td>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <td>Valuation range</td>
-                <td>The estimated business value range compared with today's stock price.</td>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <td>Margin of safety</td>
-                <td>How much room exists between the current price and a conservative value estimate.</td>
-                <td>TBD</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
+      <!-- Disclaimer -->
+      <article class="panel col-12 panel-muted">
+        <p class="disclaimer"><strong>Research-only disclaimer:</strong> This summary is for research support only. It is not personalized financial advice or a trade instruction.</p>
+      </article>
 
-        <article class="panel half">
-          <h2>What Changed In The Latest Run</h2>
-          <p>No run completed yet.</p>
-        </article>
-
-        <article class="panel half">
-          <h2>Historical Trend And Prior Call Review</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Run</th>
-                <th>Signal</th>
-                <th>Price / Trend</th>
-                <th>Valuation</th>
-                <th>Prior Call Review</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>No prior run</td>
-                <td>insufficient_evidence</td>
-                <td>TBD</td>
-                <td>valuation_uncertain</td>
-                <td>baseline_no_prior_call</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="muted">After each run, summarize whether prior judgments were accurate, inaccurate, early, late, or still untested, and state what the new analysis learned.</p>
-        </article>
-
-        <article class="panel half">
-          <h2>Key Evidence</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Claim</th>
-                <th>Evidence</th>
-                <th>Tier</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>No evidence collected yet.</td>
-                <td>TBD</td>
-                <td>TBD</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-
-        <article class="panel half">
-          <h2>Valuation: Is This Cheap Enough?</h2>
-          <table>
-            <tbody>
-              <tr>
-                <th>Business type</th>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <th>Models used</th>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <th>Classification</th>
-                <td>valuation_uncertain</td>
-              </tr>
-              <tr>
-                <th>Cheap-trap check</th>
-                <td>TBD</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="muted">After a run, this section should explain whether the stock is severely undervalued, moderately undervalued, fairly valued, expensive, or too uncertain to judge.</p>
-        </article>
-
-        <article class="panel half">
-          <h2>CEO / Leadership Read</h2>
-          <table>
-            <tbody>
-              <tr>
-                <th>CEO</th>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <th>Founder?</th>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <th>Classification</th>
-                <td>leadership_unknown</td>
-              </tr>
-              <tr>
-                <th>Main edge or risk</th>
-                <td>TBD</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="muted">After a run, this section should summarize the CEO's background, execution pattern, strategic clarity, unique advantages, and red flags.</p>
-        </article>
-
-        <article class="panel third">
-          <h2>Key Risks</h2>
-          <ul>
-            <li>No risks assessed yet.</li>
-          </ul>
-        </article>
-
-        <article class="panel third">
-          <h2>Watch Next Run</h2>
-          <ul>
-            <li>Collect SEC filings.</li>
-            <li>Collect trusted news.</li>
-            <li>Collect market trend data.</li>
-          </ul>
-        </article>
-
-        <article class="panel third">
-          <h2>Finance Terms Used</h2>
-          <table>
-            <tbody>
-              <tr>
-                <th>Free cash flow</th>
-                <td>Cash the company can use after paying operating costs and business investments.</td>
-              </tr>
-              <tr>
-                <th>Dilution</th>
-                <td>When new shares reduce each existing share's ownership percentage.</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-
-        <article class="panel third">
-          <h2>Prior Run Links</h2>
-          <p>No prior runs.</p>
-        </article>
-
-        <article class="panel">
-          <h2>Research-Only Disclaimer</h2>
-          <p class="muted">This summary is for research support only. It is not personalized financial advice or a trade instruction.</p>
-        </article>
-      </section>
-    </main>
-  </body>
+    </section>
+  </main>
+</body>
 </html>

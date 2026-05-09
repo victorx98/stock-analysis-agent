@@ -1,226 +1,287 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Stock Analysis Summaries</title>
-    <style>
-      :root {
-        --bg: #f5f7fa;
-        --panel: #ffffff;
-        --ink: #17202a;
-        --muted: #5f6b7a;
-        --line: #d9dee7;
-        --accent: #1565c0;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stock Analysis Index</title>
+  <style>
+    :root {
+      --bg:        #f8f7f4;
+      --panel:     #ffffff;
+      --ink:       #111827;
+      --muted:     #6b7280;
+      --border:    #e5e1d8;
+      --accent:    #1e40af;
+      --bull:      #15803d;
+      --bear:      #b91c1c;
+      --neutral:   #b45309;
+      --bull-bg:   #f0fdf4;
+      --bear-bg:   #fef2f2;
+      --neu-bg:    #fffbeb;
+      --mono:      ui-monospace, "SF Mono", Menlo, monospace;
+      --serif:     Georgia, "Times New Roman", serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.65 system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 52px 0 72px;
+    }
 
-      * {
-        box-sizing: border-box;
-      }
+    /* ── Header ── */
+    header { margin-bottom: 36px; }
+    h1 {
+      font: 700 clamp(1.8rem, 4vw, 3rem)/1.1 var(--serif);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .subtitle { color: var(--muted); font-size: 0.875rem; }
+    code {
+      font-family: var(--mono);
+      font-size: 0.84em;
+      background: #ededea;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
 
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
+    /* ── Stats bar ── */
+    .stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .stat { font-size: 0.82rem; color: var(--muted); }
+    .stat strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+    .stat.bull strong { color: var(--bull); }
+    .stat.bear strong { color: var(--bear); }
+    .stat.neu  strong { color: var(--neutral); }
 
-      main {
-        width: min(1080px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 36px 0 56px;
-      }
+    /* ── Panel ── */
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
 
-      header {
-        margin-bottom: 24px;
-      }
+    /* ── Table ── */
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      background: #faf9f7;
+      border-bottom: 2px solid var(--border);
+      padding: 11px 16px;
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    td {
+      border-bottom: 1px solid var(--border);
+      padding: 15px 16px;
+      vertical-align: top;
+      font-size: 0.9rem;
+    }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: #faf9f7; }
 
-      h1,
-      p {
-        margin-top: 0;
-      }
+    /* ── Ticker ── */
+    .ticker {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+    .run-date {
+      font-family: var(--mono);
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
 
-      h1 {
-        margin-bottom: 8px;
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        line-height: 1;
-        letter-spacing: 0;
-      }
+    /* ── Signal badge ── */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .bull-b  { background: var(--bull-bg); color: var(--bull); }
+    .bear-b  { background: var(--bear-bg); color: var(--bear); }
+    .neu-b   { background: var(--neu-bg);  color: var(--neutral); }
+    .gray-b  { background: #f3f4f6; color: var(--muted); }
 
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
+    .conf {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
 
-      a:hover {
-        text-decoration: underline;
-      }
+    /* ── Conclusion ── */
+    .conclusion {
+      font-size: 0.875rem;
+      line-height: 1.55;
+      max-width: 400px;
+    }
 
-      .muted {
-        color: var(--muted);
-      }
+    /* ── Links ── */
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-      .panel {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        overflow: hidden;
-      }
+    /* ── Empty ── */
+    .empty { padding: 36px 24px; color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      th,
-      td {
-        border-bottom: 1px solid var(--line);
-        padding: 14px 16px;
-        text-align: left;
-        vertical-align: top;
-      }
-
-      th {
-        color: var(--muted);
-        font-size: 0.85rem;
+    /* ── Responsive ── */
+    @media (max-width: 760px) {
+      main { padding-top: 32px; }
+      table, thead, tbody, tr, th, td { display: block; }
+      thead { display: none; }
+      td { border-bottom: 0; padding: 7px 14px; }
+      td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 700;
         text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        margin-bottom: 2px;
       }
+      tr { border-bottom: 1px solid var(--border); padding: 10px 0; }
+      tr:last-child { border-bottom: 0; }
+      .conclusion { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Stock Analysis</h1>
+      <p class="subtitle">Research summaries indexed from <code>stocks/&lt;TICKER&gt;/index.html</code></p>
+    </header>
 
-      tr:last-child td {
-        border-bottom: 0;
-      }
+    <div class="stats" id="stats-bar" hidden>
+      <div class="stat">
+        <strong id="stat-total">0</strong>Tracked stocks
+      </div>
+      <div class="stat bull">
+        <strong id="stat-buy">0</strong>Buy / Watch
+      </div>
+      <div class="stat neu">
+        <strong id="stat-hold">0</strong>Hold / Neutral
+      </div>
+      <div class="stat bear">
+        <strong id="stat-other">0</strong>Other / Unknown
+      </div>
+    </div>
 
-      .empty {
-        padding: 24px;
-      }
+    <section class="panel" aria-label="Stock directory">
+      <table id="summary-table" hidden>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Company</th>
+            <th>Last Run</th>
+            <th>Signal</th>
+            <th>Latest Conclusion</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody id="summary-rows"></tbody>
+      </table>
+      <div class="empty" id="empty-state">
+        <p>No data loaded. Run <code>npm run build:index</code> then reload.</p>
+      </div>
+    </section>
+  </main>
 
-      code {
-        background: #eef1f5;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        padding: 2px 6px;
-      }
+  <script src="index-data.js"></script>
+  <script>
+    /* Map signal string to CSS class */
+    function badgeClass(sig) {
+      const s = String(sig).toLowerCase();
+      if (s.includes('buy') || s.includes('watch')) return 'bull-b';
+      if (s.includes('avoid') || s.includes('sell') || s.includes('bear')) return 'bear-b';
+      if (s.includes('hold') || s.includes('neutral')) return 'neu-b';
+      return 'gray-b';
+    }
 
-      @media (max-width: 720px) {
-        main {
-          width: min(100% - 20px, 1080px);
-          padding-top: 24px;
-        }
+    const summaries = Array.isArray(window.STOCK_SUMMARIES) ? window.STOCK_SUMMARIES : [];
+    const rows  = document.getElementById('summary-rows');
+    const table = document.getElementById('summary-table');
+    const empty = document.getElementById('empty-state');
+    const bar   = document.getElementById('stats-bar');
 
-        table,
-        thead,
-        tbody,
-        tr,
-        th,
-        td {
-          display: block;
-        }
+    if (summaries.length > 0) {
+      const sorted = summaries.slice().sort((a, b) =>
+        String(a.ticker).localeCompare(String(b.ticker))
+      );
+      let nBuy = 0, nHold = 0, nOther = 0;
 
-        thead {
-          display: none;
-        }
+      rows.innerHTML = sorted.map(item => {
+        const ticker     = esc(item.ticker || '');
+        const company    = esc(item.company || '');
+        const run        = esc(item.latestRunDate || item.lastUpdated || '—');
+        const signal     = esc(item.latestSignal || 'unknown');
+        const confidence = item.latestConfidence
+          ? `<span class="conf">${esc(item.latestConfidence)} confidence</span>` : '';
+        const conclusion = esc(item.latestConclusion || 'No analysis yet.');
+        const path       = escAttr(item.stockIndexPath || '');
+        const link       = path
+          ? `<a href="${path}">Index →</a>`
+          : `<span style="color:var(--muted)">—</span>`;
+        const cls = badgeClass(signal);
 
-        td {
-          border-bottom: 0;
-          padding: 8px 16px;
-        }
+        const s = signal.toLowerCase();
+        if (s.includes('buy') || s.includes('watch')) nBuy++;
+        else if (s.includes('hold') || s.includes('neutral')) nHold++;
+        else nOther++;
 
-        tr {
-          border-bottom: 1px solid var(--line);
-          padding: 8px 0;
-        }
+        return `<tr>
+          <td data-label="Ticker"><span class="ticker">${ticker}</span></td>
+          <td data-label="Company">${company}</td>
+          <td data-label="Last Run"><span class="run-date">${run}</span></td>
+          <td data-label="Signal"><span class="badge ${cls}">${signal}</span>${confidence}</td>
+          <td data-label="Conclusion"><span class="conclusion">${conclusion}</span></td>
+          <td data-label="Links">${link}</td>
+        </tr>`;
+      }).join('');
 
-        tr:last-child {
-          border-bottom: 0;
-        }
+      document.getElementById('stat-total').textContent = sorted.length;
+      document.getElementById('stat-buy').textContent   = nBuy;
+      document.getElementById('stat-hold').textContent  = nHold;
+      document.getElementById('stat-other').textContent = nOther;
+      bar.hidden   = false;
+      table.hidden = false;
+      empty.hidden = true;
+    }
 
-        td::before {
-          content: attr(data-label);
-          display: block;
-          color: var(--muted);
-          font-size: 0.75rem;
-          font-weight: 700;
-          text-transform: uppercase;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <header>
-        <h1>Stock Analysis Index</h1>
-        <p class="muted">Local directory of stock index pages under <code>stocks/&lt;TICKER&gt;/index.html</code>, with each ticker's latest important conclusion.</p>
-      </header>
-
-      <section class="panel" aria-label="Stock summary directory">
-        <table id="summary-table" hidden>
-          <thead>
-            <tr>
-              <th>Ticker</th>
-              <th>Company</th>
-              <th>Latest Run</th>
-              <th>Latest Signal</th>
-              <th>Latest Important Conclusion</th>
-              <th>Stock Index</th>
-            </tr>
-          </thead>
-          <tbody id="summary-rows"></tbody>
-        </table>
-        <div class="empty" id="empty-state">
-          <p>No local summary directory data was loaded.</p>
-          <p class="muted">Run <code>npm run build:index</code> to generate the ignored <code>index-data.js</code> file, then open this page again.</p>
-        </div>
-      </section>
-    </main>
-
-    <script src="index-data.js"></script>
-    <script>
-      const summaries = Array.isArray(window.STOCK_SUMMARIES) ? window.STOCK_SUMMARIES : [];
-      const rows = document.getElementById("summary-rows");
-      const table = document.getElementById("summary-table");
-      const empty = document.getElementById("empty-state");
-
-      if (summaries.length > 0) {
-        rows.innerHTML = summaries
-          .slice()
-          .sort((a, b) => String(a.ticker).localeCompare(String(b.ticker)))
-          .map((item) => {
-            const ticker = escapeHtml(item.ticker || "");
-            const company = escapeHtml(item.company || "");
-            const latestRun = escapeHtml(item.latestRunDate || item.lastUpdated || "unknown");
-            const latestSignal = escapeHtml(item.latestSignal || "unknown");
-            const latestConfidence = item.latestConfidence ? `<br><span class="muted">${escapeHtml(item.latestConfidence)} confidence</span>` : "";
-            const latestValuation = item.latestValuation ? `<br><span class="muted">${escapeHtml(item.latestValuation)}</span>` : "";
-            const latestConclusion = escapeHtml(item.latestConclusion || "No completed analysis run found yet.");
-            const stockIndexPath = escapeAttribute(item.stockIndexPath || "");
-            const indexCell = stockIndexPath
-              ? `<a href="${stockIndexPath}">Open stock index</a>`
-              : `<span class="muted">stock index missing</span>`;
-            return `<tr>
-              <td data-label="Ticker"><strong>${ticker}</strong></td>
-              <td data-label="Company">${company}</td>
-              <td data-label="Latest Run">${latestRun}</td>
-              <td data-label="Latest Signal">${latestSignal}${latestConfidence}${latestValuation}</td>
-              <td data-label="Latest Important Conclusion">${latestConclusion}</td>
-              <td data-label="Stock Index">${indexCell}</td>
-            </tr>`;
-          })
-          .join("");
-        table.hidden = false;
-        empty.hidden = true;
-      }
-
-      function escapeHtml(value) {
-        return String(value)
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;");
-      }
-
-      function escapeAttribute(value) {
-        return escapeHtml(value).replaceAll("'", "&#39;");
-      }
-    </script>
-  </body>
+    function esc(v) {
+      return String(v)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function escAttr(v) { return esc(v).replace(/'/g,'&#39;'); }
+  </script>
+</body>
 </html>

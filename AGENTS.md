@@ -2,9 +2,11 @@
 
 ## Mission
 
-Use this repository to run repeatable, source-backed, long-term stock analysis. For each stock, continuously collect SEC filings, trusted news, market data, and prior analysis artifacts. Synthesize them into a cautious investment research brief with trend assessment, signal status, risks, and items to watch next run.
+Use this repository to run repeatable, source-backed, long-term stock analysis. For each stock, continuously collect SEC filings, trusted news, market data, and prior analysis artifacts. Synthesize them into a plain-English investment research brief focused on one practical question: does this stock offer an attractive chance to make money over the chosen time horizon, after accounting for downside risk?
 
 This is research support only. Do not present any output as personalized financial advice. Do not imply certainty about future stock prices. Always show evidence, uncertainty, and downside risks.
+
+Write for a smart reader without a finance background. Be direct about the money-making path, the money-losing path, and the evidence that would change the call. Do not default to neutral language when evidence supports a directional signal.
 
 ## Repository map
 
@@ -12,8 +14,9 @@ This is research support only. Do not present any output as personalized financi
 - `rules/`: detailed operating rules for data collection, source quality, SEC analysis, catalyst analysis, technical trend analysis, signals, and output format.
 - `.agents/skills/`: reusable Codex skills for recurring workflows.
 - `tools/`: Node.js tools for collection, normalization, run scaffolding, and summary updates.
+- `index.html`: local browser entry point for the stock summary directory.
 - `stocks/<TICKER>/`: persistent storage for one company.
-- `stocks/<TICKER>/summary.md`: latest research summary and next-run watchlist.
+- `stocks/<TICKER>/summary.html`: latest visual research summary and next-run watchlist.
 - `stocks/<TICKER>/runs/YYYY-MM-DD/`: artifacts generated for a specific run.
 
 ## Required rule loading
@@ -47,9 +50,10 @@ Use relevant skills from `.agents/skills/` when the task matches their descripti
    ```
 
 4. Inspect the generated run folder under `stocks/<TICKER>/runs/<RUN_DATE>/`.
-5. Read prior `stocks/<TICKER>/summary.md` before making a new conclusion.
+5. Read prior `stocks/<TICKER>/summary.html` before making a new conclusion.
 6. Analyze SEC filings, news, fundamentals, catalysts, risks, valuation context, and market trend metrics.
-7. Produce a final run brief in `decision-brief.md` and update `summary.md` only after evidence review.
+7. Produce a final run brief in `decision-brief.md` and update `summary.html` only after evidence review.
+8. Run `npm run build:index` to refresh the local, ignored `index-data.js` directory data used by root `index.html`.
 
 ## Evidence rules
 
@@ -117,4 +121,4 @@ A stock analysis run is complete only when:
 4. News and catalysts were categorized by materiality.
 5. Technical trend metrics were computed or marked unavailable.
 6. The final signal includes contrary evidence and invalidation triggers.
-7. `stocks/<TICKER>/summary.md` is updated with what to watch next.
+7. `stocks/<TICKER>/summary.html` is updated with what to watch next.

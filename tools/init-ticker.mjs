@@ -23,6 +23,6 @@ async function replaceInFile(relativePath) {
 }
 
 await replaceInFile('profile.json');
-await replaceInFile('summary.md');
+await replaceInFile('summary.html');
 
 console.log(`Created ${target}`);

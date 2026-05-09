@@ -39,13 +39,18 @@ await writeJson(path.join(runDir, 'signal.json'), {
   timeHorizon: '6-12 months',
   confidence: 'low',
   summary: '',
+  bottomLine: '',
+  moneyMakingPath: [],
+  moneyLosingPath: [],
+  nextEvidenceNeeded: [],
   supportingEvidence: [],
   contraryEvidence: [],
   invalidationTriggers: [],
   watchNextRun: [],
-  missingInformation: []
+  missingInformation: [],
+  plainEnglishDefinitions: {}
 });
-await writeText(path.join(runDir, 'decision-brief.md'), `# ${ticker} Decision Brief - ${metadata.runDate}\n\n## Executive summary\n\n## Current signal\n- Signal: insufficient_evidence\n- Time horizon: 6-12 months\n- Confidence: low\n- Prior signal: unknown\n- Change since prior run: TBD\n\n## Evidence table\n| Claim | Evidence | Source tier | Bull/Bear/Neutral | Confidence |\n|---|---|---|---|---|\n\n## SEC filing takeaways\n\n## News and catalyst takeaways\n\n## Market trend takeaways\n\n## Bull case\n\n## Bear case\n\n## Key risks\n\n## Invalidation triggers\n\n## What to watch next run\n\n## Missing information\n\n## Research-only disclaimer\n\nThis brief is for research support only and is not personalized financial advice or a trade instruction.\n`);
+await writeText(path.join(runDir, 'decision-brief.md'), `# ${ticker} Decision Brief - ${metadata.runDate}\n\n## Executive summary\n\n## Plain-English bottom line\n\n## How this can make money\n\n## How this can lose money\n\n## Current signal\n- Signal: insufficient_evidence\n- Time horizon: 6-12 months\n- Confidence: low\n- Prior signal: unknown\n- Change since prior run: TBD\n\n## Evidence table\n| Claim | Evidence | Source tier | Bull/Bear/Neutral | Confidence |\n|---|---|---|---|---|\n\n## SEC filing takeaways\n\n## News and catalyst takeaways\n\n## Market trend takeaways\n\n## Bull case\n\n## Bear case\n\n## Key risks\n\n## Invalidation triggers\n\n## What to watch next run\n\n## Missing information\n\n## Research-only disclaimer\n\nThis brief is for research support only and is not personalized financial advice or a trade instruction.\n`);
 await writeText(path.join(runDir, 'watchlist-next-run.md'), `# Watchlist for Next Run - ${ticker}\n\n- Review whether new SEC filings changed the thesis.\n- Check whether material news items were confirmed by primary sources.\n- Recompute market trend metrics.\n- Revisit invalidation triggers from this run.\n`);
 
 console.log(JSON.stringify({ ticker, runDir }, null, 2));

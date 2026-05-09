@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TICKER Latest Research Summary</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f7f9;
+        --panel: #ffffff;
+        --ink: #17202a;
+        --muted: #5f6b7a;
+        --line: #d9dee7;
+        --accent: #1565c0;
+        --bull: #107c41;
+        --bear: #b42318;
+        --neutral: #7a4f01;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      header {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 0;
+        font-size: clamp(2rem, 5vw, 3.75rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin-bottom: 12px;
+        font-size: 1.25rem;
+      }
+
+      .meta,
+      .muted {
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 16px;
+      }
+
+      .panel {
+        grid-column: span 12;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .half {
+        grid-column: span 6;
+      }
+
+      .third {
+        grid-column: span 4;
+      }
+
+      .signal {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 12px;
+        background: #fff7e6;
+        color: var(--neutral);
+        font-weight: 700;
+      }
+
+      .callout {
+        border-left: 4px solid var(--accent);
+        background: #f0f6fd;
+      }
+
+      .good {
+        border-left-color: var(--bull);
+        background: #eef8f1;
+      }
+
+      .bad {
+        border-left-color: var(--bear);
+        background: #fbecea;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow-wrap: anywhere;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 8px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .diagram {
+        width: 100%;
+        min-height: 180px;
+      }
+
+      .bull {
+        color: var(--bull);
+      }
+
+      .bear {
+        color: var(--bear);
+      }
+
+      @media (max-width: 760px) {
+        main {
+          width: min(100% - 20px, 1120px);
+          padding-top: 20px;
+        }
+
+        .half,
+        .third {
+          grid-column: span 12;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main data-ticker="TICKER" data-company="Company Name" data-last-updated="never">
+      <header>
+        <p class="meta">Company Name</p>
+        <h1>TICKER Research Summary</h1>
+        <p class="meta">Last updated: <time datetime="">never</time></p>
+        <span class="signal">insufficient_evidence</span>
+      </header>
+
+      <section class="grid" aria-label="Summary">
+        <article class="panel half">
+          <h2>Current View</h2>
+          <p>No completed analysis yet. This section should explain what the company does and whether the stock looks attractive in everyday language.</p>
+        </article>
+
+        <article class="panel half">
+          <h2>Current Signal</h2>
+          <table>
+            <tbody>
+              <tr>
+                <th>Signal</th>
+                <td>insufficient_evidence</td>
+              </tr>
+              <tr>
+                <th>Time horizon</th>
+                <td>TBD</td>
+              </tr>
+              <tr>
+                <th>Confidence</th>
+                <td>low</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="panel callout">
+          <h2>Plain-English Bottom Line</h2>
+          <p>No money-making call yet. After a completed run, state whether this looks like a stock to aggressively watch, avoid, or wait on, and explain why in one or two simple sentences.</p>
+        </article>
+
+        <article class="panel">
+          <h2>Thesis Snapshot</h2>
+          <svg class="diagram" viewBox="0 0 900 180" role="img" aria-label="Research workflow diagram">
+            <rect x="20" y="50" width="150" height="70" rx="8" fill="#e8f1fb" stroke="#1565c0" />
+            <text x="95" y="82" text-anchor="middle" font-size="16" fill="#17202a">Evidence</text>
+            <text x="95" y="104" text-anchor="middle" font-size="13" fill="#5f6b7a">SEC, news, market</text>
+            <path d="M175 85 H285" stroke="#5f6b7a" stroke-width="2" marker-end="url(#arrow)" />
+            <rect x="290" y="50" width="150" height="70" rx="8" fill="#eef8f1" stroke="#107c41" />
+            <text x="365" y="82" text-anchor="middle" font-size="16" fill="#17202a">Thesis</text>
+            <text x="365" y="104" text-anchor="middle" font-size="13" fill="#5f6b7a">Bull and bear cases</text>
+            <path d="M445 85 H555" stroke="#5f6b7a" stroke-width="2" marker-end="url(#arrow)" />
+            <rect x="560" y="50" width="150" height="70" rx="8" fill="#fff7e6" stroke="#7a4f01" />
+            <text x="635" y="82" text-anchor="middle" font-size="16" fill="#17202a">Signal</text>
+            <text x="635" y="104" text-anchor="middle" font-size="13" fill="#5f6b7a">Watch status</text>
+            <path d="M715 85 H805" stroke="#5f6b7a" stroke-width="2" marker-end="url(#arrow)" />
+            <rect x="810" y="50" width="70" height="70" rx="8" fill="#fbecea" stroke="#b42318" />
+            <text x="845" y="82" text-anchor="middle" font-size="16" fill="#17202a">Risk</text>
+            <text x="845" y="104" text-anchor="middle" font-size="13" fill="#5f6b7a">Triggers</text>
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6b7a" />
+              </marker>
+            </defs>
+          </svg>
+          <p>TBD after first run.</p>
+        </article>
+
+        <article class="panel half good">
+          <h2>How This Can Make Money</h2>
+          <ul>
+            <li>Identify the specific business improvement, catalyst, valuation setup, or market trend that could move the stock higher.</li>
+            <li>Explain what proof would make this upside case stronger.</li>
+          </ul>
+        </article>
+
+        <article class="panel half bad">
+          <h2>How This Can Lose Money</h2>
+          <ul>
+            <li>Identify the concrete failure path that could hurt the stock.</li>
+            <li>Explain what warning signs would make the risk more serious.</li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <h2>Key Numbers In Plain English</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>What It Means</th>
+                <th>Good Or Bad?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Revenue</td>
+                <td>How much money customers paid the company before expenses.</td>
+                <td>TBD</td>
+              </tr>
+              <tr>
+                <td>Free cash flow</td>
+                <td>Cash left after running and investing in the business.</td>
+                <td>TBD</td>
+              </tr>
+              <tr>
+                <td>Debt and cash</td>
+                <td>Whether the company has financial flexibility or balance sheet pressure.</td>
+                <td>TBD</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="panel half">
+          <h2>What Changed In The Latest Run</h2>
+          <p>No run completed yet.</p>
+        </article>
+
+        <article class="panel half">
+          <h2>Key Evidence</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Claim</th>
+                <th>Evidence</th>
+                <th>Tier</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>No evidence collected yet.</td>
+                <td>TBD</td>
+                <td>TBD</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="panel third">
+          <h2>Key Risks</h2>
+          <ul>
+            <li>No risks assessed yet.</li>
+          </ul>
+        </article>
+
+        <article class="panel third">
+          <h2>Watch Next Run</h2>
+          <ul>
+            <li>Collect SEC filings.</li>
+            <li>Collect trusted news.</li>
+            <li>Collect market trend data.</li>
+          </ul>
+        </article>
+
+        <article class="panel third">
+          <h2>Finance Terms Used</h2>
+          <table>
+            <tbody>
+              <tr>
+                <th>Free cash flow</th>
+                <td>Cash the company can use after paying operating costs and business investments.</td>
+              </tr>
+              <tr>
+                <th>Dilution</th>
+                <td>When new shares reduce each existing share's ownership percentage.</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="panel third">
+          <h2>Prior Run Links</h2>
+          <p>No prior runs.</p>
+        </article>
+
+        <article class="panel">
+          <h2>Research-Only Disclaimer</h2>
+          <p class="muted">This summary is for research support only. It is not personalized financial advice or a trade instruction.</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

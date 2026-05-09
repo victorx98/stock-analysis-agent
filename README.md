@@ -1,15 +1,19 @@
 # Long-Term Stock Analysis Codex Framework
 
-This repository is a Codex-ready framework for repeatable long-term stock analysis. It is designed to continuously collect SEC filings, trusted news, market trend data, and prior run artifacts, then guide Codex through a structured analysis process that produces a source-backed trend view, signal assessment, and watchlist for the next run.
+This repository is a Codex-ready framework for repeatable long-term stock analysis. It is designed to continuously collect SEC filings, trusted news, market trend data, and prior run artifacts, then guide Codex through a structured analysis process that produces a source-backed, plain-English view of whether a stock has an attractive chance to make money over the chosen time horizon.
 
 ## Core idea
 
 Each stock ticker has its own folder under `stocks/`. That folder stores:
 
-- `summary.md`: the most recent thesis summary and what to watch next.
+- `summary.html`: the most recent visual thesis summary and what to watch next.
 - `profile.json`: ticker metadata and company-specific source hints.
 - `data/`: raw and processed data collected across runs.
 - `runs/YYYY-MM-DD/`: one folder per analysis run, containing all artifacts for that run.
+
+The repository root also has `index.html`, a local browser entry point for stock summaries. Run `npm run build:index` after adding or updating ticker folders to generate the ignored `index-data.js` file that powers the directory.
+
+Summaries are written for non-financial readers. They should start with the bottom line, explain how the stock can make money, explain how it can lose money, and define any necessary finance terms in plain language. The framework is opportunity-seeking and should use directional signals when evidence supports them, while still documenting uncertainty and downside risk.
 
 Codex should read `AGENTS.md` first, then follow the linked rule files and relevant skills under `.agents/skills/`.
 
@@ -18,6 +22,7 @@ Codex should read `AGENTS.md` first, then follow the linked rule files and relev
 ```text
 .
 ├── AGENTS.md
+├── index.html
 ├── README.md
 ├── package.json
 ├── .env.example
@@ -68,6 +73,13 @@ npm run pipeline -- --ticker AAPL
 ```
 
 6. Open the generated run folder under `stocks/AAPL/runs/YYYY-MM-DD/` and ask Codex to complete the source-backed analysis using the artifacts and rules.
+7. After Codex updates `stocks/AAPL/summary.html`, refresh the local summary directory:
+
+```bash
+npm run build:index
+```
+
+8. Open `index.html` in a browser to navigate to available stock summaries.
 
 ## What the tools do
 
@@ -78,6 +90,7 @@ The tools are intentionally lightweight and dependency-free. They collect and st
 - `fetch-trusted-news.mjs`: collects trusted-source news using optional NewsAPI plus configured RSS feeds.
 - `fetch-market-trends.mjs`: collects daily market prices and computes basic trend metrics.
 - `create-run-analysis.mjs`: creates run artifacts and analysis templates.
+- `build-index.mjs`: scans local stock folders and generates ignored `index-data.js` directory data for root `index.html`.
 - `run-pipeline.mjs`: executes the standard collection and analysis-prep flow.
 
 ## Important limitations

@@ -12,6 +12,7 @@
     "fetch:news": "node tools/fetch-trusted-news.mjs",
     "fetch:market": "node tools/fetch-market-trends.mjs",
     "create:run": "node tools/create-run-analysis.mjs",
+    "build:index": "node tools/build-index.mjs",
     "pipeline": "node tools/run-pipeline.mjs",
     "test": "node tools/tests/smoke-test.mjs",
     "lint": "node --check tools/*.mjs && node --check tools/lib/*.mjs"

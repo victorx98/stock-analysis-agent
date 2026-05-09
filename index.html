@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stock Analysis Summaries</title>
+    <style>
+      :root {
+        --bg: #f5f7fa;
+        --panel: #ffffff;
+        --ink: #17202a;
+        --muted: #5f6b7a;
+        --line: #d9dee7;
+        --accent: #1565c0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 36px 0 56px;
+      }
+
+      header {
+        margin-bottom: 24px;
+      }
+
+      h1,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 8px;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 14px 16px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .empty {
+        padding: 24px;
+      }
+
+      code {
+        background: #eef1f5;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 2px 6px;
+      }
+
+      @media (max-width: 720px) {
+        main {
+          width: min(100% - 20px, 1080px);
+          padding-top: 24px;
+        }
+
+        table,
+        thead,
+        tbody,
+        tr,
+        th,
+        td {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        td {
+          border-bottom: 0;
+          padding: 8px 16px;
+        }
+
+        tr {
+          border-bottom: 1px solid var(--line);
+          padding: 8px 0;
+        }
+
+        tr:last-child {
+          border-bottom: 0;
+        }
+
+        td::before {
+          content: attr(data-label);
+          display: block;
+          color: var(--muted);
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Stock Analysis Summaries</h1>
+        <p class="muted">Local directory of HTML summaries under <code>stocks/&lt;TICKER&gt;/summary.html</code>.</p>
+      </header>
+
+      <section class="panel" aria-label="Stock summary directory">
+        <table id="summary-table" hidden>
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Company</th>
+              <th>Last Updated</th>
+              <th>Summary</th>
+            </tr>
+          </thead>
+          <tbody id="summary-rows"></tbody>
+        </table>
+        <div class="empty" id="empty-state">
+          <p>No local summary directory data was loaded.</p>
+          <p class="muted">Run <code>npm run build:index</code> to generate the ignored <code>index-data.js</code> file, then open this page again.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="index-data.js"></script>
+    <script>
+      const summaries = Array.isArray(window.STOCK_SUMMARIES) ? window.STOCK_SUMMARIES : [];
+      const rows = document.getElementById("summary-rows");
+      const table = document.getElementById("summary-table");
+      const empty = document.getElementById("empty-state");
+
+      if (summaries.length > 0) {
+        rows.innerHTML = summaries
+          .slice()
+          .sort((a, b) => String(a.ticker).localeCompare(String(b.ticker)))
+          .map((item) => {
+            const ticker = escapeHtml(item.ticker || "");
+            const company = escapeHtml(item.company || "");
+            const lastUpdated = escapeHtml(item.lastUpdated || "unknown");
+            const summaryPath = escapeAttribute(item.summaryPath || "");
+            const summaryCell = item.hasSummary
+              ? `<a href="${summaryPath}">Open summary</a>`
+              : `<span class="muted">summary.html missing</span>`;
+            return `<tr>
+              <td data-label="Ticker"><strong>${ticker}</strong></td>
+              <td data-label="Company">${company}</td>
+              <td data-label="Last Updated">${lastUpdated}</td>
+              <td data-label="Summary">${summaryCell}</td>
+            </tr>`;
+          })
+          .join("");
+        table.hidden = false;
+        empty.hidden = true;
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function escapeAttribute(value) {
+        return escapeHtml(value).replaceAll("'", "&#39;");
+      }
+    </script>
+  </body>
+</html>

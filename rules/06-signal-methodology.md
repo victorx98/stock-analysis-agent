@@ -22,7 +22,8 @@ Consider these dimensions:
 5. Catalysts: events likely to change expectations or close a valuation gap.
 6. Market trend: price/momentum confirmation or contradiction.
 7. Risk/reward: upside drivers vs downside scenarios.
-8. Prior thesis: whether new evidence confirms or weakens the previous view.
+8. Prior thesis accuracy: whether prior signals, valuation ranges, risk calls, and watch items proved accurate, inaccurate, early, late, or still untested.
+9. Lessons learned: whether this run should change weighting, model choice, confidence, or watch items because of prior misses.
 
 ## Profit-seeking posture
 
@@ -49,6 +50,8 @@ Every signal must include:
 - `What must happen next`: the evidence that would confirm or refute the call.
 - `Is it cheap enough`: plain-English valuation conclusion and margin-of-safety logic.
 - `CEO read`: whether leadership is an edge, adequate, a risk, or unknown.
+- `Prior call review`: whether the previous thesis was right, wrong, early, late, or still untested.
+- `Lesson applied`: what changed in this run's method because of prior evidence.
 - `What the hardest term means`: short explanations for any important finance terms used.
 
 ## Minimum evidence rules
@@ -58,6 +61,7 @@ Do not issue directional signals unless:
 - at least one primary source was reviewed, or the lack of primary data is explicitly justified;
 - at least three independent evidence items support the conclusion;
 - valuation and CEO/leadership were assessed, or missing inputs were explicitly documented as material limitations;
+- prior thesis accuracy was reviewed, or this is explicitly marked as a baseline first run;
 - contrary evidence is included;
 - invalidation triggers are stated;
 - the time horizon is clear.

@@ -21,9 +21,11 @@ assert.equal(filings[0].form, '10-K');
 const runProfile = JSON.parse(readFileSync(new URL('../../config/run-profile.json', import.meta.url), 'utf8'));
 assert.ok(runProfile.standardRunArtifacts.includes('valuation-analysis.md'));
 assert.ok(runProfile.standardRunArtifacts.includes('leadership-analysis.md'));
+assert.ok(runProfile.standardRunArtifacts.includes('thesis-review.md'));
 
 const templateSignal = JSON.parse(readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/signal.json', import.meta.url), 'utf8'));
 assert.equal(templateSignal.valuationAssessment.classification, 'valuation_uncertain');
 assert.equal(templateSignal.leadershipAssessment.classification, 'leadership_unknown');
+assert.equal(templateSignal.priorThesisReview.accuracy, 'baseline_no_prior_call');
 
 console.log('Smoke tests passed.');

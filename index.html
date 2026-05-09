@@ -148,8 +148,8 @@
   <body>
     <main>
       <header>
-        <h1>Stock Analysis Summaries</h1>
-        <p class="muted">Local directory of HTML summaries under <code>stocks/&lt;TICKER&gt;/summary.html</code>.</p>
+        <h1>Stock Analysis Index</h1>
+        <p class="muted">Local directory of stock index pages under <code>stocks/&lt;TICKER&gt;/index.html</code>, with each ticker's latest important conclusion.</p>
       </header>
 
       <section class="panel" aria-label="Stock summary directory">
@@ -158,8 +158,10 @@
             <tr>
               <th>Ticker</th>
               <th>Company</th>
-              <th>Last Updated</th>
-              <th>Summary</th>
+              <th>Latest Run</th>
+              <th>Latest Signal</th>
+              <th>Latest Important Conclusion</th>
+              <th>Stock Index</th>
             </tr>
           </thead>
           <tbody id="summary-rows"></tbody>
@@ -185,16 +187,22 @@
           .map((item) => {
             const ticker = escapeHtml(item.ticker || "");
             const company = escapeHtml(item.company || "");
-            const lastUpdated = escapeHtml(item.lastUpdated || "unknown");
-            const summaryPath = escapeAttribute(item.summaryPath || "");
-            const summaryCell = item.hasSummary
-              ? `<a href="${summaryPath}">Open summary</a>`
-              : `<span class="muted">summary.html missing</span>`;
+            const latestRun = escapeHtml(item.latestRunDate || item.lastUpdated || "unknown");
+            const latestSignal = escapeHtml(item.latestSignal || "unknown");
+            const latestConfidence = item.latestConfidence ? `<br><span class="muted">${escapeHtml(item.latestConfidence)} confidence</span>` : "";
+            const latestValuation = item.latestValuation ? `<br><span class="muted">${escapeHtml(item.latestValuation)}</span>` : "";
+            const latestConclusion = escapeHtml(item.latestConclusion || "No completed analysis run found yet.");
+            const stockIndexPath = escapeAttribute(item.stockIndexPath || "");
+            const indexCell = stockIndexPath
+              ? `<a href="${stockIndexPath}">Open stock index</a>`
+              : `<span class="muted">stock index missing</span>`;
             return `<tr>
               <td data-label="Ticker"><strong>${ticker}</strong></td>
               <td data-label="Company">${company}</td>
-              <td data-label="Last Updated">${lastUpdated}</td>
-              <td data-label="Summary">${summaryCell}</td>
+              <td data-label="Latest Run">${latestRun}</td>
+              <td data-label="Latest Signal">${latestSignal}${latestConfidence}${latestValuation}</td>
+              <td data-label="Latest Important Conclusion">${latestConclusion}</td>
+              <td data-label="Stock Index">${indexCell}</td>
             </tr>`;
           })
           .join("");

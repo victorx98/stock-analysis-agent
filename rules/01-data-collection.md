@@ -11,6 +11,7 @@ For each ticker run:
 5. Trusted news and macro/regulatory sources.
 6. Daily market prices and trend metrics.
 7. Prior run summary and prior watch items.
+8. Prior signals, prior decision briefs, prior valuation ranges, prior price trend labels, and prior invalidation triggers.
 
 ## Raw data preservation
 
@@ -20,6 +21,7 @@ For each ticker run:
 - Store normalized or derived data under `stocks/<TICKER>/data/processed/`.
 - Store run-specific output under `stocks/<TICKER>/runs/<RUN_DATE>/`.
 - Store valuation and CEO source notes in the run artifacts when raw data cannot be collected automatically.
+- Store prior-thesis review and lessons learned in `stocks/<TICKER>/runs/<RUN_DATE>/thesis-review.md`.
 
 ## Missing data
 
@@ -32,6 +34,8 @@ If a tool cannot collect a source, record:
 - fallback source, if any
 
 Missing current price, share count, financial statements, peer context, or CEO evidence must be treated as material if it prevents a valuation or leadership conclusion.
+
+Missing prior-run data must be documented. For a first run, explicitly mark prior-call review as baseline with no prior judgment to score.
 
 ## API keys and rate limits
 

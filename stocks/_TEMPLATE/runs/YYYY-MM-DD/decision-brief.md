@@ -15,6 +15,15 @@
 - Prior signal: unknown
 - Change since prior run: baseline run
 
+## Prior thesis review
+
+- Prior run: none
+- Prior signal: none
+- Accuracy: baseline_no_prior_call
+- What was right: TBD
+- What was wrong or missed: TBD
+- Lesson applied this run: TBD
+
 ## Evidence table
 | Claim | Evidence | Source tier | Bull/Bear/Neutral | Confidence |
 |---|---|---|---|---|

@@ -11,7 +11,7 @@ Write for a smart reader without a finance background. Be direct about the money
 ## Repository map
 
 - `config/`: watchlist, trusted sources, signal thresholds, run defaults.
-- `rules/`: detailed operating rules for data collection, source quality, SEC analysis, catalyst analysis, technical trend analysis, valuation, CEO/leadership review, signals, and output format.
+- `rules/`: detailed operating rules for data collection, source quality, SEC analysis, catalyst analysis, technical trend analysis, valuation, CEO/leadership review, prior-thesis review, signals, and output format.
 - `.agents/skills/`: reusable Codex skills for recurring workflows.
 - `tools/`: Node.js tools for collection, normalization, run scaffolding, and summary updates.
 - `index.html`: local browser entry point for the stock summary directory.
@@ -30,8 +30,9 @@ Before doing any stock analysis, read these files in order:
 5. `rules/04-news-and-catalyst-analysis.md`
 6. `rules/05-market-trend-analysis.md`
 7. `rules/08-valuation-and-leadership.md`
-8. `rules/06-signal-methodology.md`
-9. `rules/07-output-standards.md`
+8. `rules/09-prior-thesis-review.md`
+9. `rules/06-signal-methodology.md`
+10. `rules/07-output-standards.md`
 
 Use relevant skills from `.agents/skills/` when the task matches their descriptions.
 
@@ -51,10 +52,11 @@ Use relevant skills from `.agents/skills/` when the task matches their descripti
    ```
 
 4. Inspect the generated run folder under `stocks/<TICKER>/runs/<RUN_DATE>/`.
-5. Read prior `stocks/<TICKER>/summary.html` before making a new conclusion.
-6. Analyze SEC filings, news, fundamentals, catalysts, risks, valuation model fit, CEO/leadership quality, and market trend metrics.
-7. Produce a final run brief in `decision-brief.md` and update `summary.html` only after evidence review.
-8. Run `npm run build:index` to refresh the local, ignored `index-data.js` directory data used by root `index.html`.
+5. Read prior `stocks/<TICKER>/summary.html`, prior `signal.json`, prior `decision-brief.md`, and prior watch items before making a new conclusion.
+6. Evaluate whether earlier judgments were accurate, inaccurate, early, late, or still untested; explain why and record lessons in `thesis-review.md`.
+7. Analyze SEC filings, news, fundamentals, catalysts, risks, valuation model fit, CEO/leadership quality, and market trend metrics.
+8. Produce a final run brief in `decision-brief.md` and update `summary.html` only after evidence review, including a historical trend summary and prior-judgment reflection.
+9. Run `npm run build:index` to refresh the local, ignored `index-data.js` directory data used by root `index.html`.
 
 ## Evidence rules
 
@@ -100,6 +102,7 @@ Each `stocks/<TICKER>/runs/<RUN_DATE>/` folder should contain:
 - `fundamental-notes.md`
 - `valuation-analysis.md`
 - `leadership-analysis.md`
+- `thesis-review.md`
 - `risk-register.md`
 - `signal.json`
 - `decision-brief.md`
@@ -124,6 +127,7 @@ A stock analysis run is complete only when:
 4. News and catalysts were categorized by materiality.
 5. Valuation was assessed using model(s) appropriate to the company's industry, business type, and lifecycle, or missing valuation data was explicitly documented.
 6. CEO/leadership quality was assessed from sourced evidence, or missing leadership data was explicitly documented.
-7. Technical trend metrics were computed or marked unavailable.
-8. The final signal includes contrary evidence and invalidation triggers.
-9. `stocks/<TICKER>/summary.html` is updated with what to watch next.
+7. Prior conclusions, invalidation triggers, and watch items were reviewed for accuracy and lessons learned.
+8. Technical trend metrics were computed or marked unavailable.
+9. The final signal includes contrary evidence and invalidation triggers.
+10. `stocks/<TICKER>/summary.html` is updated with what to watch next, a historical trend summary, and a reflection on prior calls.

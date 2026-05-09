@@ -22,6 +22,8 @@ Every `decision-brief.md` must use this structure:
 - Prior signal:
 - Change since prior run:
 
+## Prior thesis review
+
 ## Evidence table
 | Claim | Evidence | Source tier | Bull/Bear/Neutral | Confidence |
 
@@ -74,6 +76,7 @@ How This Can Make Money
 How This Can Lose Money
 Key Numbers In Plain English
 What Changed In The Latest Run
+Historical Trend And Prior Call Review
 Key Evidence
 Valuation: Is This Cheap Enough?
 CEO / Leadership Read
@@ -86,6 +89,8 @@ Research-Only Disclaimer
 
 Use tables for evidence, risks, valuation context, and signal data when they improve readability. Use diagrams only when they clarify thesis mechanics, catalyst timelines, risk maps, or financial trend relationships.
 
+The "Historical Trend And Prior Call Review" section must summarize signal history, price or technical trend history, valuation classification history, key thesis changes, prior-call accuracy, and lessons learned. Use a table where possible and avoid scoring a prior call from short-term price movement alone.
+
 Write for a non-financial reader:
 
 - Start with the practical money question, not accounting detail.
@@ -95,15 +100,26 @@ Write for a non-financial reader:
 - If a term is necessary, add it to "Finance Terms Used" with a one-sentence explanation.
 - Be decisive when evidence supports it. Do not use `hold_neutral` as a default.
 
-## Root summary index
+## Root and stock index pages
 
-The root `index.html` is the local directory page for stock summaries. It should stay framework-only and should not hard-code real ticker data. Run:
+The root `index.html` is the local directory page for stock-level indexes. It should stay framework-only and should not hard-code real ticker data. Each row must link to `stocks/<TICKER>/index.html` and show that ticker's latest important conclusion.
+
+Each generated `stocks/<TICKER>/index.html` page must list that ticker's analysis runs with:
+
+- run date
+- signal and confidence
+- price or trend label when available
+- valuation classification when available
+- important conclusion
+- link to the run's `decision-brief.md`
+
+Run:
 
 ```bash
 npm run build:index
 ```
 
-to generate the ignored `index-data.js` file from local `stocks/<TICKER>/summary.html` files.
+to generate the ignored `index-data.js` file and ignored `stocks/<TICKER>/index.html` pages from local stock artifacts.
 
 ## JSON signal schema
 
@@ -120,6 +136,15 @@ Every `signal.json` must include:
   "bottomLine": "Plain-English money-making conclusion.",
   "moneyMakingPath": [],
   "moneyLosingPath": [],
+  "priorThesisReview": {
+    "priorSignal": "",
+    "priorRunDate": "",
+    "accuracy": "baseline_no_prior_call",
+    "whatWasRight": [],
+    "whatWasWrong": [],
+    "why": "",
+    "lessonApplied": ""
+  },
   "valuationAssessment": {
     "classification": "valuation_uncertain",
     "businessType": "",

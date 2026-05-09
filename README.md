@@ -7,13 +7,14 @@ This repository is a Codex-ready framework for repeatable long-term stock analys
 Each stock ticker has its own folder under `stocks/`. That folder stores:
 
 - `summary.html`: the most recent visual thesis summary and what to watch next.
+- `index.html`: generated local index of all analysis runs for the ticker.
 - `profile.json`: ticker metadata and company-specific source hints.
 - `data/`: raw and processed data collected across runs.
 - `runs/YYYY-MM-DD/`: one folder per analysis run, containing all artifacts for that run.
 
-The repository root also has `index.html`, a local browser entry point for stock summaries. Run `npm run build:index` after adding or updating ticker folders to generate the ignored `index-data.js` file that powers the directory.
+The repository root also has `index.html`, a local browser entry point for stock index pages. Run `npm run build:index` after adding or updating ticker folders to generate the ignored `index-data.js` file and each ignored `stocks/<TICKER>/index.html` page.
 
-Summaries are written for non-financial readers. They should start with the bottom line, explain how the stock can make money, explain how it can lose money, state whether the stock is cheap enough under an appropriate valuation model, assess CEO/leadership quality, and define any necessary finance terms in plain language. The framework is opportunity-seeking and should use directional signals when evidence supports them, while still documenting uncertainty and downside risk.
+Summaries are written for non-financial readers. They should start with the bottom line, explain how the stock can make money, explain how it can lose money, state whether the stock is cheap enough under an appropriate valuation model, assess CEO/leadership quality, review whether prior calls were accurate, and define any necessary finance terms in plain language. The framework is opportunity-seeking and should use directional signals when evidence supports them, while still documenting uncertainty and downside risk.
 
 Codex should read `AGENTS.md` first, then follow the linked rule files and relevant skills under `.agents/skills/`.
 
@@ -40,7 +41,8 @@ Codex should read `AGENTS.md` first, then follow the linked rule files and relev
 │   ├── 05-market-trend-analysis.md
 │   ├── 06-signal-methodology.md
 │   ├── 07-output-standards.md
-│   └── 08-valuation-and-leadership.md
+│   ├── 08-valuation-and-leadership.md
+│   └── 09-prior-thesis-review.md
 ├── .agents/
 │   └── skills/
 ├── tools/
@@ -74,7 +76,7 @@ npm run pipeline -- --ticker AAPL
 ```
 
 6. Open the generated run folder under `stocks/AAPL/runs/YYYY-MM-DD/` and ask Codex to complete the source-backed analysis using the artifacts and rules.
-7. After Codex updates `stocks/AAPL/summary.html`, refresh the local summary directory:
+7. After Codex updates `stocks/AAPL/summary.html`, refresh the local root and ticker index pages:
 
 ```bash
 npm run build:index
@@ -90,8 +92,8 @@ The tools are intentionally lightweight and dependency-free. They collect and st
 - `fetch-sec-filings.mjs`: downloads SEC submissions metadata for a ticker.
 - `fetch-trusted-news.mjs`: collects trusted-source news using optional NewsAPI plus configured RSS feeds.
 - `fetch-market-trends.mjs`: collects daily market prices and computes basic trend metrics.
-- `create-run-analysis.mjs`: creates run artifacts and analysis templates, including valuation and leadership review files.
-- `build-index.mjs`: scans local stock folders and generates ignored `index-data.js` directory data for root `index.html`.
+- `create-run-analysis.mjs`: creates run artifacts and analysis templates, including valuation, leadership, and prior-thesis review files.
+- `build-index.mjs`: scans local stock folders, generates ignored `index-data.js` directory data for root `index.html`, and writes ignored `stocks/<TICKER>/index.html` pages with run history and important conclusions.
 - `run-pipeline.mjs`: executes the standard collection and analysis-prep flow.
 
 ## Important limitations

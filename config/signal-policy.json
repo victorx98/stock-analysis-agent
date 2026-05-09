@@ -24,7 +24,31 @@
     "mustIncludeContraryEvidence": true,
     "mustIncludeInvalidationTriggers": true,
     "mustIncludeValuationAssessment": true,
-    "mustIncludeLeadershipAssessment": true
+    "mustIncludeLeadershipAssessment": true,
+    "mustIncludePriorThesisReview": true
+  },
+  "priorThesisReviewPolicy": {
+    "required": true,
+    "accuracyLabels": [
+      "accurate",
+      "partly_accurate",
+      "inaccurate",
+      "too_early",
+      "too_late",
+      "still_untested",
+      "baseline_no_prior_call"
+    ],
+    "minimumItemsToReview": [
+      "prior_signal",
+      "prior_confidence",
+      "prior_valuation_classification",
+      "prior_price_trend",
+      "prior_invalidation_triggers",
+      "prior_watch_items",
+      "current_price_change",
+      "current_fundamental_change",
+      "lesson_applied"
+    ]
   },
   "valuationPolicy": {
     "priority": "Prefer stocks with a conservative, source-backed case for material undervaluation, especially severe undervaluation with identifiable catalysts and manageable downside.",

@@ -8,6 +8,15 @@
   "bottomLine": "",
   "moneyMakingPath": [],
   "moneyLosingPath": [],
+  "priorThesisReview": {
+    "priorSignal": "",
+    "priorRunDate": "",
+    "accuracy": "baseline_no_prior_call",
+    "whatWasRight": [],
+    "whatWasWrong": [],
+    "why": "",
+    "lessonApplied": ""
+  },
   "valuationAssessment": {
     "classification": "valuation_uncertain",
     "businessType": "",

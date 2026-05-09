@@ -1,0 +1,16 @@
+{
+  "runCadence": "weekly or after material events",
+  "timezone": "America/Los_Angeles",
+  "standardRunArtifacts": [
+    "run-metadata.json",
+    "source-inventory.md",
+    "sec-filings.md",
+    "news-digest.md",
+    "market-trend.md",
+    "fundamental-notes.md",
+    "risk-register.md",
+    "signal.json",
+    "decision-brief.md",
+    "watchlist-next-run.md"
+  ]
+}

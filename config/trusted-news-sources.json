@@ -1,0 +1,54 @@
+{
+  "policy": {
+    "primary_sources": [
+      "sec.gov",
+      "company investor relations",
+      "earnings releases",
+      "regulators",
+      "official macro data"
+    ],
+    "secondary_sources": [
+      "reuters.com",
+      "apnews.com",
+      "wsj.com",
+      "ft.com",
+      "bloomberg.com",
+      "cnbc.com",
+      "marketwatch.com"
+    ],
+    "excluded_as_decision_grade": [
+      "reddit.com",
+      "x.com",
+      "twitter.com",
+      "stocktwits.com",
+      "anonymous forums"
+    ]
+  },
+  "rssFeeds": [
+    {
+      "name": "SEC Press Releases",
+      "url": "https://www.sec.gov/news/pressreleases.rss",
+      "tier": "primary-regulator"
+    },
+    {
+      "name": "Federal Reserve Press Releases",
+      "url": "https://www.federalreserve.gov/feeds/press_all.xml",
+      "tier": "primary-macro"
+    },
+    {
+      "name": "BLS Latest Numbers",
+      "url": "https://www.bls.gov/feed/",
+      "tier": "primary-macro"
+    }
+  ],
+  "newsApiDomains": [
+    "reuters.com",
+    "apnews.com",
+    "wsj.com",
+    "ft.com",
+    "bloomberg.com",
+    "cnbc.com",
+    "marketwatch.com",
+    "sec.gov"
+  ]
+}

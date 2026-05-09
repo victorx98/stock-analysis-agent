@@ -1,0 +1,9 @@
+.env
+node_modules/
+.DS_Store
+
+# Keep framework files such as rules, skills, tools, config, and templates.
+# Do not track company-specific stock analysis artifacts.
+/stocks/*/
+!/stocks/_TEMPLATE/
+!/stocks/_TEMPLATE/**

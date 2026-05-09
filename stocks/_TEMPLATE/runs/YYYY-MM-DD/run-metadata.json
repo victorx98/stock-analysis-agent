@@ -1,0 +1,9 @@
+{
+  "ticker": "TICKER",
+  "company": "Company Name",
+  "runDate": "YYYY-MM-DD",
+  "createdAt": "",
+  "commands": [],
+  "sourceFiles": [],
+  "knownFailures": []
+}

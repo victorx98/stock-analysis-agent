@@ -1,0 +1,13 @@
+{
+  "ticker": "TICKER",
+  "runDate": "YYYY-MM-DD",
+  "signal": "insufficient_evidence",
+  "timeHorizon": "6-12 months",
+  "confidence": "low",
+  "summary": "",
+  "supportingEvidence": [],
+  "contraryEvidence": [],
+  "invalidationTriggers": [],
+  "watchNextRun": [],
+  "missingInformation": []
+}

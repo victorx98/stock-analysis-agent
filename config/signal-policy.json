@@ -1,0 +1,33 @@
+{
+  "timeHorizons": [
+    "1-3 months",
+    "6-12 months",
+    "3-5 years"
+  ],
+  "defaultHorizon": "6-12 months",
+  "confidenceLevels": [
+    "low",
+    "medium",
+    "high"
+  ],
+  "signalLabels": [
+    "strong_buy_watch",
+    "buy_watch",
+    "hold_neutral",
+    "sell_watch",
+    "strong_sell_watch",
+    "insufficient_evidence"
+  ],
+  "minimumEvidenceForDirectionalSignal": {
+    "primarySourceCount": 1,
+    "independentSourceCount": 3,
+    "mustIncludeContraryEvidence": true,
+    "mustIncludeInvalidationTriggers": true
+  },
+  "technicalTrendDefaults": {
+    "shortSmaDays": 20,
+    "mediumSmaDays": 50,
+    "longSmaDays": 200,
+    "rsiDays": 14
+  }
+}

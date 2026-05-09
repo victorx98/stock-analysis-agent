@@ -1,0 +1,16 @@
+{
+  "tickers": [
+    {
+      "ticker": "HIMS",
+      "company": "Hims & Hers Health, Inc.",
+      "enabled": true,
+      "notes": "Initial long-term research run completed 2026-05-09."
+    },
+    {
+      "ticker": "AAPL",
+      "company": "Apple Inc.",
+      "enabled": false,
+      "notes": "Example only. Enable or replace with your target ticker."
+    }
+  ]
+}

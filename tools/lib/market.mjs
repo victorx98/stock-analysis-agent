@@ -1,6 +1,10 @@
 import { maxDrawdownFromHigh, pctChange, rsi, sma, trendLabel } from './indicators.mjs';
 
 export async function fetchDailyPrices(ticker) {
+  return (await fetchDailyPricesWithSource(ticker)).prices;
+}
+
+export async function fetchDailyPricesWithSource(ticker) {
   if (process.env.ALPHA_VANTAGE_API_KEY) {
     return fetchAlphaVantage(ticker, process.env.ALPHA_VANTAGE_API_KEY);
   }
@@ -18,7 +22,7 @@ async function fetchAlphaVantage(ticker, apiKey) {
   const data = await response.json();
   const series = data['Time Series (Daily)'];
   if (!series) throw new Error(`Alpha Vantage response missing daily series: ${JSON.stringify(data).slice(0, 200)}`);
-  return Object.entries(series)
+  const prices = Object.entries(series)
     .map(([date, row]) => ({
       date,
       open: Number(row['1. open']),
@@ -30,6 +34,12 @@ async function fetchAlphaVantage(ticker, apiKey) {
       source: 'alpha_vantage'
     }))
     .sort((a, b) => a.date.localeCompare(b.date));
+  url.searchParams.set('apikey', '<redacted>');
+  return {
+    provider: 'alpha_vantage',
+    sourceUrl: url.toString(),
+    prices
+  };
 }
 
 async function fetchStooq(ticker) {
@@ -40,7 +50,7 @@ async function fetchStooq(ticker) {
   const csv = await response.text();
   const rows = csv.trim().split(/\r?\n/).slice(1);
   if (!rows.length || rows[0].startsWith('No data')) throw new Error(`Stooq returned no data for ${ticker}`);
-  return rows.map((line) => {
+  const prices = rows.map((line) => {
     const [date, open, high, low, close, volume] = line.split(',');
     return {
       date,
@@ -53,6 +63,11 @@ async function fetchStooq(ticker) {
       source: 'stooq'
     };
   }).filter((row) => Number.isFinite(row.close));
+  return {
+    provider: 'stooq',
+    sourceUrl: url,
+    prices
+  };
 }
 
 export function computeTrendMetrics(prices) {

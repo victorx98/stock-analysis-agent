@@ -7,3 +7,21 @@
 | Company profile / investor relations | Business type, CEO bio, strategy | 1 | stocks/TICKER/profile.json | pending review | Confirm business classification, leadership background, and shareholder materials. |
 | Trusted news | News/catalyst | 2 | stocks/TICKER/data/raw/news/ | pending review | Add latest file path after inspection. |
 | Market trend | Price data | market data | stocks/TICKER/data/raw/market/ | pending review | Add latest file path after inspection. |
+
+## Tool Runs
+
+| Tool | Command | Status | Exit | Started | Finished | Notes |
+|---|---|---|---:|---|---|---|
+| No tools recorded yet. |  | pending |  |  |  |  |
+
+## Source Files Created
+
+- None recorded yet.
+
+## Skipped Sources
+
+- None recorded.
+
+## Tool / Source Issues
+
+- None recorded.

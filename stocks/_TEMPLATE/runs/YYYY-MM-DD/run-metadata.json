@@ -3,7 +3,16 @@
   "company": "Company Name",
   "runDate": "YYYY-MM-DD",
   "createdAt": "",
+  "updatedAt": "",
+  "toolVersions": {
+    "framework": "0.1.0",
+    "node": "",
+    "collectionToolRegistry": "1"
+  },
   "commands": [],
+  "toolRuns": [],
   "sourceFiles": [],
+  "sourcesUsed": [],
+  "skippedSources": [],
   "knownFailures": []
 }

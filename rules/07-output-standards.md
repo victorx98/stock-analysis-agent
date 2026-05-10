@@ -24,6 +24,8 @@ Every `decision-brief.md` must use this structure:
 
 ## Prior thesis review
 
+## Collection and Tooling Notes
+
 ## Evidence table
 | Claim | Evidence | Source tier | Bull/Bear/Neutral | Confidence |
 
@@ -83,6 +85,7 @@ CEO / Leadership Read
 Key Risks
 Watch Next Run
 Finance Terms Used
+Collection and Tooling Notes
 Prior Run Links
 Research-Only Disclaimer
 ```
@@ -99,6 +102,8 @@ Write for a non-financial reader:
 - Avoid unexplained terms like EBITDA, gross margin, dilution, free cash flow, multiple, or guidance.
 - If a term is necessary, add it to "Finance Terms Used" with a one-sentence explanation.
 - Be decisive when evidence supports it. Do not use `hold_neutral` as a default.
+
+The "Collection and Tooling Notes" section must briefly state which source/tool gaps matter to the conclusion. Keep full diagnostic detail in `run-metadata.json` and `source-inventory.md`; summarize only material collection failures, skipped sources, or fallback data sources in the reader-facing output.
 
 ## Root and stock index pages
 

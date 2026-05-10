@@ -38,6 +38,10 @@ export function stockDir(ticker) {
   return path.join(repoRoot, 'stocks', ticker.toUpperCase());
 }
 
+export function repoRelative(filePath) {
+  return path.relative(repoRoot, filePath).split(path.sep).join('/');
+}
+
 export function todayIso() {
   return new Date().toISOString().slice(0, 10);
 }

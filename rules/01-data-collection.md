@@ -54,5 +54,9 @@ Every run must include a `run-metadata.json` file with:
 - run date
 - tool versions
 - commands executed
+- per-tool run records, including status and exit code
 - source files created
+- sources used, skipped sources, and fallback sources
 - known failures
+
+Use the shared collection tool registry under `tools/lib/collection-tools.mjs` for standard pipeline steps. Do not recreate ad hoc command lists in each script; add or change common collectors in the registry so pipeline behavior, run metadata, and source inventory stay aligned.

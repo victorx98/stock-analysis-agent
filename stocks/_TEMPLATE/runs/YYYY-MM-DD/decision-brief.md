@@ -24,6 +24,12 @@
 - What was wrong or missed: TBD
 - Lesson applied this run: TBD
 
+## Collection and Tooling Notes
+
+- Collection tools have not been run for this run folder yet.
+- Source records captured: 0.
+- No tool/source issues recorded yet.
+
 ## Evidence table
 | Claim | Evidence | Source tier | Bull/Bear/Neutral | Confidence |
 |---|---|---|---|---|

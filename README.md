@@ -96,6 +96,12 @@ The tools are intentionally lightweight and dependency-free. They collect and st
 - `build-index.mjs`: scans local stock folders, generates ignored `index-data.js` directory data for root `index.html`, and writes ignored `stocks/<TICKER>/index.html` pages with run history and important conclusions.
 - `run-pipeline.mjs`: executes the standard collection and analysis-prep flow.
 
+Common collection tool definitions live in `tools/lib/collection-tools.mjs`; pipeline code and run templates should reuse that registry instead of duplicating command/source lists. Each pipeline run writes an audit trail into the run folder:
+
+- `run-metadata.json`: tool versions, commands, tool run status, files created, sources used, skipped sources, and known failures.
+- `source-inventory.md`: reader-friendly source inventory plus tool runs, skipped sources, and tool/source issues.
+- `decision-brief.md`: a short `Collection and Tooling Notes` section summarizing material collection gaps.
+
 ## Important limitations
 
 This framework is for research support. It does not place trades and does not guarantee investment performance. Every buy/sell/hold signal must be treated as a research hypothesis requiring human review.

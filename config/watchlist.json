@@ -19,6 +19,12 @@
       "notes": "Initial long-term research run started 2026-05-09."
     },
     {
+      "ticker": "INOD",
+      "company": "Innodata Inc.",
+      "enabled": true,
+      "notes": "Initial long-term research run completed 2026-05-10."
+    },
+    {
       "ticker": "AAPL",
       "company": "Apple Inc.",
       "enabled": false,

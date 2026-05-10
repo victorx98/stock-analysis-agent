@@ -7,6 +7,18 @@
       "notes": "Initial long-term research run completed 2026-05-09."
     },
     {
+      "ticker": "INTC",
+      "company": "Intel Corporation",
+      "enabled": true,
+      "notes": "Initial long-term research run completed 2026-05-09."
+    },
+    {
+      "ticker": "RKLB",
+      "company": "Rocket Lab USA, Inc.",
+      "enabled": true,
+      "notes": "Initial long-term research run started 2026-05-09."
+    },
+    {
       "ticker": "AAPL",
       "company": "Apple Inc.",
       "enabled": false,

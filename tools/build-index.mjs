@@ -161,8 +161,8 @@ async function readRuns(dir, ticker) {
 /* Map a signal string to a CSS badge class — mirrors root index.html logic */
 function signalBadgeClass(sig) {
   const s = String(sig).toLowerCase();
-  if (s.includes('buy') || s.includes('watch')) return 'bull-b';
   if (s.includes('avoid') || s.includes('sell') || s.includes('bear')) return 'bear-b';
+  if (s.includes('buy')) return 'bull-b';
   if (s.includes('hold') || s.includes('neutral')) return 'neu-b';
   return 'gray-b';
 }
@@ -170,8 +170,8 @@ function signalBadgeClass(sig) {
 /* Map a signal string to the hero-badge class for the page header */
 function signalHeroClass(sig) {
   const s = String(sig).toLowerCase();
-  if (s.includes('buy') || s.includes('watch')) return 'sig-bull';
   if (s.includes('avoid') || s.includes('sell') || s.includes('bear')) return 'sig-bear';
+  if (s.includes('buy')) return 'sig-bull';
   if (s.includes('hold') || s.includes('neutral')) return 'sig-neutral';
   return 'sig-gray';
 }

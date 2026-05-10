@@ -220,8 +220,8 @@
     /* Map signal string to CSS class */
     function badgeClass(sig) {
       const s = String(sig).toLowerCase();
-      if (s.includes('buy') || s.includes('watch')) return 'bull-b';
       if (s.includes('avoid') || s.includes('sell') || s.includes('bear')) return 'bear-b';
+      if (s.includes('buy')) return 'bull-b';
       if (s.includes('hold') || s.includes('neutral')) return 'neu-b';
       return 'gray-b';
     }
@@ -253,7 +253,8 @@
         const cls = badgeClass(signal);
 
         const s = signal.toLowerCase();
-        if (s.includes('buy') || s.includes('watch')) nBuy++;
+        if (s.includes('avoid') || s.includes('sell') || s.includes('bear')) nOther++;
+        else if (s.includes('buy')) nBuy++;
         else if (s.includes('hold') || s.includes('neutral')) nHold++;
         else nOther++;
 

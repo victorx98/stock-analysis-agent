@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './lib/env.mjs';
 import { spawn } from 'node:child_process';
 import { getArg, requireArg } from './lib/args.mjs';
 import { collectionSteps, commandForTool, getTool } from './lib/collection-tools.mjs';

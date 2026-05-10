@@ -86,12 +86,13 @@ npm run build:index
 
 ## What the tools do
 
-The tools are intentionally lightweight and dependency-free. They collect and structure raw inputs; Codex performs the qualitative analysis using repository rules.
+The tools are intentionally lightweight and dependency-free. They load `.env` automatically, collect and structure raw inputs, and leave the qualitative analysis to Codex using repository rules.
 
 - `init-ticker.mjs`: creates a ticker folder from `_TEMPLATE`.
 - `fetch-sec-filings.mjs`: downloads SEC submissions metadata for a ticker.
-- `fetch-trusted-news.mjs`: collects trusted-source news using optional NewsAPI plus configured RSS feeds.
-- `fetch-market-trends.mjs`: collects daily market prices and computes basic trend metrics.
+- `fetch-company-info.mjs`: collects company profile, market cap, share-count, sector/industry, and valuation inputs from Massive and Alpha Vantage when keys are configured.
+- `fetch-trusted-news.mjs`: collects trusted-source news using Massive stock news, Alpha Vantage news sentiment, optional NewsAPI, and configured RSS feeds.
+- `fetch-market-trends.mjs`: collects daily market prices and computes basic trend metrics, preferring Massive aggregate bars, then Alpha Vantage, then Stooq fallback.
 - `create-run-analysis.mjs`: creates run artifacts and analysis templates, including valuation, leadership, and prior-thesis review files.
 - `build-index.mjs`: scans local stock folders, generates ignored `index-data.js` directory data for root `index.html`, and writes ignored `stocks/<TICKER>/index.html` pages with run history and important conclusions.
 - `run-pipeline.mjs`: executes the standard collection and analysis-prep flow.

@@ -9,6 +9,7 @@
   "scripts": {
     "init:ticker": "node tools/init-ticker.mjs",
     "fetch:sec": "node tools/fetch-sec-filings.mjs",
+    "fetch:info": "node tools/fetch-company-info.mjs",
     "fetch:news": "node tools/fetch-trusted-news.mjs",
     "fetch:market": "node tools/fetch-market-trends.mjs",
     "create:run": "node tools/create-run-analysis.mjs",

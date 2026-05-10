@@ -10,6 +10,10 @@
 - CEO: TBD
 - Founder-led: TBD
 
+## Collected company info
+
+Review latest files in stocks/TICKER/data/raw/company-info/ and stocks/TICKER/data/processed/.
+
 ## Revenue
 
 ## Margins

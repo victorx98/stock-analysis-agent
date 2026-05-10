@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './lib/env.mjs';
 import path from 'node:path';
 import { requireArg } from './lib/args.mjs';
 import { ensureDir, repoRelative, stockDir, writeJson, writeText } from './lib/fs-utils.mjs';
@@ -10,7 +11,7 @@ const date = new Date().toISOString().slice(0, 10);
 const rawDir = path.join(dir, 'data', 'raw', 'market');
 await ensureDir(rawDir);
 
-const { provider, sourceUrl, prices } = await fetchDailyPricesWithSource(ticker);
+const { provider, sourceUrl, prices, failures = [], skippedSources = [] } = await fetchDailyPricesWithSource(ticker);
 const metrics = computeTrendMetrics(prices);
 const rawPath = path.join(rawDir, `${ticker}-daily-prices-${date}.json`);
 const metricsPath = path.join(dir, 'data', 'processed', `${ticker}-trend-metrics-${date}.json`);
@@ -40,7 +41,7 @@ console.log(JSON.stringify({
       notes: `${prices.length} daily price rows; trend label ${metrics.trendLabel}.`
     }
   ],
-  skippedSources: [],
-  failures: [],
+  skippedSources,
+  failures,
   trendLabel: metrics.trendLabel
 }, null, 2));

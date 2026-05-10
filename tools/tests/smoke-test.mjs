@@ -4,6 +4,8 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { collectionSteps, getTool, initialSourceRows } from '../lib/collection-tools.mjs';
+import { summarizeCompanyInfo } from '../lib/company-info.mjs';
+import { parseEnv } from '../lib/env.mjs';
 import { computeTrendMetrics } from '../lib/market.mjs';
 import { createInitialRunMetadata, initializeRunAudit, renderSourceInventory } from '../lib/run-audit.mjs';
 import { summarizeRecentFilings } from '../lib/sec.mjs';
@@ -28,8 +30,25 @@ assert.ok(runProfile.standardRunArtifacts.includes('leadership-analysis.md'));
 assert.ok(runProfile.standardRunArtifacts.includes('thesis-review.md'));
 
 assert.equal(getTool('fetch-sec').name, 'SEC filings collector');
-assert.deepEqual(collectionSteps().map((tool) => tool.id), ['fetch-sec', 'fetch-news', 'fetch-market']);
+assert.deepEqual(collectionSteps().map((tool) => tool.id), ['fetch-sec', 'fetch-company-info', 'fetch-news', 'fetch-market']);
+assert.equal(getTool('fetch-company-info').name, 'Company info collector');
 assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'trusted-news'));
+assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'company-info'));
+
+assert.deepEqual(parseEnv('FOO=bar\nQUOTED="baz qux"\nexport SKIP_COMMENT=value # comment\n'), {
+  FOO: 'bar',
+  QUOTED: 'baz qux',
+  SKIP_COMMENT: 'value'
+});
+const companySummary = summarizeCompanyInfo({
+  ticker: 'TEST',
+  profile: { company: 'Profile Co' },
+  massiveTickerOverview: { sourceUrl: 'massive', data: { results: { name: 'Massive Co', market_cap: 1000, weighted_shares_outstanding: 10 } } },
+  alphaVantageOverview: { sourceUrl: 'alpha', data: { Name: 'Alpha Co', Sector: 'Technology', PERatio: '20.5' } }
+});
+assert.equal(companySummary.company, 'Massive Co');
+assert.equal(companySummary.sector, 'Technology');
+assert.equal(companySummary.peRatio, 20.5);
 
 const auditMetadata = createInitialRunMetadata({
   ticker: 'TEST',

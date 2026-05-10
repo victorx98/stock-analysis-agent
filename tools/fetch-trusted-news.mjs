@@ -1,8 +1,9 @@
 #!/usr/bin/env node
+import './lib/env.mjs';
 import path from 'node:path';
 import { requireArg } from './lib/args.mjs';
 import { ensureDir, readJson, repoRelative, stockDir, writeJson, writeText } from './lib/fs-utils.mjs';
-import { fetchNewsApi, fetchRssFeed, filterRelevantNews } from './lib/news.mjs';
+import { fetchAlphaVantageNewsSentiment, fetchMassiveNews, fetchNewsApi, fetchRssFeed, filterRelevantNews } from './lib/news.mjs';
 
 const ticker = requireArg('ticker').toUpperCase();
 const dir = stockDir(ticker);
@@ -16,6 +17,72 @@ const failures = [];
 const skippedSources = [];
 const sourcesUsed = [];
 let items = [];
+
+if (process.env.MASSIVE_API_KEY) {
+  try {
+    const massiveItems = await fetchMassiveNews(ticker, 50);
+    items.push(...massiveItems);
+    sourcesUsed.push({
+      id: 'massive-news',
+      source: 'Massive stock news',
+      type: 'News/catalyst with ticker sentiment',
+      tier: 'secondary-market-data-news',
+      pathOrUrl: 'https://massive.com/docs/rest/stocks/news',
+      status: 'collected',
+      notes: `${massiveItems.length} ticker-scoped items before relevance filtering.`
+    });
+  } catch (error) {
+    failures.push({
+      source: 'Massive',
+      attemptedMethod: 'Stock news endpoint',
+      error: error.message,
+      impact: 'Massive stock news was not available for this run.',
+      fallback: 'Use Alpha Vantage news sentiment, NewsAPI, configured RSS feeds, and manual primary-source review.',
+      severity: 'warning'
+    });
+  }
+} else {
+  skippedSources.push({
+    source: 'Massive',
+    attemptedMethod: 'Stock news endpoint',
+    reason: 'MASSIVE_API_KEY is not set.',
+    impact: 'Optional ticker-scoped Massive news collection was skipped.',
+    fallback: 'Use Alpha Vantage news sentiment, NewsAPI, and configured RSS feeds.'
+  });
+}
+
+if (process.env.ALPHA_VANTAGE_API_KEY) {
+  try {
+    const alphaItems = await fetchAlphaVantageNewsSentiment(ticker, 50);
+    items.push(...alphaItems);
+    sourcesUsed.push({
+      id: 'alpha-vantage-news-sentiment',
+      source: 'Alpha Vantage news sentiment',
+      type: 'News/catalyst with sentiment',
+      tier: 'secondary-market-data-news',
+      pathOrUrl: 'https://www.alphavantage.co/documentation/#news-sentiment',
+      status: 'collected',
+      notes: `${alphaItems.length} ticker-scoped items before relevance filtering.`
+    });
+  } catch (error) {
+    failures.push({
+      source: 'Alpha Vantage',
+      attemptedMethod: 'NEWS_SENTIMENT endpoint',
+      error: error.message,
+      impact: 'Alpha Vantage news sentiment was not available for this run.',
+      fallback: 'Use Massive news, NewsAPI, configured RSS feeds, and manual primary-source review.',
+      severity: 'warning'
+    });
+  }
+} else {
+  skippedSources.push({
+    source: 'Alpha Vantage',
+    attemptedMethod: 'NEWS_SENTIMENT endpoint',
+    reason: 'ALPHA_VANTAGE_API_KEY is not set.',
+    impact: 'Optional Alpha Vantage news sentiment collection was skipped.',
+    fallback: 'Use Massive news, NewsAPI, and configured RSS feeds.'
+  });
+}
 
 if (process.env.NEWSAPI_API_KEY) {
   try {
@@ -88,9 +155,9 @@ const relevant = filterRelevantNews(items, ticker, profile.company);
 const rawPath = path.join(rawDir, `${ticker}-trusted-news-${date}.json`);
 await writeJson(rawPath, { ticker, company: profile.company, fetchedAt: new Date().toISOString(), items: relevant, sourcesUsed, skippedSources, failures });
 
-const md = [`# Trusted News Collection - ${ticker} - ${date}`, '', `Company: ${profile.company}`, '', '## Items', '', '| Published | Source | Tier | Title | URL |', '|---|---|---|---|---|'];
+const md = [`# Trusted News Collection - ${ticker} - ${date}`, '', `Company: ${profile.company}`, '', '## Items', '', '| Published | Source | Tier | Sentiment | Title | URL |', '|---|---|---|---|---|---|'];
 for (const item of relevant) {
-  md.push(`| ${item.publishedAt || ''} | ${item.source || ''} | ${item.sourceTier || ''} | ${String(item.title || '').replaceAll('|', '-')} | ${item.url || ''} |`);
+  md.push(`| ${item.publishedAt || ''} | ${item.source || ''} | ${item.sourceTier || ''} | ${item.sentiment || ''} | ${String(item.title || '').replaceAll('|', '-')} | ${item.url || ''} |`);
 }
 if (failures.length) {
   md.push('', '## Collection failures', '', ...failures.map((failure) => `- ${failure.source}: ${failure.error}`));

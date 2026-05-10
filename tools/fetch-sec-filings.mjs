@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import './lib/env.mjs';
 import path from 'node:path';
 import { getArg, requireArg } from './lib/args.mjs';
 import { ensureDir, readJson, repoRelative, stockDir, writeJson, writeText } from './lib/fs-utils.mjs';

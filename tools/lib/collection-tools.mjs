@@ -1,4 +1,4 @@
-export const COLLECTION_TOOL_REGISTRY_VERSION = '1';
+export const COLLECTION_TOOL_REGISTRY_VERSION = '2';
 
 export const COLLECTION_TOOLS = [
   {
@@ -31,13 +31,33 @@ export const COLLECTION_TOOLS = [
     ]
   },
   {
+    id: 'fetch-company-info',
+    name: 'Company info collector',
+    category: 'collection',
+    required: false,
+    command: ['node', 'tools/fetch-company-info.mjs'],
+    npmCommand: 'npm run fetch:info -- --ticker {ticker}',
+    description: 'Collects company profile, share-count, market cap, and valuation inputs from Massive and Alpha Vantage when configured.',
+    sourceTemplates: [
+      {
+        id: 'company-info',
+        source: 'Company info APIs',
+        type: 'Company profile / valuation inputs',
+        tier: 'market data',
+        pathOrUrl: 'stocks/{ticker}/data/raw/company-info/',
+        status: 'pending collection',
+        notes: 'Massive ticker overview and Alpha Vantage company overview when API keys are configured.'
+      }
+    ]
+  },
+  {
     id: 'fetch-news',
     name: 'Trusted news collector',
     category: 'collection',
     required: false,
     command: ['node', 'tools/fetch-trusted-news.mjs'],
     npmCommand: 'npm run fetch:news -- --ticker {ticker}',
-    description: 'Collects trusted-source news from optional NewsAPI and configured RSS feeds.',
+    description: 'Collects trusted-source news from Massive, Alpha Vantage, optional NewsAPI, and configured RSS feeds.',
     sourceTemplates: [
       {
         id: 'trusted-news',
@@ -46,7 +66,7 @@ export const COLLECTION_TOOLS = [
         tier: '2',
         pathOrUrl: 'stocks/{ticker}/data/raw/news/',
         status: 'pending collection',
-        notes: 'Configured trusted news feeds and optional NewsAPI results.'
+        notes: 'Massive news, Alpha Vantage news sentiment, configured trusted news feeds, and optional NewsAPI results.'
       }
     ]
   },
@@ -57,7 +77,7 @@ export const COLLECTION_TOOLS = [
     required: true,
     command: ['node', 'tools/fetch-market-trends.mjs'],
     npmCommand: 'npm run fetch:market -- --ticker {ticker}',
-    description: 'Collects daily prices and computes technical trend metrics.',
+    description: 'Collects daily prices from Massive, Alpha Vantage, or Stooq fallback and computes technical trend metrics.',
     sourceTemplates: [
       {
         id: 'market-prices',
@@ -66,7 +86,7 @@ export const COLLECTION_TOOLS = [
         tier: 'market data',
         pathOrUrl: 'stocks/{ticker}/data/raw/market/',
         status: 'pending collection',
-        notes: 'Daily price history and derived market trend metrics.'
+        notes: 'Daily price history and derived market trend metrics from the first available configured provider.'
       }
     ]
   }

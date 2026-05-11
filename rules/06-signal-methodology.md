@@ -17,13 +17,14 @@ Consider these dimensions:
 
 1. Fundamental direction: revenue, margins, cash flow, balance sheet.
 2. Valuation conclusion: model fit, value range, margin of safety, cheap-trap checks, and whether the stock is severely undervalued, moderately undervalued, fairly valued, overvalued, or uncertain.
-3. CEO/leadership quality: founder status, incentives, career fit, execution record, strategic clarity, unique advantages, and leadership red flags.
-4. SEC filing changes: risk factors, liquidity, management discussion, dilution.
-5. Catalysts: events likely to change expectations or close a valuation gap.
-6. Market trend: price/momentum confirmation or contradiction.
-7. Risk/reward: upside drivers vs downside scenarios.
-8. Prior thesis accuracy: whether prior signals, valuation ranges, risk calls, and watch items proved accurate, inaccurate, early, late, or still untested.
-9. Lessons learned: whether this run should change weighting, model choice, confidence, or watch items because of prior misses.
+3. CEO/leadership quality: founder status, incentives, career fit, prior success and failure patterns, management style, current-company goal, execution record, strategic clarity, unique advantages, and leadership red flags.
+4. Insider and buyback activity: recent management-team stock sales/purchases, insider ownership trend, company buyback authorizations, actual repurchase execution, dilution offset, and whether share count is falling.
+5. SEC filing changes: risk factors, liquidity, management discussion, dilution.
+6. Catalysts: events likely to change expectations or close a valuation gap.
+7. Market trend: price/momentum confirmation or contradiction.
+8. Risk/reward: upside drivers vs downside scenarios.
+9. Prior thesis accuracy: whether prior signals, valuation ranges, risk calls, and watch items proved accurate, inaccurate, early, late, or still untested.
+10. Lessons learned: whether this run should change weighting, model choice, confidence, or watch items because of prior misses.
 
 ## Profit-seeking posture
 
@@ -49,7 +50,8 @@ Every signal must include:
 - `How this can lose money`: the concrete path for capital loss.
 - `What must happen next`: the evidence that would confirm or refute the call.
 - `Is it cheap enough`: plain-English valuation conclusion and margin-of-safety logic.
-- `CEO read`: whether leadership is an edge, adequate, a risk, or unknown.
+- `CEO read`: whether leadership is an edge, adequate, a risk, or unknown, including the CEO's prior-track-record lesson, observable management style, and main goal at the company.
+- `Insider/buyback read`: whether recent management-team trading and company repurchases support, weaken, or do not change the thesis.
 - `Prior call review`: whether the previous thesis was right, wrong, early, late, or still untested.
 - `Lesson applied`: what changed in this run's method because of prior evidence.
 - `What the hardest term means`: short explanations for any important finance terms used.
@@ -61,6 +63,7 @@ Do not issue directional signals unless:
 - at least one primary source was reviewed, or the lack of primary data is explicitly justified;
 - at least three independent evidence items support the conclusion;
 - valuation and CEO/leadership were assessed, or missing inputs were explicitly documented as material limitations;
+- insider transaction and buyback activity were assessed, or missing inputs were explicitly documented as material limitations;
 - prior thesis accuracy was reviewed, or this is explicitly marked as a baseline first run;
 - contrary evidence is included;
 - invalidation triggers are stated;

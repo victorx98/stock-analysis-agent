@@ -27,13 +27,23 @@ assert.equal(filings[0].form, '10-K');
 const runProfile = JSON.parse(readFileSync(new URL('../../config/run-profile.json', import.meta.url), 'utf8'));
 assert.ok(runProfile.standardRunArtifacts.includes('valuation-analysis.md'));
 assert.ok(runProfile.standardRunArtifacts.includes('leadership-analysis.md'));
+assert.ok(runProfile.standardRunArtifacts.includes('insider-and-buybacks.md'));
 assert.ok(runProfile.standardRunArtifacts.includes('thesis-review.md'));
+
+const signalPolicy = JSON.parse(readFileSync(new URL('../../config/signal-policy.json', import.meta.url), 'utf8'));
+assert.ok(signalPolicy.leadershipPolicy.requiredFields.includes('priorTrackRecord'));
+assert.ok(signalPolicy.leadershipPolicy.requiredFields.includes('managementStyle'));
+assert.ok(signalPolicy.leadershipPolicy.requiredFields.includes('currentCompanyGoal'));
+assert.equal(signalPolicy.minimumEvidenceForDirectionalSignal.mustIncludeInsiderAndBuybackAssessment, true);
+assert.ok(signalPolicy.insiderAndBuybackPolicy.requiredFields.includes('managementTransactions'));
+assert.ok(signalPolicy.insiderAndBuybackPolicy.requiredFields.includes('buybackProgram'));
 
 assert.equal(getTool('fetch-sec').name, 'SEC filings collector');
 assert.deepEqual(collectionSteps().map((tool) => tool.id), ['fetch-sec', 'fetch-company-info', 'fetch-news', 'fetch-market']);
 assert.equal(getTool('fetch-company-info').name, 'Company info collector');
 assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'trusted-news'));
 assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'company-info'));
+assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'insider-transactions-buybacks'));
 
 assert.deepEqual(parseEnv('FOO=bar\nQUOTED="baz qux"\nexport SKIP_COMMENT=value # comment\n'), {
   FOO: 'bar',
@@ -92,10 +102,48 @@ try {
 const templateSignal = JSON.parse(readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/signal.json', import.meta.url), 'utf8'));
 assert.equal(templateSignal.valuationAssessment.classification, 'valuation_uncertain');
 assert.equal(templateSignal.leadershipAssessment.classification, 'leadership_unknown');
+assert.deepEqual(Object.keys(templateSignal.leadershipAssessment.priorTrackRecord), [
+  'successes',
+  'failures',
+  'pattern',
+  'implicationForCurrentCompany'
+]);
+assert.deepEqual(Object.keys(templateSignal.leadershipAssessment.managementStyle), ['style', 'evidence', 'likelyImpact']);
+assert.deepEqual(Object.keys(templateSignal.leadershipAssessment.currentCompanyGoal), [
+  'statedGoal',
+  'evidence',
+  'shareholderAlignment',
+  'riskIfWrong'
+]);
+assert.equal(templateSignal.insiderAndBuybackAssessment.thesisImpact, 'unknown');
+assert.deepEqual(Object.keys(templateSignal.insiderAndBuybackAssessment.managementTransactions), [
+  'summary',
+  'purchases',
+  'sales',
+  'notableContext'
+]);
+assert.deepEqual(Object.keys(templateSignal.insiderAndBuybackAssessment.buybackProgram), [
+  'authorization',
+  'recentExecution',
+  'shareCountEffect',
+  'capitalAllocationAssessment'
+]);
 assert.equal(templateSignal.priorThesisReview.accuracy, 'baseline_no_prior_call');
 
 const templateBrief = readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/decision-brief.md', import.meta.url), 'utf8');
 assert.ok(templateBrief.includes('## Collection and Tooling Notes'));
+assert.ok(templateBrief.includes("CEO's main current-company goal"));
+assert.ok(templateBrief.includes('## Insider and buyback takeaways'));
+
+const templateLeadership = readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/leadership-analysis.md', import.meta.url), 'utf8');
+assert.ok(templateLeadership.includes('## Prior success and failure stories'));
+assert.ok(templateLeadership.includes('## Observable personality and management style'));
+assert.ok(templateLeadership.includes("## CEO's main goal at the current company"));
+
+const templateInsiderBuybacks = readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/insider-and-buybacks.md', import.meta.url), 'utf8');
+assert.ok(templateInsiderBuybacks.includes('## Management-team stock purchases and sales'));
+assert.ok(templateInsiderBuybacks.includes('## Company stock buybacks'));
+assert.ok(templateInsiderBuybacks.includes('## Capital allocation interpretation'));
 
 const templateMetadata = JSON.parse(readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/run-metadata.json', import.meta.url), 'utf8'));
 assert.ok(Array.isArray(templateMetadata.toolRuns));

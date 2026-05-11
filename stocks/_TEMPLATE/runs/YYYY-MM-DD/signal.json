@@ -30,8 +30,42 @@
     "ceoName": "",
     "founderStatus": "",
     "summary": "",
+    "priorTrackRecord": {
+      "successes": [],
+      "failures": [],
+      "pattern": "",
+      "implicationForCurrentCompany": ""
+    },
+    "managementStyle": {
+      "style": "",
+      "evidence": [],
+      "likelyImpact": ""
+    },
+    "currentCompanyGoal": {
+      "statedGoal": "",
+      "evidence": [],
+      "shareholderAlignment": "",
+      "riskIfWrong": ""
+    },
     "strengths": [],
     "risks": []
+  },
+  "insiderAndBuybackAssessment": {
+    "reviewWindow": "",
+    "managementTransactions": {
+      "summary": "",
+      "purchases": [],
+      "sales": [],
+      "notableContext": []
+    },
+    "buybackProgram": {
+      "authorization": "",
+      "recentExecution": "",
+      "shareCountEffect": "",
+      "capitalAllocationAssessment": ""
+    },
+    "thesisImpact": "unknown",
+    "missingInformation": []
   },
   "nextEvidenceNeeded": [],
   "supportingEvidence": [],

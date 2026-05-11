@@ -37,6 +37,8 @@ Every `decision-brief.md` must use this structure:
 
 ## CEO and leadership takeaways
 
+## Insider and buyback takeaways
+
 ## Market trend takeaways
 
 ## Bull case
@@ -53,6 +55,18 @@ Every `decision-brief.md` must use this structure:
 
 ## Research-only disclaimer
 ```
+
+The "CEO and leadership takeaways" section must briefly answer:
+
+- What the CEO's prior success and failure stories suggest about current execution quality.
+- What observable personality or management style may influence the company, with source-backed evidence.
+- What the CEO appears to be trying to accomplish at the current company and whether that goal is aligned with shareholders.
+
+The "Insider and buyback takeaways" section must briefly answer:
+
+- Whether recent management-team stock purchases or sales support, weaken, or do not change the thesis.
+- Whether company stock buybacks are actually shrinking share count or mainly offsetting dilution.
+- Whether repurchases look sensible given valuation, balance sheet risk, and reinvestment needs.
 
 ## Summary file structure
 
@@ -82,6 +96,7 @@ Historical Trend And Prior Call Review
 Key Evidence
 Valuation: Is This Cheap Enough?
 CEO / Leadership Read
+Insider / Buyback Activity
 Key Risks
 Watch Next Run
 Finance Terms Used
@@ -93,6 +108,10 @@ Research-Only Disclaimer
 Use tables for evidence, risks, valuation context, and signal data when they improve readability. Use diagrams only when they clarify thesis mechanics, catalyst timelines, risk maps, or financial trend relationships.
 
 The "Historical Trend And Prior Call Review" section must summarize signal history, price or technical trend history, valuation classification history, key thesis changes, prior-call accuracy, and lessons learned. Use a table where possible and avoid scoring a prior call from short-term price movement alone.
+
+The "CEO / Leadership Read" section must include the CEO's prior-track-record lesson, observable management style, main current-company goal, leadership classification, and main edge or risk.
+
+The "Insider / Buyback Activity" section must summarize recent management-team purchases/sales, buyback authorization and execution, share-count effect, and thesis impact.
 
 Write for a non-financial reader:
 
@@ -163,8 +182,42 @@ Every `signal.json` must include:
     "ceoName": "",
     "founderStatus": "",
     "summary": "",
+    "priorTrackRecord": {
+      "successes": [],
+      "failures": [],
+      "pattern": "",
+      "implicationForCurrentCompany": ""
+    },
+    "managementStyle": {
+      "style": "",
+      "evidence": [],
+      "likelyImpact": ""
+    },
+    "currentCompanyGoal": {
+      "statedGoal": "",
+      "evidence": [],
+      "shareholderAlignment": "",
+      "riskIfWrong": ""
+    },
     "strengths": [],
     "risks": []
+  },
+  "insiderAndBuybackAssessment": {
+    "reviewWindow": "",
+    "managementTransactions": {
+      "summary": "",
+      "purchases": [],
+      "sales": [],
+      "notableContext": []
+    },
+    "buybackProgram": {
+      "authorization": "",
+      "recentExecution": "",
+      "shareCountEffect": "",
+      "capitalAllocationAssessment": ""
+    },
+    "thesisImpact": "unknown",
+    "missingInformation": []
   },
   "nextEvidenceNeeded": [],
   "supportingEvidence": [],

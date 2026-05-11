@@ -28,4 +28,14 @@ Review latest files in stocks/TICKER/data/raw/company-info/ and stocks/TICKER/da
 
 ## CEO / leadership facts to carry into leadership-analysis.md
 
+- Prior success and failure stories:
+- Observable management style evidence:
+- CEO's main goal at the current company:
+
+## Insider / buyback facts to carry into insider-and-buybacks.md
+
+- Recent management-team stock purchases/sales:
+- Company stock buyback authorization and execution:
+- Share-count effect:
+
 ## Questions for deeper review

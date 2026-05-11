@@ -14,7 +14,7 @@ Each stock ticker has its own folder under `stocks/`. That folder stores:
 
 The repository root also has `index.html`, a local browser entry point for stock index pages. Run `npm run build:index` after adding or updating ticker folders to generate the ignored `index-data.js` file and each ignored `stocks/<TICKER>/index.html` page.
 
-Summaries are written for non-financial readers. They should start with the bottom line, explain how the stock can make money, explain how it can lose money, state whether the stock is cheap enough under an appropriate valuation model, assess CEO/leadership quality, review whether prior calls were accurate, and define any necessary finance terms in plain language. The framework is opportunity-seeking and should use directional signals when evidence supports them, while still documenting uncertainty and downside risk.
+Summaries are written for non-financial readers. They should start with the bottom line, explain how the stock can make money, explain how it can lose money, state whether the stock is cheap enough under an appropriate valuation model, assess CEO/leadership quality, review recent management-team stock purchases/sales and company buybacks, review whether prior calls were accurate, and define any necessary finance terms in plain language. CEO research should cover prior success and failure patterns, observable management style, and the CEO's main current-company goal. The framework is opportunity-seeking and should use directional signals when evidence supports them, while still documenting uncertainty and downside risk.
 
 Codex should read `AGENTS.md` first, then follow the linked rule files and relevant skills under `.agents/skills/`.
 

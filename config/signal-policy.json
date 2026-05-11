@@ -25,6 +25,7 @@
     "mustIncludeInvalidationTriggers": true,
     "mustIncludeValuationAssessment": true,
     "mustIncludeLeadershipAssessment": true,
+    "mustIncludeInsiderAndBuybackAssessment": true,
     "mustIncludePriorThesisReview": true
   },
   "priorThesisReviewPolicy": {
@@ -86,10 +87,31 @@
       "ceoName",
       "founderStatus",
       "preCeoBackground",
+      "priorTrackRecord",
+      "managementStyle",
+      "currentCompanyGoal",
       "executionPattern",
       "strategicClarity",
       "uniqueAdvantages",
       "redFlags"
+    ]
+  },
+  "insiderAndBuybackPolicy": {
+    "required": true,
+    "defaultReviewWindow": "3-12 months",
+    "requiredFields": [
+      "reviewWindow",
+      "managementTransactions",
+      "buybackProgram",
+      "thesisImpact",
+      "missingInformation"
+    ],
+    "thesisImpactLabels": [
+      "bullish",
+      "bearish",
+      "neutral",
+      "mixed",
+      "unknown"
     ]
   },
   "technicalTrendDefaults": {

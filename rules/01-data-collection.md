@@ -8,10 +8,11 @@ For each ticker run:
 2. Company profile and investor relations links if configured.
 3. Current price, market capitalization if available, and share-count context needed for valuation.
 4. Company leadership sources, including proxy statements, CEO biographies, shareholder letters, and earnings call transcripts when available.
-5. Trusted news and macro/regulatory sources.
-6. Daily market prices and trend metrics.
-7. Prior run summary and prior watch items.
-8. Prior signals, prior decision briefs, prior valuation ranges, prior price trend labels, and prior invalidation triggers.
+5. Recent ownership and capital-return sources, including Forms 3/4/5, 10-K/10-Q share repurchase tables, 8-K buyback authorizations, and company repurchase announcements when available.
+6. Trusted news and macro/regulatory sources.
+7. Daily market prices and trend metrics.
+8. Prior run summary and prior watch items.
+9. Prior signals, prior decision briefs, prior valuation ranges, prior price trend labels, and prior invalidation triggers.
 
 ## Raw data preservation
 
@@ -20,7 +21,7 @@ For each ticker run:
 - Store raw market data under `stocks/<TICKER>/data/raw/market/`.
 - Store normalized or derived data under `stocks/<TICKER>/data/processed/`.
 - Store run-specific output under `stocks/<TICKER>/runs/<RUN_DATE>/`.
-- Store valuation and CEO source notes in the run artifacts when raw data cannot be collected automatically.
+- Store valuation, CEO, insider transaction, and buyback source notes in the run artifacts when raw data cannot be collected automatically.
 - Store prior-thesis review and lessons learned in `stocks/<TICKER>/runs/<RUN_DATE>/thesis-review.md`.
 
 ## Missing data
@@ -33,7 +34,7 @@ If a tool cannot collect a source, record:
 - whether the missing data affects the final signal
 - fallback source, if any
 
-Missing current price, share count, financial statements, peer context, or CEO evidence must be treated as material if it prevents a valuation or leadership conclusion.
+Missing current price, share count, financial statements, peer context, CEO evidence, insider transaction evidence, or buyback evidence must be treated as material if it prevents a valuation, leadership, ownership, or capital-return conclusion.
 
 Missing prior-run data must be documented. For a first run, explicitly mark prior-call review as baseline with no prior judgment to score.
 

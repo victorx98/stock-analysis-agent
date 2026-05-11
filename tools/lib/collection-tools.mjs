@@ -1,4 +1,4 @@
-export const COLLECTION_TOOL_REGISTRY_VERSION = '2';
+export const COLLECTION_TOOL_REGISTRY_VERSION = '3';
 
 export const COLLECTION_TOOLS = [
   {
@@ -130,17 +130,27 @@ export function initialSourceRows(ticker, profile = {}) {
     tier: '1',
     pathOrUrl: `stocks/${ticker.toUpperCase()}/data/raw/sec/`,
     status: 'pending review',
-    notes: 'Review DEF 14A, 8-K CEO changes, Forms 3/4/5 when available.'
+    notes: 'Review DEF 14A, 8-K CEO changes, Forms 3/4/5, incentives, and governance context when available.'
   });
 
   rows.splice(2, 0, {
+    id: 'insider-transactions-buybacks',
+    source: 'Insider transactions / buybacks',
+    type: 'Forms 3/4/5, 10-K/10-Q repurchase table, 8-K authorizations',
+    tier: '1',
+    pathOrUrl: `stocks/${ticker.toUpperCase()}/data/raw/sec/`,
+    status: 'pending review',
+    notes: 'Search recent management-team stock purchases/sales and company repurchase authorization/execution.'
+  });
+
+  rows.splice(3, 0, {
     id: 'company-profile-ir',
     source: 'Company profile / investor relations',
     type: 'Business type, CEO bio, strategy',
     tier: '1',
     pathOrUrl: profile.investorRelationsUrl || `stocks/${ticker.toUpperCase()}/profile.json`,
     status: 'pending review',
-    notes: 'Confirm business classification, leadership background, and shareholder materials.'
+    notes: 'Confirm business classification, CEO background, prior wins/misses, management style, current goals, and shareholder materials.'
   });
 
   return rows;

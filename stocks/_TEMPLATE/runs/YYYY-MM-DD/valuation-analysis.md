@@ -43,6 +43,7 @@
 | Balance sheet can survive the thesis horizon | TBD | TBD |
 | Business is not in structural decline without offsetting catalyst | TBD | TBD |
 | Dilution risk is manageable | TBD | TBD |
+| Buybacks are not masking dilution or weakening the balance sheet | TBD | TBD |
 | Governance and leadership do not block value realization | TBD | TBD |
 | Catalyst exists to close the valuation gap | TBD | TBD |
 

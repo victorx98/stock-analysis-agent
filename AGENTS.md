@@ -54,7 +54,7 @@ Use relevant skills from `.agents/skills/` when the task matches their descripti
 4. Inspect the generated run folder under `stocks/<TICKER>/runs/<RUN_DATE>/`.
 5. Read prior `stocks/<TICKER>/summary.html`, prior `signal.json`, prior `decision-brief.md`, and prior watch items before making a new conclusion.
 6. Evaluate whether earlier judgments were accurate, inaccurate, early, late, or still untested; explain why and record lessons in `thesis-review.md`.
-7. Analyze SEC filings, news, fundamentals, catalysts, risks, valuation model fit, CEO/leadership quality, and market trend metrics.
+7. Analyze SEC filings, news, fundamentals, catalysts, risks, valuation model fit, CEO/leadership quality, recent management stock transactions, company buybacks, and market trend metrics.
 8. Produce a final run brief in `decision-brief.md` and update `summary.html` only after evidence review, including a historical trend summary and prior-judgment reflection.
 9. Run `npm run build:index` to refresh the local, ignored `index-data.js` directory data used by root `index.html`.
 
@@ -102,6 +102,7 @@ Each `stocks/<TICKER>/runs/<RUN_DATE>/` folder should contain:
 - `fundamental-notes.md`
 - `valuation-analysis.md`
 - `leadership-analysis.md`
+- `insider-and-buybacks.md`
 - `thesis-review.md`
 - `risk-register.md`
 - `signal.json`
@@ -127,7 +128,8 @@ A stock analysis run is complete only when:
 4. News and catalysts were categorized by materiality.
 5. Valuation was assessed using model(s) appropriate to the company's industry, business type, and lifecycle, or missing valuation data was explicitly documented.
 6. CEO/leadership quality was assessed from sourced evidence, or missing leadership data was explicitly documented.
-7. Prior conclusions, invalidation triggers, and watch items were reviewed for accuracy and lessons learned.
-8. Technical trend metrics were computed or marked unavailable.
-9. The final signal includes contrary evidence and invalidation triggers.
-10. `stocks/<TICKER>/summary.html` is updated with what to watch next, a historical trend summary, and a reflection on prior calls.
+7. Recent management-team stock sales/purchases and company stock buybacks were reviewed, or missing transaction/repurchase data was explicitly documented.
+8. Prior conclusions, invalidation triggers, and watch items were reviewed for accuracy and lessons learned.
+9. Technical trend metrics were computed or marked unavailable.
+10. The final signal includes contrary evidence and invalidation triggers.
+11. `stocks/<TICKER>/summary.html` is updated with what to watch next, a historical trend summary, and a reflection on prior calls.

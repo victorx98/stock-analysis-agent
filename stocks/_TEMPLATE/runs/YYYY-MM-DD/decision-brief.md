@@ -51,7 +51,17 @@
 - CEO: TBD
 - Founder / co-founder: TBD
 - Leadership classification: leadership_unknown
+- Prior success/failure pattern: TBD
+- Observable management style and likely impact: TBD
+- CEO's main current-company goal: TBD
 - Execution edge or risk: TBD
+
+## Insider and buyback takeaways
+
+- Management-team stock purchases/sales: TBD
+- Company stock buyback authorization/execution: TBD
+- Share-count effect: TBD
+- Thesis impact: unknown
 
 ## Market trend takeaways
 

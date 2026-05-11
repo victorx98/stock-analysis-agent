@@ -11,6 +11,24 @@
 
 ## Career background before CEO
 
+## Prior success and failure stories
+
+| Story | Success / Failure / Mixed | Evidence | What it suggests about the CEO |
+|---|---|---|---|
+| TBD | TBD | TBD | TBD |
+
+## Observable personality and management style
+
+| Observable behavior | Evidence | Possible impact on current company |
+|---|---|---|
+| TBD | TBD | TBD |
+
+## CEO's main goal at the current company
+
+| Goal or priority | Evidence | Shareholder alignment | Risk if wrong |
+|---|---|---|---|
+| TBD | TBD | TBD | TBD |
+
 ## Observable execution pattern
 
 ## Strategic clarity on the current company situation

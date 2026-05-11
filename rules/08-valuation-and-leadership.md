@@ -50,7 +50,7 @@ Use the model family that matches the business economics:
 5. Bear, base, and bull value ranges, or an explanation of why ranges cannot be estimated.
 6. Margin of safety versus current price.
 7. Classification: `severely_undervalued`, `moderately_undervalued`, `fairly_valued`, `overvalued`, or `valuation_uncertain`.
-8. Cheap-trap checks, including balance sheet pressure, structural decline, dilution risk, governance risk, and missing catalysts.
+8. Cheap-trap checks, including balance sheet pressure, structural decline, dilution risk, governance risk, buyback quality, insider-selling pressure, and missing catalysts.
 9. Evidence that could close the valuation gap.
 
 Use conservative assumptions for the base case. A stock should normally require at least roughly 35% upside to a conservative base-case value, plus survivability and identifiable catalysts, before being called `severely_undervalued`. If upside depends only on aggressive assumptions, classify it lower or mark it uncertain.
@@ -68,18 +68,30 @@ Use conservative assumptions for the base case. A stock should normally require 
 
 Every run must assess the current CEO or equivalent top operator. Use sourced evidence, not reputation or personality guesses.
 
+Every leadership review must answer three CEO research questions in plain English:
+
+1. What do the CEO's prior success and failure stories suggest about likely strengths, blind spots, risk tolerance, capital allocation, product judgment, hiring judgment, or crisis behavior?
+2. What observable personality and management style can be inferred from sourced actions and communications, and how could that style help or hurt the current company?
+3. What appears to be the CEO's main goal at the current company, and is that goal aligned with long-term shareholder value?
+
 `leadership-analysis.md` must include:
 
 1. CEO name, role start date, and whether the CEO is a founder or co-founder.
 2. Ownership and incentive alignment if available from proxy filings or insider ownership data.
 3. Career background before becoming CEO, including roles, operating domains, technical expertise, capital allocation experience, and prior successes or failures.
-4. Observable management style and execution pattern, supported by actions such as product cadence, cost discipline, M&A, capital returns, hiring, restructuring, or crisis response.
-5. Whether recent letters, earnings calls, interviews, filings, or investor presentations show a clear diagnosis of the company's current situation.
-6. Any unique advantage the CEO may bring, such as founder vision, domain expertise, customer credibility, engineering depth, regulatory experience, turnaround skill, or capital allocation discipline.
-7. Red flags, including vague strategy, repeated missed targets, promotional communication, poor capital allocation, governance concerns, excessive compensation, insider selling without context, or high executive turnover.
-8. Leadership classification: `leadership_edge`, `adequate_leadership`, `leadership_risk`, or `leadership_unknown`.
+4. Prior success and failure story analysis: list the most relevant wins and misses, cite the evidence, and explain what those stories suggest about the CEO's repeatable pattern.
+5. Observable personality and management style: describe only source-backed behavior, such as communication candor, decentralization versus control, product intensity, cost discipline, willingness to change course, hiring standards, acquisition style, crisis response, or treatment of shareholders and employees.
+6. Likely impact of that style on the current company, including where it could create an execution edge and where it could create operational, cultural, governance, or strategic risk.
+7. Main goal at the current company: summarize the CEO's stated or strongly evidenced priorities, such as growth, profitability, turnaround, product renewal, market share, balance sheet repair, capital returns, acquisition integration, regulatory approval, or sale of the company.
+8. Whether the main goal is realistic, measurable, and aligned with shareholder value, based on incentive plans, capital allocation, strategy statements, and operating evidence.
+9. Whether recent letters, earnings calls, interviews, filings, or investor presentations show a clear diagnosis of the company's current situation.
+10. Any unique advantage the CEO may bring, such as founder vision, domain expertise, customer credibility, engineering depth, regulatory experience, turnaround skill, or capital allocation discipline.
+11. Red flags, including vague strategy, repeated missed targets, promotional communication, poor capital allocation, governance concerns, excessive compensation, insider selling without context, high executive turnover, culture risk, or a stated goal that conflicts with shareholders.
+12. Leadership classification: `leadership_edge`, `adequate_leadership`, `leadership_risk`, or `leadership_unknown`.
 
 Founder-led status is evidence, not a conclusion. A founder CEO can be a major advantage when ownership, product insight, and execution are strong. It can also be a risk when governance is weak, succession planning is poor, or strategy is unclear.
+
+Do not psychoanalyze the CEO. If describing personality, frame it as an evidence-based operating style inferred from repeated public actions, decisions, incentives, and communications. Separate durable patterns from one-time events.
 
 ## Evidence sources for CEO analysis
 
@@ -89,9 +101,28 @@ Prefer:
 - 10-K and 10-Q discussion for strategy, risk, and operating priorities.
 - Company investor relations pages, shareholder letters, and earnings call transcripts.
 - Material 8-K filings for CEO changes, employment agreements, restructuring plans, or major strategic shifts.
-- Reputable long-form profiles or interviews only as secondary context.
+- Reputable long-form profiles, interviews, conference appearances, and books only as secondary context for personality or management-style claims.
 
 Do not use social-media impressions or unsourced biographical claims as decision-grade evidence.
+
+## Insider transactions and company buybacks
+
+Every run must separately review recent management-team stock sales/purchases and company stock buybacks. Record the work in `insider-and-buybacks.md`.
+
+`insider-and-buybacks.md` must include:
+
+1. Review window used, normally the most recent 3-12 months depending on company filing cadence and thesis horizon.
+2. Management-team transaction summary, including CEO, CFO, named executive officers, directors, and other clearly material insiders when available.
+3. Transaction type: open-market buy, open-market sale, option exercise and sale, tax withholding, planned trading plan sale, grant/award, gift, or other.
+4. Size and context: shares, approximate dollar value if available, percentage of direct holdings if available, post-transaction ownership, and whether the activity is repeated or one-time.
+5. Buyback authorization and execution: authorization date, authorized amount, amount remaining, shares/dollars repurchased in the latest period, average price if disclosed, and whether diluted share count is actually falling.
+6. Capital allocation judgment: whether buybacks appear value-accretive, neutral, cosmetic, or harmful given valuation, balance sheet condition, dilution, and investment needs.
+7. Interpretation: whether insider activity and buybacks are bullish, bearish, neutral, mixed, or unavailable for the thesis.
+8. Missing data and next search items.
+
+Do not treat every insider sale as bearish. Planned sales, tax withholding, option exercises, diversification, gifts, and small sales relative to holdings may be neutral. Open-market purchases by multiple insiders, especially after bad news or at depressed valuations, can be positive but still require business and valuation evidence.
+
+Do not treat buyback announcements as proof of shareholder-friendly capital allocation. Check execution, price paid, balance sheet cost, dilution offset, and whether total share count actually declines.
 
 ## Signal implications
 
@@ -100,5 +131,5 @@ Valuation and leadership must influence the final signal:
 - `strong_buy_watch` normally requires severe or clear moderate undervaluation, a credible path to close the gap, and no major leadership red flag.
 - `buy_watch` can be used when valuation is attractive but some uncertainty remains, or when business quality and CEO execution plausibly justify the current valuation with upside.
 - `hold_neutral` is appropriate when valuation is unclear or fair and no strong catalyst exists.
-- `sell_watch` or `strong_sell_watch` is appropriate when the stock is expensive relative to realistic outcomes, or when leadership and governance risks undermine the thesis.
+- `sell_watch` or `strong_sell_watch` is appropriate when the stock is expensive relative to realistic outcomes, when leadership and governance risks undermine the thesis, or when insider selling, dilution, or poor buybacks materially weaken shareholder alignment.
 - `insufficient_evidence` is appropriate when current price, financial inputs, or CEO evidence are too weak to support a valuation or leadership judgment.

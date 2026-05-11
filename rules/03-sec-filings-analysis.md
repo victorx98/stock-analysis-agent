@@ -9,7 +9,7 @@ Review these first when available:
 - `8-K`: material events.
 - `DEF 14A`: governance, executive compensation, voting matters.
 - `S-1`, `S-3`, `424B`: securities offerings and dilution risk.
-- `SC 13D`, `SC 13G`, `Form 4`: ownership and insider activity context.
+- `SC 13D`, `SC 13G`, Forms `3`, `4`, and `5`: ownership and insider activity context.
 
 ## What to extract
 
@@ -25,7 +25,8 @@ For each material filing:
 - legal/regulatory updates
 - management tone and guidance changes
 - CEO or executive changes, founder status if disclosed, compensation incentives, ownership alignment, and governance signals
-- share count, dilution, buybacks, dividends
+- recent management-team stock sales and purchases, including whether they are open-market transactions, option exercises, tax withholding, planned sales, gifts, or grants
+- share count, dilution, buybacks, buyback authorizations, buyback execution, dividends
 
 ## Change detection
 
@@ -49,4 +50,5 @@ Update `sec-filings.md` with:
 3. Material new information.
 4. Deterioration/improvement signals.
 5. CEO, governance, incentive, and management clarity signals when available.
-6. Open questions for the next run.
+6. Insider transaction and company buyback signals when available.
+7. Open questions for the next run.

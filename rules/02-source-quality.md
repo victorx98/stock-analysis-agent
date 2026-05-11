@@ -33,6 +33,9 @@ For material claims, ask:
 4. Is there conflicting evidence?
 5. Is the claim material to revenue, margin, cash flow, valuation, risk, or investor sentiment?
 6. For CEO claims, does the source show observable background, incentives, decisions, or execution instead of unsupported personality judgment?
+7. For CEO style or personality claims, is the claim framed as an inference from repeated sourced behavior rather than a psychological diagnosis?
+8. For insider transaction claims, does the evidence distinguish open-market buys/sales from grants, option exercises, tax withholding, gifts, and planned trading plans?
+9. For buyback claims, does the evidence show actual repurchase execution and share-count effect, not only an authorization headline?
 
 ## Citation practice inside artifacts
 

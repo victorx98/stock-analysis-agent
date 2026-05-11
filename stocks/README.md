@@ -19,7 +19,7 @@ stocks/AAPL/
     └── 2026-05-09/
 ```
 
-Each run folder should include valuation, leadership, and prior-thesis review artifacts in addition to the SEC, news, market, risk, signal, and decision brief files. `valuation-analysis.md` records the model family used for the company's industry/business type and whether the current price is cheap enough. `leadership-analysis.md` records CEO background, founder status, strategic clarity, execution evidence, and leadership risks. `thesis-review.md` scores whether earlier judgments were accurate, inaccurate, early, late, or still untested, and records lessons for the current run.
+Each run folder should include valuation, leadership, insider/buyback, and prior-thesis review artifacts in addition to the SEC, news, market, risk, signal, and decision brief files. `valuation-analysis.md` records the model family used for the company's industry/business type and whether the current price is cheap enough. `leadership-analysis.md` records CEO background, founder status, prior success and failure patterns, observable management style, the CEO's main current-company goal, strategic clarity, execution evidence, and leadership risks. `insider-and-buybacks.md` records recent management-team stock purchases/sales, buyback authorization and execution, share-count effect, and thesis impact. `thesis-review.md` scores whether earlier judgments were accurate, inaccurate, early, late, or still untested, and records lessons for the current run.
 
 Use `_TEMPLATE/` only as the source for new ticker folders. Do not write real analysis into `_TEMPLATE/`.
 

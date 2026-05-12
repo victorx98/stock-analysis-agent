@@ -25,6 +25,12 @@
       "notes": "Initial long-term research run completed 2026-05-10."
     },
     {
+      "ticker": "SLDE",
+      "company": "Slide Insurance Holdings, Inc.",
+      "enabled": true,
+      "notes": "Initial long-term research run completed 2026-05-11."
+    },
+    {
       "ticker": "AAPL",
       "company": "Apple Inc.",
       "enabled": false,

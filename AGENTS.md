@@ -114,6 +114,8 @@ Each `stocks/<TICKER>/runs/<RUN_DATE>/` folder should contain:
 - `decision-brief.md`
 - `watchlist-next-run.md`
 
+For any market-wide, sector-wide, thematic, or other non-single-ticker HTML report under `reports/`, the top-level report must be a navigable summary page. For each section whose conclusion depends on collected sources, computed data, searched material, or other artifacts, create a linked section-detail HTML page under a report-specific subdirectory. The detail page must show the material used, source tier or artifact origin, how it supports the section conclusion, what would change the conclusion, and any material missing inputs. Link each detail page directly from its corresponding section in the top-level report.
+
 ## Engineering expectations
 
 - Use Node.js 20+.

@@ -150,6 +150,17 @@ npm run build:index
 
 to generate the ignored `index-data.js` file and ignored `stocks/<TICKER>/index.html` pages from local stock artifacts.
 
+## Market-wide and thematic reports
+
+Any market-wide, sector-wide, thematic, macro, or cross-ticker HTML report under `reports/` must use a hub-and-detail structure:
+
+- The top-level report should remain a plain-English summary that can be read quickly.
+- For every section whose conclusion depends on collected material, computed data, searched evidence, or a working artifact, create a linked section-detail HTML page under a report-specific subdirectory, such as `reports/<REPORT_SLUG>/`.
+- Each section-detail page must include the section conclusion, evidence or artifact table, source tier or artifact origin, interpretation chain, contrary evidence or limits, and what would change the conclusion.
+- The top-level report must include a visible link from each evidence-bearing section to its matching detail page.
+- Do not create detail pages for boilerplate sections that do not contain a research conclusion, such as a research-only disclaimer.
+- Keep all report and detail pages standalone or locally linked; do not depend on external JavaScript, CSS CDNs, remote images, paywalled content, or hidden runtime state.
+
 ## JSON signal schema
 
 Every `signal.json` must include:

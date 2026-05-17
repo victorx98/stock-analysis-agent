@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Market Correction Risk And Undervalued Sectors - 2026-05-17</title>
+  <style>
+    :root {
+      --bg: #f8f7f4;
+      --panel: #ffffff;
+      --ink: #111827;
+      --muted: #6b7280;
+      --border: #e5e1d8;
+      --accent: #1e40af;
+      --bull: #15803d;
+      --bear: #b91c1c;
+      --neutral: #b45309;
+      --mono: ui-monospace, "SF Mono", Menlo, monospace;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.65 system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 44px 0 72px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { margin-bottom: 26px; font-size: 0.88rem; }
+    header { margin-bottom: 28px; }
+    h1 {
+      font: 700 clamp(1.8rem, 4vw, 3rem)/1.1 var(--serif);
+      margin-bottom: 10px;
+    }
+    .subtitle { color: var(--muted); max-width: 780px; }
+    .meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    h2 {
+      font-size: 1.05rem;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+    h3 {
+      font-size: 0.92rem;
+      margin: 18px 0 6px;
+    }
+    p { margin-bottom: 12px; }
+    ul { margin: 8px 0 0 19px; }
+    li { margin: 6px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 4px;
+      font-size: 0.9rem;
+    }
+    th {
+      background: #faf9f7;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 9px 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    td {
+      vertical-align: top;
+      padding: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:last-child td { border-bottom: 0; }
+    code, .mono {
+      font-family: var(--mono);
+      font-size: 0.86em;
+      background: #ededea;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .tile {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfaf8;
+    }
+    .label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.74rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .value {
+      font-family: var(--mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .good { color: var(--bull); }
+    .risk { color: var(--bear); }
+    .watch { color: var(--neutral); }
+    .disclaimer {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .detail-link {
+      display: inline-block;
+      margin: -4px 0 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    @media (max-width: 760px) {
+      main { padding-top: 28px; }
+      section { padding: 16px; }
+      .grid { grid-template-columns: 1fr; }
+      table, thead, tbody, tr, th, td { display: block; }
+      thead { display: none; }
+      td { padding: 8px 0; border-bottom: 0; }
+      td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--muted);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+      }
+      tr { border-bottom: 1px solid var(--border); padding: 8px 0; }
+    }
+  </style>
+</head>
+<body>
+  <main data-report="market-correction-undervalued-sectors" data-last-updated="2026-05-17">
+    <nav><a href="../index.html">&lt;- Back to Stock Analysis Index</a></nav>
+
+    <header>
+      <h1>Market Correction Risk And Undervalued Sectors</h1>
+      <p class="subtitle">A market-wide research brief on correction risk, the AI bubble question, undervalued sectors, individual stock research candidates, and safer places to hide if the market sells off.</p>
+      <div class="meta">
+        <span>Run date: 2026-05-17</span>
+        <span>Horizon: 6-24 months</span>
+        <span>Classification: research support only</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>Plain-English Bottom Line</h2>
+      <a class="detail-link" href="2026-05-17-market-correction-undervalued-sectors/01-bottom-line-method.html">Section detail -&gt;</a>
+      <p><strong>Normal correction risk is high; a 2008-style crash is not the base case.</strong> My rough research estimate is a 45-60% probability of a 10%+ S&amp;P 500 correction in the next 12 months, a 20-30% probability of a 20%+ bear market, and a 10-15% probability of a deeper crash. The deeper-crash path most likely needs multiple shocks at once: AI capex confidence breaks, long-term rates rise or stay high, credit spreads widen, and forced selling hits crowded risk assets.</p>
+      <p>The best hunting ground is not the hottest AI hardware trade. It is quality cash-flow businesses where fear is already in the price: healthcare, select REITs, select financials, communication platforms, and software names where AI disruption fears have outrun evidence.</p>
+      <div class="grid">
+        <div class="tile">
+          <span class="label">Correction Risk</span>
+          <span class="value watch">Elevated</span>
+        </div>
+        <div class="tile">
+          <span class="label">Most Attractive Sector Work</span>
+          <span class="value good">Healthcare</span>
+        </div>
+        <div class="tile">
+          <span class="label">Safest Optionality</span>
+          <span class="value">T-bills</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why The Market Can Correct</h2>
+      <a class="detail-link" href="2026-05-17-market-correction-undervalued-sectors/02-correction-risk-evidence.html">Section detail -&gt;</a>
+      <table>
+        <thead>
+          <tr>
+            <th>Risk</th>
+            <th>Evidence</th>
+            <th>Interpretation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Risk">Crowded AI valuation and capex expectations</td>
+            <td data-label="Evidence">The Federal Reserve's May 2026 Financial Stability Report flags risk-asset correction risk tied to AI valuation concerns and debt-funded AI capex.</td>
+            <td data-label="Interpretation">AI revenue is real, but the public-market pricing of chips, power, data centers, and growth software may assume too much perfect execution.</td>
+          </tr>
+          <tr>
+            <td data-label="Risk">Fiscal debt and rate pressure</td>
+            <td data-label="Evidence">CBO/CRFB data show debt held by the public projected near 120% of GDP by 2036, with net interest projected above $2T by 2036.</td>
+            <td data-label="Interpretation">Debt is usually a slow valuation headwind, not an automatic crash trigger. It becomes acute if bond buyers demand higher yields during an equity selloff.</td>
+          </tr>
+          <tr>
+            <td data-label="Risk">Private credit and refinancing stress</td>
+            <td data-label="Evidence">The Fed report continues to discuss leverage, credit quality, and vulnerabilities outside traditional banks.</td>
+            <td data-label="Interpretation">This is a hidden-transmission risk. Public equities may not price it until defaults or fund liquidity issues become visible.</td>
+          </tr>
+          <tr>
+            <td data-label="Risk">Market concentration</td>
+            <td data-label="Evidence">Price action through 2026-05-15 showed QQQ and XLK strongly outperforming most equal-weight and defensive sectors.</td>
+            <td data-label="Interpretation">A few winning themes can keep indexes high while cheaper sectors lag. If the leaders break, index downside can be sharper than broad averages suggest.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Berkshire And The Cash Signal</h2>
+      <a class="detail-link" href="2026-05-17-market-correction-undervalued-sectors/03-berkshire-cash-evidence.html">Section detail -&gt;</a>
+      <p>Berkshire's caution is real. Its Q1 2026 filing says insurance and other businesses held $373.5B of cash, cash equivalents, and U.S. Treasury bills net of unsettled purchases at March 31, 2026. The same filing shows $305.7B in equity and fixed-maturity securities, excluding equity-method investments.</p>
+      <p><strong>Interpretation:</strong> Berkshire is not saying every stock is uninvestable. It is saying optionality is valuable when expected returns are not compelling enough. That supports a barbell: keep liquid cash/T-bills for future forced selling, while researching quality names that already price in fear.</p>
+    </section>
+
+    <section>
+      <h2>AI Bubble Check</h2>
+      <a class="detail-link" href="2026-05-17-market-correction-undervalued-sectors/04-ai-bubble-evidence.html">Section detail -&gt;</a>
+      <p>The AI story is not fake. OpenAI reported about $2B/month in revenue and more than 900M weekly ChatGPT users in its March 2026 update. Anthropic said run-rate revenue surpassed $30B in April 2026. Those are real business signals.</p>
+      <p>The bubble risk is not "AI has no demand." The risk is that investors extrapolate real demand into unrealistic margins, unlimited data-center returns, excessive chip orders, and high software multiples for companies whose AI monetization is still unproven.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>AI Bucket</th>
+            <th>Research Judgment</th>
+            <th>What Would Change It</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="AI Bucket">Frontier model demand</td>
+            <td data-label="Research Judgment">Real and large, based on reported OpenAI and Anthropic run-rate scale.</td>
+            <td data-label="What Would Change It">Revenue growth decelerates while compute costs and capex commitments keep rising.</td>
+          </tr>
+          <tr>
+            <td data-label="AI Bucket">Semiconductor/data-center beneficiaries</td>
+            <td data-label="Research Judgment">Powerful but crowded. Valuation risk is high when expectations require persistent scarcity and huge capex returns.</td>
+            <td data-label="What Would Change It">Order cancellations, lower utilization, or falling GPU/data-center pricing.</td>
+          </tr>
+          <tr>
+            <td data-label="AI Bucket">Software incumbents</td>
+            <td data-label="Research Judgment">Stock-by-stock. Some are AI winners, some are disrupted, many are still unproven.</td>
+            <td data-label="What Would Change It">Retention, backlog, usage, and AI add-on annual contract value show durable monetization.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Undervalued Sector Ranking</h2>
+      <a class="detail-link" href="2026-05-17-market-correction-undervalued-sectors/05-sector-ranking-method.html">Section detail -&gt;</a>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Sector</th>
+            <th>Why It Looks Interesting</th>
+            <th>Main Trap</th>
+            <th>Research Candidates</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Rank">1</td>
+            <td data-label="Sector">Healthcare</td>
+            <td data-label="Why It Looks Interesting">Defensive demand, valuation reset, and less direct AI-capex crowding. XLV lagged tech in 2026 price action.</td>
+            <td data-label="Main Trap">Policy/reimbursement risk, patent cliffs, and payer margin pressure.</td>
+            <td data-label="Research Candidates"><span class="mono">ELV</span>, <span class="mono">IQV</span>, <span class="mono">GILD</span>, <span class="mono">BMY</span>, <span class="mono">PFE</span>, <span class="mono">UNH</span>, <span class="mono">CVS</span></td>
+          </tr>
+          <tr>
+            <td data-label="Rank">2</td>
+            <td data-label="Sector">Select REITs</td>
+            <td data-label="Why It Looks Interesting">Rate-sensitive assets could re-rate if long-term yields stabilize. Good REITs can offer hard-asset cash flow.</td>
+            <td data-label="Main Trap">Debt maturities and weak property types. Office remains dangerous without asset-level proof.</td>
+            <td data-label="Research Candidates"><span class="mono">INVH</span>, <span class="mono">AVB</span>, <span class="mono">DOC</span>, <span class="mono">FRT</span>, <span class="mono">CCI</span>, <span class="mono">O</span></td>
+          </tr>
+          <tr>
+            <td data-label="Rank">3</td>
+            <td data-label="Sector">Select financials</td>
+            <td data-label="Why It Looks Interesting">Some banks and asset managers look cheaper after rate/credit fears.</td>
+            <td data-label="Main Trap">Credit losses and deposit/repricing pressure can make low multiples value traps.</td>
+            <td data-label="Research Candidates"><span class="mono">JPM</span>, <span class="mono">PNC</span>, <span class="mono">USB</span>, <span class="mono">BX</span>, <span class="mono">LPLA</span></td>
+          </tr>
+          <tr>
+            <td data-label="Rank">4</td>
+            <td data-label="Sector">Communication platforms</td>
+            <td data-label="Why It Looks Interesting">Cash-flow rich platforms can fund AI internally and may trade cheaper than pure AI infrastructure winners.</td>
+            <td data-label="Main Trap">Regulation, ad-cycle exposure, and capex discipline.</td>
+            <td data-label="Research Candidates"><span class="mono">GOOGL</span>, <span class="mono">META</span>, <span class="mono">DIS</span>, <span class="mono">OMC</span></td>
+          </tr>
+          <tr>
+            <td data-label="Rank">5</td>
+            <td data-label="Sector">Cash-flow software after AI fear</td>
+            <td data-label="Why It Looks Interesting">Some names have sold off on disruption fear despite recurring revenue and free cash flow.</td>
+            <td data-label="Main Trap">AI may genuinely pressure seats, pricing, or switching costs.</td>
+            <td data-label="Research Candidates"><span class="mono">CRM</span>, <span class="mono">NOW</span>, selected vertical software</td>
+          </tr>
+          <tr>
+            <td data-label="Rank">6</td>
+            <td data-label="Sector">Energy</td>
+            <td data-label="Why It Looks Interesting">Inflation/geopolitical hedge and capital discipline.</td>
+            <td data-label="Main Trap">After the 2026 run, this is less obviously cheap and more commodity-cycle dependent.</td>
+            <td data-label="Research Candidates"><span class="mono">DVN</span>, <span class="mono">ET</span>, <span class="mono">SLB</span>, <span class="mono">BKR</span>, <span class="mono">XOM</span>, <span class="mono">CVX</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Price Action Snapshot</h2>
+      <a class="detail-link" href="2026-05-17-market-correction-undervalued-sectors/06-price-action-data.html">Section detail -&gt;</a>
+      <p>Market data pulled on 2026-05-17 from Yahoo chart data through 2026-05-15 showed strong momentum in broad indexes and technology, weaker healthcare/utilities, and mixed financials/real estate. Price action alone is not valuation proof, but it shows where sentiment is already hot or cold.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Ticker</th>
+            <th>Latest Close</th>
+            <th>12M Return</th>
+            <th>52W Drawdown</th>
+            <th>Trend Read</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="Ticker">SPY</td><td data-label="Latest Close">739.17</td><td data-label="12M Return">27.2%</td><td data-label="52W Drawdown">-1.2%</td><td data-label="Trend Read">Uptrend</td></tr>
+          <tr><td data-label="Ticker">QQQ</td><td data-label="Latest Close">708.93</td><td data-label="12M Return">37.3%</td><td data-label="52W Drawdown">-1.5%</td><td data-label="Trend Read">Uptrend, crowded leadership risk</td></tr>
+          <tr><td data-label="Ticker">XLK</td><td data-label="Latest Close">176.26</td><td data-label="12M Return">51.4%</td><td data-label="52W Drawdown">-1.8%</td><td data-label="Trend Read">Very strong, valuation caution</td></tr>
+          <tr><td data-label="Ticker">XLV</td><td data-label="Latest Close">145.10</td><td data-label="12M Return">14.7%</td><td data-label="52W Drawdown">-9.1%</td><td data-label="Trend Read">Weak downtrend, possible value setup</td></tr>
+          <tr><td data-label="Ticker">XLF</td><td data-label="Latest Close">51.10</td><td data-label="12M Return">1.9%</td><td data-label="52W Drawdown">-8.9%</td><td data-label="Trend Read">Sideways, credit-risk discount</td></tr>
+          <tr><td data-label="Ticker">XLRE</td><td data-label="Latest Close">43.23</td><td data-label="12M Return">9.8%</td><td data-label="52W Drawdown">-3.4%</td><td data-label="Trend Read">Uptrend but rate-sensitive</td></tr>
+          <tr><td data-label="Ticker">CRM</td><td data-label="Latest Close">173.51</td><td data-label="12M Return">-39.9%</td><td data-label="52W Drawdown">-40.0%</td><td data-label="Trend Read">Downtrend, requires fundamental proof</td></tr>
+          <tr><td data-label="Ticker">GOOGL</td><td data-label="Latest Close">396.78</td><td data-label="12M Return">140.8%</td><td data-label="52W Drawdown">-1.5%</td><td data-label="Trend Read">Strong, not contrarian anymore</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Safer Bets If A Big Correction Happens</h2>
+      <a class="detail-link" href="2026-05-17-market-correction-undervalued-sectors/07-correction-defense-framework.html">Section detail -&gt;</a>
+      <ul>
+        <li><strong>Short-duration Treasuries, T-bills, and high-quality money-market funds:</strong> best dry powder. This is the closest analog to Berkshire's current liquidity posture.</li>
+        <li><strong>Berkshire Hathaway:</strong> not cheap by default, but a practical all-weather compounder with liquidity, insurance float, and opportunistic capital allocation.</li>
+        <li><strong>Quality healthcare:</strong> usually less cyclical than tech or discretionary, but stock selection matters because policy and patent risks are real.</li>
+        <li><strong>Selected profitable platforms:</strong> high free cash flow and net cash can survive selloffs better than speculative growth.</li>
+        <li><strong>Gold/TIPS:</strong> useful fiscal/inflation hedges, but not automatically cheap after strong price moves.</li>
+      </ul>
+      <p><strong>Avoid calling long-duration bonds a universal safe bet.</strong> They help if recession drives rates lower. They can fail if the correction is caused by inflation, debt concerns, or a long-rate shock.</p>
+    </section>
+
+    <section>
+      <h2>Non-Consensus Edge Hypotheses</h2>
+      <a class="detail-link" href="2026-05-17-market-correction-undervalued-sectors/08-edge-hypotheses-detail.html">Section detail -&gt;</a>
+      <table>
+        <thead>
+          <tr>
+            <th>Hypothesis</th>
+            <th>Status</th>
+            <th>Why It May Matter</th>
+            <th>Disconfirming Evidence To Watch</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Hypothesis">AI winners may be real, but the best risk/reward is in non-obvious AI-adjacent cash-flow businesses.</td>
+            <td data-label="Status">Partly verified</td>
+            <td data-label="Why It May Matter">OpenAI/Anthropic demand validates AI, but valuation risk is highest in crowded infrastructure winners.</td>
+            <td data-label="Disconfirming Evidence To Watch">Software incumbents lose pricing power faster than they monetize AI.</td>
+          </tr>
+          <tr>
+            <td data-label="Hypothesis">Healthcare may be the cleaner value sector because it combines defensive demand with sentiment fatigue.</td>
+            <td data-label="Status">Monitor only</td>
+            <td data-label="Why It May Matter">XLV lagged tech and has weaker price action, which can create entry points if fundamentals hold.</td>
+            <td data-label="Disconfirming Evidence To Watch">Policy actions, margin misses, or drug-pipeline failures overwhelm valuation support.</td>
+          </tr>
+          <tr>
+            <td data-label="Hypothesis">T-bills are not just defense; they are an embedded call option on future forced selling.</td>
+            <td data-label="Status">Verified by capital-allocation logic</td>
+            <td data-label="Why It May Matter">Liquidity becomes valuable when volatility creates better prices.</td>
+            <td data-label="Disconfirming Evidence To Watch">Market broadens sustainably and cash yields fall quickly without equity valuation reset.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Source Inventory</h2>
+      <a class="detail-link" href="2026-05-17-market-correction-undervalued-sectors/09-source-inventory-detail.html">Section detail -&gt;</a>
+      <ul>
+        <li>Federal Reserve, Financial Stability Report, May 2026: <a href="https://www.federalreserve.gov/publications/files/financial-stability-report-20260508.pdf">federalreserve.gov</a></li>
+        <li>Berkshire Hathaway Q1 2026 10-Q: <a href="https://www.sec.gov/Archives/edgar/data/1067983/000119312526202243/brka-20260331.htm">sec.gov</a></li>
+        <li>CRFB summary of CBO February 2026 budget outlook: <a href="https://www.crfb.org/papers/cbos-february-2026-budget-and-economic-outlook">crfb.org</a></li>
+        <li>OpenAI March 31, 2026 business update: <a href="https://openai.com/index/accelerating-the-next-phase-ai/">openai.com</a></li>
+        <li>Anthropic April 6, 2026 partnership and revenue update: <a href="https://www.anthropic.com/news/google-broadcom-partnership-compute?_hsmi=352996231">anthropic.com</a></li>
+        <li>State Street SPDR sector ETF fact sheets for sector valuation context: <a href="https://www.ssga.com/us/en/intermediary/etfs/funds/the-health-care-select-sector-spdr-fund-xlv">XLV</a>, <a href="https://www.ssga.com/us/en/intermediary/etfs/funds/the-financial-select-sector-spdr-fund-xlf">XLF</a>, <a href="https://www.ssga.com/us/en/intermediary/etfs/funds/the-communication-services-select-sector-spdr-fund-xlc">XLC</a></li>
+        <li>Yahoo chart data accessed through public chart endpoint on 2026-05-17 for price-action snapshot through 2026-05-15.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Research-Only Disclaimer</h2>
+      <p class="disclaimer">This report is research support only. It is not personalized financial advice, a trade instruction, or a prediction with certainty. Market prices, company fundamentals, and macro risks can change quickly. Re-check primary sources before making any investment decision.</p>
+    </section>
+  </main>
+</body>
+</html>

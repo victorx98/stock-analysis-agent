@@ -151,6 +151,47 @@
     /* ── Empty ── */
     .empty { padding: 36px 24px; color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
 
+    /* -- Report links -- */
+    .report-section { margin-bottom: 28px; }
+    .section-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .report-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 20px;
+    }
+    .report-card h2 {
+      font-size: 1.05rem;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .report-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      max-width: 720px;
+    }
+    .report-meta {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .report-link {
+      white-space: nowrap;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 760px) {
       main { padding-top: 32px; }
@@ -170,6 +211,8 @@
       tr { border-bottom: 1px solid var(--border); padding: 10px 0; }
       tr:last-child { border-bottom: 0; }
       .conclusion { max-width: 100%; }
+      .report-card { grid-template-columns: 1fr; }
+      .report-link { white-space: normal; }
     }
   </style>
 </head>
@@ -179,6 +222,18 @@
       <h1>Stock Analysis</h1>
       <p class="subtitle">Research summaries indexed from <code>stocks/&lt;TICKER&gt;/index.html</code></p>
     </header>
+
+    <section class="report-section" aria-label="Market research reports">
+      <div class="section-title">Market Reports</div>
+      <div class="panel report-card">
+        <div>
+          <h2>Market Correction Risk And Undervalued Sectors</h2>
+          <p>Current macro-risk scan covering Berkshire's cash posture, AI monetization versus AI valuation risk, correction probabilities, undervalued sectors, candidate stocks, and safer correction hedges.</p>
+          <span class="report-meta">Last updated: 2026-05-17</span>
+        </div>
+        <a class="report-link" href="reports/2026-05-17-market-correction-undervalued-sectors.html">Open report -&gt;</a>
+      </div>
+    </section>
 
     <div class="stats" id="stats-bar" hidden>
       <div class="stat">

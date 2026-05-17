@@ -30,6 +30,17 @@ Use cautious, evidence-based labels:
 
 Technical signals are supporting evidence, not the whole thesis. Never issue a buy/sell signal from price action alone unless the task is explicitly technical-only.
 
+## Perception mismatch checks
+
+Use technicals to identify possible market-perception gaps:
+
+- price strength without fundamental proof, which may mean narrative is outrunning evidence
+- fundamental improvement without price confirmation, which may mean the market has not noticed
+- high short interest or extreme momentum when available, which may indicate crowded positioning
+- trend changes around obscure filings, product data, customer clues, or policy events that normal news coverage may have missed
+
+Carry plausible perception gaps into `edge-lab.md`; do not treat the chart itself as proof.
+
 ## Output expectations
 
 Update `market-trend.md` with:
@@ -39,3 +50,4 @@ Update `market-trend.md` with:
 3. Trend label.
 4. Momentum interpretation.
 5. Supportive and contradictory technical evidence.
+6. Perception mismatch ideas to test in `edge-lab.md`.

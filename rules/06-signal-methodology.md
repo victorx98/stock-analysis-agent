@@ -25,6 +25,7 @@ Consider these dimensions:
 8. Risk/reward: upside drivers vs downside scenarios.
 9. Prior thesis accuracy: whether prior signals, valuation ranges, risk calls, and watch items proved accurate, inaccurate, early, late, or still untested.
 10. Lessons learned: whether this run should change weighting, model choice, confidence, or watch items because of prior misses.
+11. Edge lab: whether any non-consensus hypothesis was found, verified, disproved, or converted into a watch item.
 
 ## Profit-seeking posture
 
@@ -41,6 +42,16 @@ Use a directional signal when evidence supports a clear risk/reward skew:
 
 Do not force bullishness. Aggressive means decisive and opportunity-seeking, not reckless or unsupported.
 
+## Edge-gated signal influence
+
+Unconventional ideas can improve the research edge only when handled through gates:
+
+- `unverified_lead`: can appear in watch items but must not change the signal.
+- `partly_verified`: can adjust confidence or scenario weighting if the rest of the evidence is consistent.
+- `verified_edge`: can influence the signal when it is supported by primary evidence, directly observed public data, or multiple independent reputable sources.
+- `disproved`: must be recorded as a rejected idea and should not influence the signal except as a lesson.
+- `monitor_only`: can become a next-run watch item when timing or evidence is not mature enough.
+
 ## Plain-English signal explanation
 
 Every signal must include:
@@ -53,6 +64,7 @@ Every signal must include:
 - `CEO read`: whether leadership is an edge, adequate, a risk, or unknown, including the CEO's prior-track-record lesson, observable management style, and main goal at the company.
 - `Insider/buyback read`: whether recent management-team trading and company repurchases support, weaken, or do not change the thesis.
 - `Prior call review`: whether the previous thesis was right, wrong, early, late, or still untested.
+- `Edge read`: what public analysis may be missing, whether that idea was verified, and how it affected the call.
 - `Lesson applied`: what changed in this run's method because of prior evidence.
 - `What the hardest term means`: short explanations for any important finance terms used.
 
@@ -68,6 +80,7 @@ Do not issue directional signals unless:
 - contrary evidence is included;
 - invalidation triggers are stated;
 - the time horizon is clear.
+- any edge hypothesis that influences the signal has passed the edge evidence gates.
 
 Use `insufficient_evidence` when data quality is too weak.
 

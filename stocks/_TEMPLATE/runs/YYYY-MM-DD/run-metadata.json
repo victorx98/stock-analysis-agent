@@ -7,7 +7,7 @@
   "toolVersions": {
     "framework": "0.1.0",
     "node": "",
-    "collectionToolRegistry": "3"
+    "collectionToolRegistry": "4"
   },
   "commands": [],
   "toolRuns": [],

@@ -34,6 +34,14 @@
 | Claim | Evidence | Source tier | Bull/Bear/Neutral | Confidence |
 |---|---|---|---|---|
 
+## Edge Lab Summary
+
+- Consensus view: TBD
+- Highest-conviction variant view: TBD
+- Edge status: none_found
+- Signal influence: none
+- What would disprove it: TBD
+
 ## SEC filing takeaways
 
 ## News and catalyst takeaways

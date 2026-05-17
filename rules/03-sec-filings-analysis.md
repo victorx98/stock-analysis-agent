@@ -11,6 +11,19 @@ Review these first when available:
 - `S-1`, `S-3`, `424B`: securities offerings and dilution risk.
 - `SC 13D`, `SC 13G`, Forms `3`, `4`, and `5`: ownership and insider activity context.
 
+## Edge extraction pass
+
+After the standard filing review, run a second pass asking what a normal summary might miss:
+
+- footnote changes that alter economics without changing headline revenue or EPS
+- unusual contract terms, penalties, minimum commitments, or customer concentration clues
+- dilution mechanics hidden in warrants, convertibles, ATM programs, earnouts, stock compensation, or preferred shares
+- risk-factor wording that became more specific, more urgent, or quietly disappeared
+- related-party, customer, supplier, geographic, or regulatory dependencies that could create a variant view
+- segment disclosures where a small line item could become material or where a large segment is masking deterioration
+
+Any such idea belongs in `edge-lab.md` until verified or disproved.
+
 ## What to extract
 
 For each material filing:
@@ -51,4 +64,5 @@ Update `sec-filings.md` with:
 4. Deterioration/improvement signals.
 5. CEO, governance, incentive, and management clarity signals when available.
 6. Insider transaction and company buyback signals when available.
-7. Open questions for the next run.
+7. Filing-based edge hypotheses or disproved edge ideas.
+8. Open questions for the next run.

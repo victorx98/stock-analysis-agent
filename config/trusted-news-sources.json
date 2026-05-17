@@ -24,6 +24,31 @@
       "anonymous forums"
     ]
   },
+  "leadSourcePolicy": {
+    "purpose": "Generate edge hypotheses only; do not use as decision-grade proof without corroboration.",
+    "allowedLeadTypes": [
+      "industry blogs",
+      "podcasts",
+      "expert commentary",
+      "forums",
+      "social posts",
+      "job postings",
+      "patents",
+      "customer reviews",
+      "app reviews",
+      "supplier/customer clues",
+      "government datasets",
+      "niche industry datasets"
+    ],
+    "excludedAsProof": [
+      "anonymous claims",
+      "unsourced screenshots",
+      "rumors",
+      "promotional newsletters",
+      "message-board price targets"
+    ],
+    "verificationRequired": true
+  },
   "rssFeeds": [
     {
       "name": "SEC Press Releases",

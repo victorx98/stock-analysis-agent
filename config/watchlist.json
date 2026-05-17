@@ -31,6 +31,12 @@
       "notes": "Initial long-term research run completed 2026-05-11."
     },
     {
+      "ticker": "FCEL",
+      "company": "FuelCell Energy, Inc.",
+      "enabled": true,
+      "notes": "Added for analysis 2026-05-17; initial collection pipeline completed."
+    },
+    {
       "ticker": "AAPL",
       "company": "Apple Inc.",
       "enabled": false,

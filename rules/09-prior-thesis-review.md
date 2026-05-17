@@ -15,6 +15,7 @@ Before synthesis, review available prior artifacts in this order:
 5. Prior `stocks/<TICKER>/runs/<PRIOR_RUN>/market-trend.md`
 6. Prior `stocks/<TICKER>/runs/<PRIOR_RUN>/watchlist-next-run.md`
 7. Prior `stocks/<TICKER>/runs/<PRIOR_RUN>/risk-register.md`
+8. Prior `stocks/<TICKER>/runs/<PRIOR_RUN>/edge-lab.md`
 
 If no prior run exists, mark the review as `baseline_no_prior_call`.
 
@@ -42,6 +43,7 @@ Evaluate at least:
 - whether prior risk weighting was too low, too high, or appropriate
 - whether the prior model choice was appropriate for the business type
 - whether management/CEO assessment held up
+- whether prior edge hypotheses were verified, disproved, too early, too late, or noise
 
 Do not score a prior call only by short-term price movement. A stock can move against a thesis for noise reasons. Explain whether price movement confirmed fundamentals, contradicted fundamentals, or remains inconclusive.
 
@@ -58,6 +60,7 @@ Do not score a prior call only by short-term price movement. A stock can move ag
 7. Why it was wrong, early, late, or still untested.
 8. Lesson applied in the current run.
 9. Changes to model weighting, risk weighting, confidence, or watch items.
+10. Review of prior edge hypotheses and whether any became decision-grade evidence.
 
 ## Summary requirement
 
@@ -69,5 +72,6 @@ The new `summary.html` must include a visible historical trend and prior-call re
 - valuation classification history
 - key thesis changes
 - prior-call accuracy and lessons learned
+- edge hypotheses that proved useful, failed, or remain watch items
 
 Use a table where possible. If there is enough data, include a simple static trend visualization or scorecard. Keep it plain-English and avoid implying precision that the data does not support.

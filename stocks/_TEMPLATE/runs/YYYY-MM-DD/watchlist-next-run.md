@@ -8,3 +8,4 @@
 - Search recent management-team stock purchases/sales and company stock buyback authorization/execution.
 - Recompute market trend metrics.
 - Revisit invalidation triggers from this run.
+- Recheck edge-lab hypotheses: mark each prior idea as verified, disproved, too early, or noise.

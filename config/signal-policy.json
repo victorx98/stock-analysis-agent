@@ -26,7 +26,8 @@
     "mustIncludeValuationAssessment": true,
     "mustIncludeLeadershipAssessment": true,
     "mustIncludeInsiderAndBuybackAssessment": true,
-    "mustIncludePriorThesisReview": true
+    "mustIncludePriorThesisReview": true,
+    "mustIncludeEdgeAssessment": true
   },
   "priorThesisReviewPolicy": {
     "required": true,
@@ -112,6 +113,43 @@
       "neutral",
       "mixed",
       "unknown"
+    ]
+  },
+  "edgePolicy": {
+    "required": true,
+    "defaultPosture": "gated_edge",
+    "artifact": "edge-lab.md",
+    "hypothesisStatuses": [
+      "unverified_lead",
+      "partly_verified",
+      "verified_edge",
+      "disproved",
+      "monitor_only"
+    ],
+    "edgeStatusLabels": [
+      "none_found",
+      "unverified_leads",
+      "partly_verified",
+      "verified_edge",
+      "disproved"
+    ],
+    "signalInfluenceLabels": [
+      "none",
+      "watch_item",
+      "confidence_adjustment",
+      "signal_driver"
+    ],
+    "gates": {
+      "tier3AloneMaxInfluence": "watch_item",
+      "signalDriverRequires": "Primary evidence, directly observed public data, or multiple independent reputable sources.",
+      "mustRecordDisprovedHypotheses": true
+    },
+    "requiredFields": [
+      "consensusView",
+      "highestConvictionVariantView",
+      "edgeStatus",
+      "signalInfluence",
+      "contrarianTheses"
     ]
   },
   "technicalTrendDefaults": {

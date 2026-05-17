@@ -9,10 +9,11 @@ For each ticker run:
 3. Current price, market capitalization if available, and share-count context needed for valuation.
 4. Company leadership sources, including proxy statements, CEO biographies, shareholder letters, and earnings call transcripts when available.
 5. Recent ownership and capital-return sources, including Forms 3/4/5, 10-K/10-Q share repurchase tables, 8-K buyback authorizations, and company repurchase announcements when available.
-6. Trusted news and macro/regulatory sources.
-7. Daily market prices and trend metrics.
-8. Prior run summary and prior watch items.
-9. Prior signals, prior decision briefs, prior valuation ranges, prior price trend labels, and prior invalidation triggers.
+6. Broad lead discovery for neglected ideas, including forums, social posts, podcasts, niche blogs, job postings, patents, customer reviews, app data, supplier/customer clues, government databases, unusual SEC exhibits, and industry datasets when relevant.
+7. Trusted news and macro/regulatory sources.
+8. Daily market prices and trend metrics.
+9. Prior run summary and prior watch items.
+10. Prior signals, prior decision briefs, prior valuation ranges, prior price trend labels, prior edge hypotheses, and prior invalidation triggers.
 
 ## Raw data preservation
 
@@ -22,6 +23,7 @@ For each ticker run:
 - Store normalized or derived data under `stocks/<TICKER>/data/processed/`.
 - Store run-specific output under `stocks/<TICKER>/runs/<RUN_DATE>/`.
 - Store valuation, CEO, insider transaction, and buyback source notes in the run artifacts when raw data cannot be collected automatically.
+- Store broad lead sources and verification attempts in `stocks/<TICKER>/runs/<RUN_DATE>/edge-lab.md`; preserve enough URLs, paths, or search terms for the lead to be repeatable.
 - Store prior-thesis review and lessons learned in `stocks/<TICKER>/runs/<RUN_DATE>/thesis-review.md`.
 
 ## Missing data
@@ -38,12 +40,15 @@ Missing current price, share count, financial statements, peer context, CEO evid
 
 Missing prior-run data must be documented. For a first run, explicitly mark prior-call review as baseline with no prior judgment to score.
 
+Missing broad lead discovery does not automatically block a signal, but it must be documented in `edge-lab.md` because it weakens the chance of finding a differentiated view.
+
 ## API keys and rate limits
 
 - Do not hardcode API keys.
 - Read keys from environment variables.
 - Respect rate limits and robots policies.
 - Do not scrape paywalled article bodies.
+- Do not treat anonymous or social-media claims as decision-grade evidence; use them only to generate hypotheses that are checked against better evidence.
 - Prefer official APIs and RSS feeds.
 
 ## Repeatability

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { collectionSteps, getTool, initialSourceRows } from '../lib/collection-tools.mjs';
@@ -29,14 +30,21 @@ assert.ok(runProfile.standardRunArtifacts.includes('valuation-analysis.md'));
 assert.ok(runProfile.standardRunArtifacts.includes('leadership-analysis.md'));
 assert.ok(runProfile.standardRunArtifacts.includes('insider-and-buybacks.md'));
 assert.ok(runProfile.standardRunArtifacts.includes('thesis-review.md'));
+assert.ok(runProfile.standardRunArtifacts.includes('edge-lab.md'));
 
 const signalPolicy = JSON.parse(readFileSync(new URL('../../config/signal-policy.json', import.meta.url), 'utf8'));
 assert.ok(signalPolicy.leadershipPolicy.requiredFields.includes('priorTrackRecord'));
 assert.ok(signalPolicy.leadershipPolicy.requiredFields.includes('managementStyle'));
 assert.ok(signalPolicy.leadershipPolicy.requiredFields.includes('currentCompanyGoal'));
 assert.equal(signalPolicy.minimumEvidenceForDirectionalSignal.mustIncludeInsiderAndBuybackAssessment, true);
+assert.equal(signalPolicy.minimumEvidenceForDirectionalSignal.mustIncludeEdgeAssessment, true);
 assert.ok(signalPolicy.insiderAndBuybackPolicy.requiredFields.includes('managementTransactions'));
 assert.ok(signalPolicy.insiderAndBuybackPolicy.requiredFields.includes('buybackProgram'));
+assert.equal(signalPolicy.edgePolicy.required, true);
+assert.ok(signalPolicy.edgePolicy.hypothesisStatuses.includes('verified_edge'));
+assert.ok(signalPolicy.edgePolicy.hypothesisStatuses.includes('disproved'));
+assert.ok(signalPolicy.edgePolicy.edgeStatusLabels.includes('unverified_leads'));
+assert.ok(signalPolicy.edgePolicy.signalInfluenceLabels.includes('signal_driver'));
 
 assert.equal(getTool('fetch-sec').name, 'SEC filings collector');
 assert.deepEqual(collectionSteps().map((tool) => tool.id), ['fetch-sec', 'fetch-company-info', 'fetch-news', 'fetch-market']);
@@ -44,6 +52,7 @@ assert.equal(getTool('fetch-company-info').name, 'Company info collector');
 assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'trusted-news'));
 assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'company-info'));
 assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'insider-transactions-buybacks'));
+assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'broad-lead-edge-sources'));
 
 assert.deepEqual(parseEnv('FOO=bar\nQUOTED="baz qux"\nexport SKIP_COMMENT=value # comment\n'), {
   FOO: 'bar',
@@ -128,12 +137,27 @@ assert.deepEqual(Object.keys(templateSignal.insiderAndBuybackAssessment.buybackP
   'shareCountEffect',
   'capitalAllocationAssessment'
 ]);
+assert.deepEqual(Object.keys(templateSignal.edgeAssessment), [
+  'consensusView',
+  'highestConvictionVariantView',
+  'edgeStatus',
+  'signalInfluence',
+  'contrarianTheses'
+]);
+assert.equal(templateSignal.edgeAssessment.edgeStatus, 'none_found');
+assert.equal(templateSignal.edgeAssessment.signalInfluence, 'none');
 assert.equal(templateSignal.priorThesisReview.accuracy, 'baseline_no_prior_call');
 
 const templateBrief = readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/decision-brief.md', import.meta.url), 'utf8');
 assert.ok(templateBrief.includes('## Collection and Tooling Notes'));
+assert.ok(templateBrief.includes('## Edge Lab Summary'));
 assert.ok(templateBrief.includes("CEO's main current-company goal"));
 assert.ok(templateBrief.includes('## Insider and buyback takeaways'));
+
+const templateEdgeLab = readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/edge-lab.md', import.meta.url), 'utf8');
+assert.ok(templateEdgeLab.includes('## Consensus View'));
+assert.ok(templateEdgeLab.includes('## Top Edge Hypotheses'));
+assert.ok(templateEdgeLab.includes('## Disconfirming Evidence'));
 
 const templateLeadership = readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/leadership-analysis.md', import.meta.url), 'utf8');
 assert.ok(templateLeadership.includes('## Prior success and failure stories'));
@@ -148,5 +172,27 @@ assert.ok(templateInsiderBuybacks.includes('## Capital allocation interpretation
 const templateMetadata = JSON.parse(readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/run-metadata.json', import.meta.url), 'utf8'));
 assert.ok(Array.isArray(templateMetadata.toolRuns));
 assert.ok(Array.isArray(templateMetadata.skippedSources));
+
+const tempRepoRoot = mkdtempSync(path.join(tmpdir(), 'stock-create-run-'));
+try {
+  const stockRoot = path.join(tempRepoRoot, 'stocks', 'EDGET');
+  mkdirSync(stockRoot, { recursive: true });
+  writeFileSync(path.join(stockRoot, 'profile.json'), JSON.stringify({ ticker: 'EDGET', company: 'Edge Test Co' }, null, 2), 'utf8');
+  const createRun = spawnSync(process.execPath, [
+    new URL('../create-run-analysis.mjs', import.meta.url).pathname,
+    '--ticker',
+    'EDGET',
+    '--date',
+    '2026-01-02'
+  ], { cwd: tempRepoRoot, encoding: 'utf8' });
+  assert.equal(createRun.status, 0, createRun.stderr || createRun.stdout);
+  const generatedRunDir = path.join(tempRepoRoot, 'stocks', 'EDGET', 'runs', '2026-01-02');
+  const generatedEdgeLab = readFileSync(path.join(generatedRunDir, 'edge-lab.md'), 'utf8');
+  const generatedSignal = JSON.parse(readFileSync(path.join(generatedRunDir, 'signal.json'), 'utf8'));
+  assert.ok(generatedEdgeLab.includes('## Top Edge Hypotheses'));
+  assert.equal(generatedSignal.edgeAssessment.edgeStatus, 'none_found');
+} finally {
+  rmSync(tempRepoRoot, { recursive: true, force: true });
+}
 
 console.log('Smoke tests passed.');

@@ -1,4 +1,4 @@
-export const COLLECTION_TOOL_REGISTRY_VERSION = '3';
+export const COLLECTION_TOOL_REGISTRY_VERSION = '4';
 
 export const COLLECTION_TOOLS = [
   {
@@ -151,6 +151,16 @@ export function initialSourceRows(ticker, profile = {}) {
     pathOrUrl: profile.investorRelationsUrl || `stocks/${ticker.toUpperCase()}/profile.json`,
     status: 'pending review',
     notes: 'Confirm business classification, CEO background, prior wins/misses, management style, current goals, and shareholder materials.'
+  });
+
+  rows.splice(4, 0, {
+    id: 'broad-lead-edge-sources',
+    source: 'Broad lead / edge sources',
+    type: 'Edge hypotheses',
+    tier: 'lead-only',
+    pathOrUrl: `stocks/${ticker.toUpperCase()}/runs/<RUN_DATE>/edge-lab.md`,
+    status: 'pending review',
+    notes: 'Search messy and non-consensus sources as leads, then verify or disprove before synthesis.'
   });
 
   return rows;

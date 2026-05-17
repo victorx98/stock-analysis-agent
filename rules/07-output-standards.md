@@ -29,6 +29,8 @@ Every `decision-brief.md` must use this structure:
 ## Evidence table
 | Claim | Evidence | Source tier | Bull/Bear/Neutral | Confidence |
 
+## Edge Lab Summary
+
 ## SEC filing takeaways
 
 ## News and catalyst takeaways
@@ -94,6 +96,7 @@ Key Numbers In Plain English
 What Changed In The Latest Run
 Historical Trend And Prior Call Review
 Key Evidence
+Edge Lab: What Public Analysis May Miss
 Valuation: Is This Cheap Enough?
 CEO / Leadership Read
 Insider / Buyback Activity
@@ -112,6 +115,8 @@ The "Historical Trend And Prior Call Review" section must summarize signal histo
 The "CEO / Leadership Read" section must include the CEO's prior-track-record lesson, observable management style, main current-company goal, leadership classification, and main edge or risk.
 
 The "Insider / Buyback Activity" section must summarize recent management-team purchases/sales, buyback authorization and execution, share-count effect, and thesis impact.
+
+The "Edge Lab: What Public Analysis May Miss" section must summarize the consensus view, the strongest variant hypothesis, its verification status, disconfirming evidence, and whether it changed the signal, confidence, or watchlist.
 
 Write for a non-financial reader:
 
@@ -218,6 +223,13 @@ Every `signal.json` must include:
     },
     "thesisImpact": "unknown",
     "missingInformation": []
+  },
+  "edgeAssessment": {
+    "consensusView": "",
+    "highestConvictionVariantView": "",
+    "edgeStatus": "none_found",
+    "signalInfluence": "none",
+    "contrarianTheses": []
   },
   "nextEvidenceNeeded": [],
   "supportingEvidence": [],

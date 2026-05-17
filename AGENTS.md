@@ -2,11 +2,11 @@
 
 ## Mission
 
-Use this repository to run repeatable, source-backed, long-term stock analysis. For each stock, continuously collect SEC filings, trusted news, market data, and prior analysis artifacts. Synthesize them into a plain-English investment research brief focused on one practical question: does this stock offer an attractive chance to make money over the chosen time horizon, after accounting for downside risk?
+Use this repository to run repeatable, source-backed, long-term stock analysis. For each stock, continuously collect SEC filings, trusted news, broad lead sources, market data, and prior analysis artifacts. Synthesize them into a plain-English investment research brief focused on one practical question: does this stock offer an attractive chance to make money over the chosen time horizon, after accounting for downside risk?
 
 This is research support only. Do not present any output as personalized financial advice. Do not imply certainty about future stock prices. Always show evidence, uncertainty, and downside risks.
 
-Write for a smart reader without a finance background. Be direct about the money-making path, the money-losing path, and the evidence that would change the call. Do not default to neutral language when evidence supports a directional signal.
+Write for a smart reader without a finance background. Be direct about the money-making path, the money-losing path, the non-consensus ideas that may create an edge, and the evidence that would change the call. Do not default to neutral language when evidence supports a directional signal.
 
 ## Repository map
 
@@ -52,18 +52,21 @@ Use relevant skills from `.agents/skills/` when the task matches their descripti
    ```
 
 4. Inspect the generated run folder under `stocks/<TICKER>/runs/<RUN_DATE>/`.
-5. Read prior `stocks/<TICKER>/summary.html`, prior `signal.json`, prior `decision-brief.md`, and prior watch items before making a new conclusion.
+5. Read prior `stocks/<TICKER>/summary.html`, prior `signal.json`, prior `decision-brief.md`, prior `edge-lab.md`, and prior watch items before making a new conclusion.
 6. Evaluate whether earlier judgments were accurate, inaccurate, early, late, or still untested; explain why and record lessons in `thesis-review.md`.
 7. Analyze SEC filings, news, fundamentals, catalysts, risks, valuation model fit, CEO/leadership quality, recent management stock transactions, company buybacks, and market trend metrics.
-8. Produce a final run brief in `decision-brief.md` and update `summary.html` only after evidence review, including a historical trend summary and prior-judgment reflection.
-9. Run `npm run build:index` to refresh the local, ignored `index-data.js` directory data used by root `index.html`.
+8. Build `edge-lab.md`: map the consensus view, search broad lead sources for neglected or initially odd hypotheses, then verify or disprove them before synthesis.
+9. Produce a final run brief in `decision-brief.md` and update `summary.html` only after evidence review, including a historical trend summary, prior-judgment reflection, and edge-lab summary.
+10. Run `npm run build:index` to refresh the local, ignored `index-data.js` directory data used by root `index.html`.
 
 ## Evidence rules
 
 - Prefer primary sources: SEC filings, company investor relations, earnings releases, call transcripts, regulatory releases, and official macro data.
 - Use reputable financial journalism as secondary context, not as sole proof.
+- Use forums, social posts, niche blogs, job postings, patents, reviews, and obscure datasets only as lead sources for edge hypotheses until corroborated.
 - Mark unsourced claims as assumptions or remove them.
 - Do not use social media, forums, rumors, or anonymous commentary as decision-grade evidence unless clearly labeled as sentiment/noise.
+- Record disproved or abandoned edge hypotheses in `edge-lab.md` so future runs do not repeat weak ideas.
 - When sources conflict, explain the conflict and favor primary documents.
 - Keep direct quotes short and cite file paths or URLs.
 
@@ -84,6 +87,7 @@ Every signal must include:
 - confidence level
 - evidence summary
 - contrary evidence
+- edge hypothesis status and signal influence
 - invalidation triggers
 - risks and missing information
 - suggested next data to collect
@@ -105,6 +109,7 @@ Each `stocks/<TICKER>/runs/<RUN_DATE>/` folder should contain:
 - `insider-and-buybacks.md`
 - `thesis-review.md`
 - `risk-register.md`
+- `edge-lab.md`
 - `signal.json`
 - `decision-brief.md`
 - `watchlist-next-run.md`
@@ -130,6 +135,7 @@ A stock analysis run is complete only when:
 6. CEO/leadership quality was assessed from sourced evidence, or missing leadership data was explicitly documented.
 7. Recent management-team stock sales/purchases and company stock buybacks were reviewed, or missing transaction/repurchase data was explicitly documented.
 8. Prior conclusions, invalidation triggers, and watch items were reviewed for accuracy and lessons learned.
-9. Technical trend metrics were computed or marked unavailable.
-10. The final signal includes contrary evidence and invalidation triggers.
-11. `stocks/<TICKER>/summary.html` is updated with what to watch next, a historical trend summary, and a reflection on prior calls.
+9. At least one non-consensus edge hypothesis was attempted, verified or disproved where possible, and recorded in `edge-lab.md`.
+10. Technical trend metrics were computed or marked unavailable.
+11. The final signal includes contrary evidence, invalidation triggers, and edge-gating status.
+12. `stocks/<TICKER>/summary.html` is updated with what to watch next, a historical trend summary, a reflection on prior calls, and the edge-lab summary.

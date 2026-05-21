@@ -124,6 +124,28 @@ Do not treat every insider sale as bearish. Planned sales, tax withholding, opti
 
 Do not treat buyback announcements as proof of shareholder-friendly capital allocation. Check execution, price paid, balance sheet cost, dilution offset, and whether total share count actually declines.
 
+## Targeting price and time range analysis
+
+Every run must include a specific target price and an expected time range for that target to be reached. This analysis must be based on the valuation scenarios and identified catalysts.
+
+### Target price
+
+The target price is a point estimate or tight range representing the conservative base-case value, adjusted for the probability of catalysts. It should normally align with the "Base" or "Bull" value from the valuation ranges.
+
+### Target time range
+
+The target time range is the expected window for the market to recognize the value gap. This should be aligned with:
+- specific catalyst dates (earnings, product launches, regulatory decisions)
+- the company's fiscal cycle
+- historical re-rating timelines
+
+### Detailed rationale (The "Why")
+
+A detailed explanation of "why" is required for both the price and the time range. This must answer:
+1. What specific business outcomes (revenue, margin, cash flow) are required to justify the target price?
+2. Which identified catalysts are expected to trigger the re-rating during the chosen time range?
+3. What evidence from the current run supports the conviction that this specific price and time window are realistic?
+
 ## Signal implications
 
 Valuation and leadership must influence the final signal:

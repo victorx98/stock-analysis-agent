@@ -17,6 +17,8 @@ Every `decision-brief.md` must use this structure:
 
 ## Current signal
 - Signal:
+- Target price:
+- Target time range:
 - Time horizon:
 - Confidence:
 - Prior signal:
@@ -170,6 +172,8 @@ Every `signal.json` must include:
   "ticker": "AAPL",
   "runDate": "2026-05-09",
   "signal": "hold_neutral",
+  "targetPrice": "",
+  "targetTimeRange": "",
   "timeHorizon": "6-12 months",
   "confidence": "medium",
   "summary": "One-paragraph summary.",

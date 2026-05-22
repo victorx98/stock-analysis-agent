@@ -23,7 +23,7 @@ description: Synthesize a complete stock research decision brief from SEC filing
 14. Include bull case, bear case, risks, contrary evidence, invalidation triggers, prior-thesis review, and edge-lab summary.
 15. Use a directional signal when the evidence supports a clear risk/reward skew; do not default to `hold_neutral`.
 16. Use `insufficient_evidence` if evidence is weak or source quality is poor, including missing valuation, CEO, insider transaction, buyback, or edge-gating evidence that materially blocks the call.
-17. Update `signal.json`, `decision-brief.md`, and `summary.html`; the summary must include a historical trend, prior-call reflection, and edge-lab section.
+17. Update `signal.json`, `decision-brief.md`, and `summary.html`; the summary must use the canonical `stocks/_TEMPLATE/summary.html` style and include a historical trend, prior-call reflection, edge-lab section, and end-of-report source appendix.
 18. Run `npm run build:index` so root `index.html` can list updated summaries through ignored `index-data.js`.
 
 ## Output checklist
@@ -37,6 +37,8 @@ description: Synthesize a complete stock research decision brief from SEC filing
 - Prior-thesis accuracy is scored, with what was right, what was wrong, why, and what changed in this run.
 - Edge assessment is explicit, including consensus view, strongest variant view, verification status, disconfirming evidence, and signal influence.
 - The summary includes historical signal/price/valuation trend and prior-call reflection.
+- `decision-brief.md` and `summary.html` include a Source Appendix listing inspected SEC filing names or local files, news links, company materials, market data files or provider URLs, broad-lead sources, and material source gaps.
+- `summary.html` preserves the canonical summary template style unless the template itself was intentionally updated.
 - No unsupported claims remain.
 - Missing information is explicit.
 - Watch items are actionable for the next run.

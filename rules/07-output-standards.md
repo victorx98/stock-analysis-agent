@@ -57,6 +57,8 @@ Every `decision-brief.md` must use this structure:
 
 ## Missing information
 
+## Source Appendix
+
 ## Research-only disclaimer
 ```
 
@@ -107,10 +109,13 @@ Watch Next Run
 Finance Terms Used
 Collection and Tooling Notes
 Prior Run Links
+Source Appendix
 Research-Only Disclaimer
 ```
 
 Use tables for evidence, risks, valuation context, and signal data when they improve readability. Use diagrams only when they clarify thesis mechanics, catalyst timelines, risk maps, or financial trend relationships.
+
+`stocks/_TEMPLATE/summary.html` is the canonical summary report template and visual style. Every `stocks/<TICKER>/summary.html` must preserve its section order, typography, panel/grid pattern, badges, tables, and overall visual language unless the canonical template itself is intentionally updated. If the summary style needs to change, update the template first and then use the same style for future ticker summaries.
 
 The "Historical Trend And Prior Call Review" section must summarize signal history, price or technical trend history, valuation classification history, key thesis changes, prior-call accuracy, and lessons learned. Use a table where possible and avoid scoring a prior call from short-term price movement alone.
 
@@ -130,6 +135,8 @@ Write for a non-financial reader:
 - Be decisive when evidence supports it. Do not use `hold_neutral` as a default.
 
 The "Collection and Tooling Notes" section must briefly state which source/tool gaps matter to the conclusion. Keep full diagnostic detail in `run-metadata.json` and `source-inventory.md`; summarize only material collection failures, skipped sources, or fallback data sources in the reader-facing output.
+
+The "Source Appendix" must be the final evidence section in both `decision-brief.md` and `stocks/<TICKER>/summary.html`; the only section after it should be the research-only disclaimer. It must list the material sources actually inspected for the report, including SEC filing names or local file paths, news titles and links, company investor-relations materials, earnings releases or transcripts, market-data files or provider URLs, broad-lead sources used for edge hypotheses, and any material source gaps. Use a table when possible with columns for source, type or tier, date, link or file, and how it was used in the conclusion. Do not list sources that were not actually inspected.
 
 ## Root and stock index pages
 

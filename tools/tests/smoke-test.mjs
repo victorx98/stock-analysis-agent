@@ -151,8 +151,12 @@ assert.equal(templateSignal.priorThesisReview.accuracy, 'baseline_no_prior_call'
 const templateBrief = readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/decision-brief.md', import.meta.url), 'utf8');
 assert.ok(templateBrief.includes('## Collection and Tooling Notes'));
 assert.ok(templateBrief.includes('## Edge Lab Summary'));
+assert.ok(templateBrief.includes('## Source Appendix'));
 assert.ok(templateBrief.includes("CEO's main current-company goal"));
 assert.ok(templateBrief.includes('## Insider and buyback takeaways'));
+
+const templateSummary = readFileSync(new URL('../../stocks/_TEMPLATE/summary.html', import.meta.url), 'utf8');
+assert.ok(templateSummary.includes('Source Appendix'));
 
 const templateEdgeLab = readFileSync(new URL('../../stocks/_TEMPLATE/runs/YYYY-MM-DD/edge-lab.md', import.meta.url), 'utf8');
 assert.ok(templateEdgeLab.includes('## Consensus View'));

@@ -85,6 +85,12 @@
 
 ## Missing information
 
+## Source Appendix
+
+| Source | Type / Tier | Date | Link or File | Use in report |
+|---|---|---|---|---|
+| TBD | TBD | TBD | TBD | Populate from source-inventory.md, SEC filing files, news links, company materials, market data, and manually reviewed sources. |
+
 ## Research-only disclaimer
 
 This brief is for research support only and is not personalized financial advice or a trade instruction.

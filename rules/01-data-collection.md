@@ -66,3 +66,10 @@ Every run must include a `run-metadata.json` file with:
 - known failures
 
 Use the shared collection tool registry under `tools/lib/collection-tools.mjs` for standard pipeline steps. Do not recreate ad hoc command lists in each script; add or change common collectors in the registry so pipeline behavior, run metadata, and source inventory stay aligned.
+
+## Reusable tools
+
+- If a collection, normalization, extraction, source-inventory, source-appendix, report-formatting, or index-update task will likely be repeated across ticker runs or reports, create a reusable tool under `tools/` or helper under `tools/lib/`.
+- Prefer extending an existing tool or library module before adding a new script, especially for SEC parsing, trusted-news collection, market metrics, run auditing, source inventory, and summary report updates.
+- Do not copy-paste source extraction or report-generation logic between tickers. Move shared behavior into a tool and keep ticker-specific judgment in the run artifacts.
+- When adding or changing a tool, keep it idempotent where possible, update tests or smoke coverage for the repeated behavior, and make sure the tool records created files and sources in `run-metadata.json` or `source-inventory.md` when relevant.

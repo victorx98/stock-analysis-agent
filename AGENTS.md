@@ -56,7 +56,7 @@ Use relevant skills from `.agents/skills/` when the task matches their descripti
 6. Evaluate whether earlier judgments were accurate, inaccurate, early, late, or still untested; explain why and record lessons in `thesis-review.md`.
 7. Analyze SEC filings, news, fundamentals, catalysts, risks, valuation model fit, CEO/leadership quality, recent management stock transactions, company buybacks, and market trend metrics.
 8. Build `edge-lab.md`: map the consensus view, search broad lead sources for neglected or initially odd hypotheses, then verify or disprove them before synthesis.
-9. Produce a final run brief in `decision-brief.md` and update `summary.html` only after evidence review, including a historical trend summary, prior-judgment reflection, and edge-lab summary.
+9. Produce a final run brief in `decision-brief.md` and update `summary.html` only after evidence review, using the canonical summary template/style and including a historical trend summary, prior-judgment reflection, edge-lab summary, and end-of-report source appendix.
 10. Run `npm run build:index` to refresh the local, ignored `index-data.js` directory data used by root `index.html`.
 
 ## Evidence rules
@@ -120,6 +120,8 @@ For any market-wide, sector-wide, thematic, or other non-single-ticker HTML repo
 
 - Use Node.js 20+.
 - Prefer dependency-free tools unless a dependency materially improves reliability.
+- If a workflow, source extraction, formatting step, or report update is likely to be reused, make or extend a shared tool under `tools/` or `tools/lib/` instead of repeating manual one-off logic.
+- Reuse existing shared tools and registries before adding new scripts; keep common collectors in `tools/lib/collection-tools.mjs` so pipeline behavior, run metadata, and source inventory stay aligned.
 - Run `npm test` after editing tools.
 - Run `npm run lint` if you add lint tooling.
 - Keep scripts idempotent where possible.
@@ -140,4 +142,4 @@ A stock analysis run is complete only when:
 9. At least one non-consensus edge hypothesis was attempted, verified or disproved where possible, and recorded in `edge-lab.md`.
 10. Technical trend metrics were computed or marked unavailable.
 11. The final signal includes contrary evidence, invalidation triggers, and edge-gating status.
-12. `stocks/<TICKER>/summary.html` is updated with what to watch next, a historical trend summary, a reflection on prior calls, and the edge-lab summary.
+12. `stocks/<TICKER>/summary.html` is updated with what to watch next, a historical trend summary, a reflection on prior calls, the edge-lab summary, canonical summary styling, and an end-of-report source appendix listing inspected news links, SEC filing names or local files, company materials, data files, and other material sources.

@@ -47,7 +47,7 @@ assert.ok(signalPolicy.edgePolicy.edgeStatusLabels.includes('unverified_leads'))
 assert.ok(signalPolicy.edgePolicy.signalInfluenceLabels.includes('signal_driver'));
 
 assert.equal(getTool('fetch-sec').name, 'SEC filings collector');
-assert.deepEqual(collectionSteps().map((tool) => tool.id), ['fetch-sec', 'fetch-company-info', 'fetch-news', 'fetch-market']);
+assert.deepEqual(collectionSteps().map((tool) => tool.id), ['fetch-sec', 'fetch-company-info', 'fetch-news', 'fetch-social-leads', 'fetch-market']);
 assert.equal(getTool('fetch-company-info').name, 'Company info collector');
 assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'trusted-news'));
 assert.ok(initialSourceRows('TEST', {}).some((source) => source.id === 'company-info'));

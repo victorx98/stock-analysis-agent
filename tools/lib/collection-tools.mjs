@@ -71,6 +71,26 @@ export const COLLECTION_TOOLS = [
     ]
   },
   {
+    id: 'fetch-social-leads',
+    name: 'Social media leads collector',
+    category: 'collection',
+    required: false,
+    command: ['node', 'tools/fetch-social-leads.mjs'],
+    npmCommand: 'npm run fetch:social -- --ticker {ticker}',
+    description: 'Collects community views and trending stock leads from Reddit and X/Twitter.',
+    sourceTemplates: [
+      {
+        id: 'social-leads',
+        source: 'Social media APIs',
+        type: 'Community sentiment leads',
+        tier: '3A',
+        pathOrUrl: 'stocks/{ticker}/data/raw/social/',
+        status: 'pending collection',
+        notes: 'Reddit search JSON and Google CSE Twitter indexes.'
+      }
+    ]
+  },
+  {
     id: 'fetch-market',
     name: 'Market trend collector',
     category: 'collection',
